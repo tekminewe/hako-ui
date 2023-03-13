@@ -8,7 +8,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -22,6 +24,8 @@
     "@storybook/react": "^7.0.0-rc.3",
     "@storybook/react-vite": "^7.0.0-rc.3",
     "@storybook/testing-library": "^0.0.14-next.1",
+    "@tekminewe/eslint-config-react": "^0.1.4",
+    "@tekminewe/prettier-config": "^0.1.4",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react-swc": "^3.0.0",
