@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #7c3aed;
+
+    --text: #171717;
+    --text-light: #404040;
+    --text-lighter: #737373;
+
+    --background: #fafafa;
+    --background-light: #f5f5f5;
+    --background-lighter: #e5e5e5;
+  }
+
+  .typo-h1 {
+    @apply text-2xl font-bold;
+  }
+
+  .typo-h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  .typo-h3 {
+    @apply text-xl font-medium;
+  }
+
+  .typo-lg {
+    @apply text-lg;
+  }
+
+  .typo-base {
+    @apply text-base;
+  }
+
+  .typo-sm {
+    @apply text-sm;
+  }
+
+  .typo-xs {
+    @apply text-xs;
+  }
+}
