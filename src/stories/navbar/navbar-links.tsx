@@ -13,10 +13,10 @@ export interface NavbarLinksProps extends HTMLAttributes<HTMLUListElement> {
   /**
    * The callback function to be called when a link is clicked
    * @default undefined
-   * @type () => void
+   * @type React.MouseEventHandler<HTMLLIElement>
    * @example () => console.log("Link clicked")
    */
-  onLinkClick?: () => void;
+  onLinkClick?: React.MouseEventHandler<HTMLLIElement>;
 
   /**
    * The class name to be applied to each link

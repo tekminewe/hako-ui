@@ -7,7 +7,7 @@ export const Navbar = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
       <nav
         {...props}
         ref={ref}
-        className={classNames(className, "flex items-center")}
+        className={classNames(className, "flex items-center justify-between")}
       />
     );
   }

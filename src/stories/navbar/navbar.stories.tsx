@@ -19,7 +19,10 @@ export const SimpleMenu: Story = {
     children: (
       <>
         <NavbarBrand logo={<Logo width={30} height={30} />} title="Hako UI" />
-        <NavbarLinks links={["Home", "About", "Contact"]} selectedIndex={0} />
+        <NavbarLinks
+          links={["Home", "About", "Services", "Portfolio", "Contact"]}
+          selectedIndex={0}
+        />
       </>
     ),
   },
