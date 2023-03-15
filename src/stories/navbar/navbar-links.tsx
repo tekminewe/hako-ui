@@ -1,5 +1,5 @@
-import { forwardRef, HTMLAttributes } from "react";
-import classNames from "classnames";
+import { forwardRef, HTMLAttributes } from 'react';
+import classNames from 'classnames';
 
 export interface NavbarLinksProps extends HTMLAttributes<HTMLUListElement> {
   /**
@@ -36,20 +36,13 @@ export interface NavbarLinksProps extends HTMLAttributes<HTMLUListElement> {
 }
 
 export const NavbarLinks = forwardRef<HTMLUListElement, NavbarLinksProps>(
-  (
-    { links, onLinkClick, selectedIndex, linkClassName, className, ...props },
-    ref
-  ) => {
+  ({ links, onLinkClick, selectedIndex, linkClassName, className, ...props }, ref) => {
     return (
-      <ul
-        {...props}
-        className={classNames("flex items-center space-x-xl", className)}
-        ref={ref}
-      >
+      <ul {...props} className={classNames('flex items-center space-x-xl', className)} ref={ref}>
         {links?.map((link, index) => (
           <li
-            className={classNames(linkClassName, "cursor-pointer font-medium", {
-              "text-primary": selectedIndex === index,
+            className={classNames(linkClassName, 'cursor-pointer font-medium', {
+              'text-primary': selectedIndex === index,
             })}
             key={link}
             onClick={onLinkClick}
@@ -59,7 +52,7 @@ export const NavbarLinks = forwardRef<HTMLUListElement, NavbarLinksProps>(
         ))}
       </ul>
     );
-  }
+  },
 );
 
-NavbarLinks.displayName = "NavbarLinks";
+NavbarLinks.displayName = 'NavbarLinks';

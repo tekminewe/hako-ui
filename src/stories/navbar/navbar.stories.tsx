@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Navbar } from "./navbar";
-import { NavbarBrand } from "./navbar-brand";
-import { ReactComponent as Logo } from "assets/logo.svg";
-import { NavbarLinks } from "./navbar-links";
+import { Navbar } from './navbar';
+import { NavbarBrand } from './navbar-brand';
+import { ReactComponent as Logo } from 'assets/logo.svg';
+import { NavbarLinks } from './navbar-links';
 
 const meta = {
-  title: "Components/Navbar",
+  title: 'Components/Navbar',
   component: Navbar,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof Navbar>;
 
 export default meta;
@@ -19,10 +19,7 @@ export const SimpleMenu: Story = {
     children: (
       <>
         <NavbarBrand logo={<Logo width={30} height={30} />} title="Hako UI" />
-        <NavbarLinks
-          links={["Home", "About", "Services", "Portfolio", "Contact"]}
-          selectedIndex={0}
-        />
+        <NavbarLinks links={['Home', 'About', 'Services', 'Portfolio', 'Contact']} selectedIndex={0} />
       </>
     ),
   },

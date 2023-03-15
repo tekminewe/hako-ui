@@ -1,5 +1,5 @@
-import { forwardRef, HTMLAttributes, ReactNode } from "react";
-import classNames from "classnames";
+import { forwardRef, HTMLAttributes, ReactNode } from 'react';
+import classNames from 'classnames';
 
 export interface NavbarBrandProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -19,19 +19,13 @@ export interface NavbarBrandProps extends HTMLAttributes<HTMLDivElement> {
   logo?: ReactNode;
 }
 
-export const NavbarBrand = forwardRef<HTMLDivElement, NavbarBrandProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <div
-        {...props}
-        className={classNames("flex items-center space-x-sm", className)}
-        ref={ref}
-      >
-        {props.logo}
-        <h1 className="text-lg font-bold">{props.title}</h1>
-      </div>
-    );
-  }
-);
+export const NavbarBrand = forwardRef<HTMLDivElement, NavbarBrandProps>(({ className, ...props }, ref) => {
+  return (
+    <div {...props} className={classNames('flex items-center space-x-sm', className)} ref={ref}>
+      {props.logo}
+      <h1 className="text-lg font-bold">{props.title}</h1>
+    </div>
+  );
+});
 
-NavbarBrand.displayName = "NavbarBrand";
+NavbarBrand.displayName = 'NavbarBrand';
