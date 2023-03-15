@@ -48,13 +48,9 @@ export const NavbarLinks = forwardRef<HTMLUListElement, NavbarLinksProps>(
       >
         {links?.map((link, index) => (
           <li
-            className={classNames(
-              linkClassName,
-              "cursor-pointer typo-base font-medium",
-              {
-                "text-primary": selectedIndex === index,
-              }
-            )}
+            className={classNames(linkClassName, "cursor-pointer font-medium", {
+              "text-primary": selectedIndex === index,
+            })}
             key={link}
             onClick={onLinkClick}
           >

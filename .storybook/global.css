@@ -15,31 +15,7 @@
     --background-lighter: #e5e5e5;
   }
 
-  .typo-h1 {
-    @apply text-2xl font-bold;
-  }
-
-  .typo-h2 {
-    @apply text-2xl font-semibold;
-  }
-
-  .typo-h3 {
-    @apply text-xl font-medium;
-  }
-
-  .typo-lg {
-    @apply text-lg;
-  }
-
-  .typo-base {
-    @apply text-base;
-  }
-
-  .typo-sm {
-    @apply text-sm;
-  }
-
-  .typo-xs {
-    @apply text-xs;
+  body {
+    @apply bg-background text-base;
   }
 }
