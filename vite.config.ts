@@ -11,4 +11,14 @@ export default defineConfig({
       assets: path.resolve(__dirname, './src/stories/assets'),
     },
   },
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, './src/stories/index.ts'),
+      name: 'index',
+      fileName: 'index',
+    },
+    rollupOptions: {
+      external: ['react'],
+    },
+  },
 });
