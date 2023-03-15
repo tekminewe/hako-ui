@@ -1,6 +1,30 @@
 {
   "name": "hako-ui",
   "version": "0.0.2",
+  "license": "MIT",
+  "keywords": [
+    "hako-ui",
+    "typescript",
+    "html",
+    "css",
+    "component library",
+    "ui components",
+    "tailwind",
+    "tailwind css",
+    "tailwind components",
+    "tailwind elements",
+    "tailwind library",
+    "tailwind sections",
+    "tailwind css",
+    "tailwind ui",
+    "tailwind react",
+    "eslint",
+    "prettier",
+    "cjs",
+    "esm",
+    "umd"
+  ],
+  "author": "TekMinEwe <ewe.tekmin@outlook.com> (https://tekminewe.com)",
   "type": "module",
   "files": [
     "dist"
