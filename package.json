@@ -1,6 +1,6 @@
 {
   "name": "hako-ui",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "license": "MIT",
   "keywords": [
     "hako-ui",
@@ -27,7 +27,8 @@
   "author": "TekMinEwe <ewe.tekmin@outlook.com> (https://tekminewe.com)",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "plugin.js"
   ],
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
