@@ -31,12 +31,12 @@ export default plugin(
           primary: 'var(--primary)',
 
           text: 'var(--text)',
-          textLight: 'var(--text-light)',
-          textLighter: 'var(--text-lighter)',
+          'text-light': 'var(--text-light)',
+          'text-lighter': 'var(--text-lighter)',
 
           background: 'var(--background)',
-          backgroundDark: 'var(--background-dark)',
-          backgroundDarker: 'var(--background-darker)',
+          'background-dark': 'var(--background-dark)',
+          'background-darker': 'var(--background-darker)',
         },
         spacing: {
           '2xs': '0.25rem',
