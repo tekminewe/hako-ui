@@ -13,9 +13,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, './src/stories/index.ts'),
-      name: 'index',
-      fileName: 'index',
+      entry: [path.resolve(__dirname, './src/stories/index.ts'), path.resolve(__dirname, './plugin.ts')],
     },
     rollupOptions: {
       external: ['react'],
