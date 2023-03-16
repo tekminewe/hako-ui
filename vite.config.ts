@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [dts(), svgr(), react()],
   resolve: {
     alias: {
-      assets: path.resolve(__dirname, './src/components/assets'),
+      assets: path.resolve(__dirname, './src/assets'),
     },
   },
   build: {
