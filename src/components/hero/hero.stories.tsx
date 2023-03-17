@@ -14,7 +14,7 @@ export const HeadingWithImage: Story = {
   args: {
     children: (
       <>
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 items-center">
           <div>
             <p className="text-xl font-medium">Hi there, I&apos;m</p>
             <p className="text-3xl font-bold">Peter Huntsman</p>
