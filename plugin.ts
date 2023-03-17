@@ -1,6 +1,7 @@
-import plugin from 'tailwindcss/plugin';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const plugin = require('tailwindcss/plugin');
 
-export default plugin(
+module.exports = plugin(
   ({ addBase, theme }) => {
     addBase({
       ':root': {
@@ -42,7 +43,7 @@ export default plugin(
           '2xs': '0.25rem',
           xs: '0.5rem',
           sm: '0.75rem',
-          base: '1rem',
+          md: '1rem',
           lg: '1.25rem',
           xl: '1.5rem',
           '2xl': '1.75rem',
