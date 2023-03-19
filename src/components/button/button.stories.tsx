@@ -13,19 +13,26 @@ type Story = StoryObj<typeof meta>;
 
 export const Solid: Story = {
   render: () => (
-    <div className="flex flex-col space-y-md items-start">
-      <Button color="primary">Primary</Button>
-      <Button color="success">Success</Button>
-      <Button color="danger">Danger</Button>
-      <Button color="info">Info</Button>
-      <Button color="warning">Warning</Button>
+    <div className="flex flex-col space-y-hk-md items-start">
+      <Button variant="primary">Primary</Button>
+      <Button variant="success">Success</Button>
+      <Button variant="danger">Danger</Button>
+      <Button variant="info">Info</Button>
+      <Button variant="warning">Warning</Button>
+      <Button variant="default">Default</Button>
     </div>
   ),
 };
 
 export const Outline: Story = {
-  args: {
-    variant: 'outline',
-    children: 'Login',
-  },
+  render: () => (
+    <div className="flex flex-col space-y-hk-md items-start">
+      <Button variant="outline-primary">Primary</Button>
+      <Button variant="outline-success">Success</Button>
+      <Button variant="outline-danger">Danger</Button>
+      <Button variant="outline-info">Info</Button>
+      <Button variant="outline-warning">Warning</Button>
+      <Button variant="outline-default">Default</Button>
+    </div>
+  ),
 };

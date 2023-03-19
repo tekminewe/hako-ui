@@ -38,7 +38,7 @@ export interface NavbarLinksProps extends HTMLAttributes<HTMLUListElement> {
 export const NavbarLinks = forwardRef<HTMLUListElement, NavbarLinksProps>(
   ({ links, onLinkClick, selectedIndex, linkClassName, className, ...props }, ref) => {
     return (
-      <ul {...props} className={classNames('flex items-center space-x-xl', className)} ref={ref}>
+      <ul {...props} className={classNames('flex items-center space-x-hk-xl', className)} ref={ref}>
         {links?.map((link, index) => (
           <li
             className={classNames(linkClassName, 'cursor-pointer font-medium', {

@@ -21,8 +21,11 @@ const colors = [
   'text-lighter',
 
   'background',
+  'on-background',
   'background-dark',
+  'on-background-dark',
   'background-darker',
+  'on-background-darker',
 ];
 
 /**
@@ -37,32 +40,46 @@ const generateColors = (prefix) => {
   }, {});
 };
 
+/**
+ * Construct the class name
+ * @param {string} name
+ * @param {string} prefix
+ * @returns {string}
+ */
+const constructClassName = (name, prefix) => {
+  return `${prefix}${name}`;
+};
+
 /** @type {import('./src/components/types').PluginCreator} */
 module.exports = (options) => {
-  const { prefix = 'hk-' } = options || {};
+  const { cssVarPrefix = 'hk-' } = options || {};
+  const cssClassPrefix = 'hk-';
   return plugin(
     ({ addBase, theme }) => {
       addBase({
         ':root': {
-          [`--${prefix}primary`]: '#7c3aed',
-          [`--${prefix}on-primary`]: '#fafafa',
+          [`--${cssVarPrefix}primary`]: '#7c3aed',
+          [`--${cssVarPrefix}on-primary`]: '#fafafa',
 
-          [`--${prefix}success`]: '#4caf50',
-          [`--${prefix}on-success`]: '#fafafa',
-          [`--${prefix}danger`]: '#f44336',
-          [`--${prefix}on-danger`]: '#fafafa',
-          [`--${prefix}warning`]: '#ff9800',
-          [`--${prefix}on-warning`]: '#fafafa',
-          [`--${prefix}info`]: '#2196f3',
-          [`--${prefix}on-info`]: '#fafafa',
+          [`--${cssVarPrefix}success`]: '#4caf50',
+          [`--${cssVarPrefix}on-success`]: '#fafafa',
+          [`--${cssVarPrefix}danger`]: '#f44336',
+          [`--${cssVarPrefix}on-danger`]: '#fafafa',
+          [`--${cssVarPrefix}warning`]: '#ff9800',
+          [`--${cssVarPrefix}on-warning`]: '#fafafa',
+          [`--${cssVarPrefix}info`]: '#2196f3',
+          [`--${cssVarPrefix}on-info`]: '#fafafa',
 
-          [`--${prefix}text`]: '#171717',
-          [`--${prefix}text-light`]: '#404040',
-          [`--${prefix}text-lighter`]: ' #737373',
+          [`--${cssVarPrefix}text`]: '#171717',
+          [`--${cssVarPrefix}text-light`]: '#404040',
+          [`--${cssVarPrefix}text-lighter`]: ' #737373',
 
-          [`--${prefix}background`]: '#fafafa',
-          [`--${prefix}background-dark`]: '#f5f5f5',
-          [`--${prefix}background-darker`]: '#e5e5e5',
+          [`--${cssVarPrefix}background`]: '#fafafa',
+          [`--${cssVarPrefix}on-background`]: '#171717',
+          [`--${cssVarPrefix}background-dark`]: '#e5e5e5',
+          [`--${cssVarPrefix}on-background-dark`]: '#171717',
+          [`--${cssVarPrefix}background-darker`]: '#a3a3a3',
+          [`--${cssVarPrefix}on-background-darker`]: '#171717',
         },
         body: {
           backgroundColor: theme('colors.background'),
@@ -73,30 +90,28 @@ module.exports = (options) => {
     {
       darkMode: 'class',
       theme: {
-        extend: {
-          colors: generateColors(prefix),
-          spacing: {
-            '2xs': '0.25rem',
-            xs: '0.5rem',
-            sm: '0.75rem',
-            md: '1rem',
-            lg: '1.25rem',
-            xl: '1.5rem',
-            '2xl': '1.75rem',
-            '3xl': '2rem',
-            '4xl': '2.25rem',
-            '5xl': '2.5rem',
-            '6xl': '2.75rem',
-          },
-          fontSize: {
-            xs: ['0.75rem', '1rem'],
-            sm: ['0.875rem', '1.25rem'],
-            base: ['1rem', '1.5rem'],
-            lg: ['1.25rem', '1.75rem'],
-            xl: ['1.5rem', '2rem'],
-            '2xl': ['1.875rem', '2.25rem'],
-            '3xl': ['3rem', '1'],
-          },
+        colors: generateColors(cssVarPrefix),
+        spacing: {
+          [constructClassName('2xs', cssClassPrefix)]: '0.25rem',
+          [constructClassName('xs', cssClassPrefix)]: '0.5rem',
+          [constructClassName('sm', cssClassPrefix)]: '0.75rem',
+          [constructClassName('md', cssClassPrefix)]: '1rem',
+          [constructClassName('lg', cssClassPrefix)]: '1.25rem',
+          [constructClassName('xl', cssClassPrefix)]: '1.5rem',
+          [constructClassName('2xl', cssClassPrefix)]: '1.75rem',
+          [constructClassName('3xl', cssClassPrefix)]: '2rem',
+          [constructClassName('4xl', cssClassPrefix)]: '2.25rem',
+          [constructClassName('5xl', cssClassPrefix)]: '2.5rem',
+          [constructClassName('6xl', cssClassPrefix)]: '2.75rem',
+        },
+        fontSize: {
+          [constructClassName('xs', cssClassPrefix)]: ['0.75rem', '1rem'],
+          [constructClassName('sm', cssClassPrefix)]: ['0.875rem', '1.25rem'],
+          [constructClassName('md', cssClassPrefix)]: ['1rem', '1.5rem'],
+          [constructClassName('lg', cssClassPrefix)]: ['1.25rem', '1.75rem'],
+          [constructClassName('xl', cssClassPrefix)]: ['1.5rem', '2rem'],
+          [constructClassName('2xl', cssClassPrefix)]: ['1.875rem', '2.25rem'],
+          [constructClassName('3xl', cssClassPrefix)]: ['3rem', '1'],
         },
       },
     },

@@ -16,9 +16,9 @@ export const HeadingWithImage: Story = {
       <>
         <div className="grid grid-cols-2 items-center">
           <div>
-            <p className="text-xl font-medium">Hi there, I&apos;m</p>
-            <p className="text-3xl font-bold">Peter Huntsman</p>
-            <p className="text-xl font-medium text-primary my-md">A Professional Freelance Web Developer</p>
+            <p className="text-hk-xl font-medium">Hi there, I&apos;m</p>
+            <p className="text-hk-3xl font-bold">Peter Huntsman</p>
+            <p className="text-hk-xl font-medium text-primary my-hk-md">A Professional Freelance Web Developer</p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex

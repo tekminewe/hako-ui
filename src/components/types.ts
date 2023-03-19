@@ -6,7 +6,7 @@ export interface PluginOptions {
    * @default 'hk-'
    * @example 'hk-'
    */
-  prefix?: string;
+  cssVarPrefix?: string;
 }
 
 export type PluginCreator = (options?: PluginOptions) => typeof plugin;
