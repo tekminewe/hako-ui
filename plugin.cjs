@@ -16,14 +16,12 @@ const colors = [
   'info',
   'on-info',
 
-  'text',
-  'text-light',
-  'text-lighter',
-
   'background',
   'on-background',
+
   'background-dark',
   'on-background-dark',
+
   'background-darker',
   'on-background-darker',
 ];
@@ -70,10 +68,6 @@ module.exports = (options) => {
           [`--${cssVarPrefix}info`]: '#2196f3',
           [`--${cssVarPrefix}on-info`]: '#fafafa',
 
-          [`--${cssVarPrefix}text`]: '#171717',
-          [`--${cssVarPrefix}text-light`]: '#404040',
-          [`--${cssVarPrefix}text-lighter`]: ' #737373',
-
           [`--${cssVarPrefix}background`]: '#fafafa',
           [`--${cssVarPrefix}on-background`]: '#171717',
           [`--${cssVarPrefix}background-dark`]: '#e5e5e5',
@@ -83,6 +77,7 @@ module.exports = (options) => {
         },
         body: {
           backgroundColor: theme('colors.background'),
+          color: theme('colors.on-background'),
           fontSize: theme('fontSize.base'),
         },
       });
@@ -90,7 +85,11 @@ module.exports = (options) => {
     {
       darkMode: 'class',
       theme: {
-        colors: generateColors(cssVarPrefix),
+        colors: {
+          transparent: 'transparent',
+          currentColor: 'currentColor',
+          ...generateColors(cssVarPrefix),
+        },
         spacing: {
           [constructClassName('2xs', cssClassPrefix)]: '0.25rem',
           [constructClassName('xs', cssClassPrefix)]: '0.5rem',

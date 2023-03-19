@@ -11,7 +11,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Solid: Story = {
+export const SolidButton: Story = {
   render: () => (
     <div className="flex flex-col space-y-hk-md items-start">
       <Button variant="primary">Primary</Button>
@@ -24,7 +24,7 @@ export const Solid: Story = {
   ),
 };
 
-export const Outline: Story = {
+export const OutlineButton: Story = {
   render: () => (
     <div className="flex flex-col space-y-hk-md items-start">
       <Button variant="outline-primary">Primary</Button>
@@ -33,6 +33,19 @@ export const Outline: Story = {
       <Button variant="outline-info">Info</Button>
       <Button variant="outline-warning">Warning</Button>
       <Button variant="outline-default">Default</Button>
+    </div>
+  ),
+};
+
+export const TextButton: Story = {
+  render: () => (
+    <div className="flex flex-col space-y-hk-md items-start">
+      <Button variant="text-primary">Primary</Button>
+      <Button variant="text-success">Success</Button>
+      <Button variant="text-danger">Danger</Button>
+      <Button variant="text-info">Info</Button>
+      <Button variant="text-warning">Warning</Button>
+      <Button variant="text-default">Default</Button>
     </div>
   ),
 };

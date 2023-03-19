@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from '../button';
 
 import { Hero } from './hero';
 const meta = {
@@ -19,11 +20,15 @@ export const HeadingWithImage: Story = {
             <p className="text-hk-xl font-medium">Hi there, I&apos;m</p>
             <p className="text-hk-3xl font-bold">Peter Huntsman</p>
             <p className="text-hk-xl font-medium text-primary my-hk-md">A Professional Freelance Web Developer</p>
-            <p>
+            <p className="mb-hk-4xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat.
             </p>
+            <div>
+              <Button>Let&apos;s talk!</Button>
+              <Button variant="text-default">Portfolio</Button>
+            </div>
           </div>
           <div>
             <img

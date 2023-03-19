@@ -3,9 +3,29 @@ import { forwardRef } from 'react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * The button's color
+   * The button's variant
    * @default "primary"
-   * @type "primary" | "success" | "danger" | "info" | "warning" | "danger" | 'default
+   * @type  | 'primary'
+    | 'success'
+    | 'danger'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'default'
+    | 'outline-primary'
+    | 'outline-success'
+    | 'outline-danger'
+    | 'outline-info'
+    | 'outline-warning'
+    | 'outline-danger'
+    | 'outline-default'
+    | 'text-primary'
+    | 'text-success'
+    | 'text-danger'
+    | 'text-info'
+    | 'text-warning'
+    | 'text-danger'
+    | 'text-default'
    * @example "success"
    */
   variant?:
@@ -22,7 +42,14 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     | 'outline-info'
     | 'outline-warning'
     | 'outline-danger'
-    | 'outline-default';
+    | 'outline-default'
+    | 'text-primary'
+    | 'text-success'
+    | 'text-danger'
+    | 'text-info'
+    | 'text-warning'
+    | 'text-danger'
+    | 'text-default';
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -45,6 +72,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'border-warning text-warning': variant === 'outline-warning',
           'border-danger text-danger': variant === 'outline-danger',
           'border-on-background text-on-background': variant === 'outline-default',
+
+          'text-primary border-transparent': variant === 'text-primary',
+          'text-success border-transparent': variant === 'text-success',
+          'text-info border-transparent': variant === 'text-info',
+          'text-warning border-transparent': variant === 'text-warning',
+          'text-danger border-transparent': variant === 'text-danger',
+          'text-default border-transparent': variant === 'text-default',
         })}
       />
     );
