@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { FiArrowRight } from 'react-icons/fi';
+
 import { Button } from '../button';
 
 import { Hero } from './hero';
@@ -25,9 +27,11 @@ export const HeadingWithImage: Story = {
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat.
             </p>
-            <div>
+            <div className="flex items-center space-x-hk-md">
               <Button>Let&apos;s talk!</Button>
-              <Button variant="text-default">Portfolio</Button>
+              <Button variant="text-default" iconPosition="right" icon={<FiArrowRight />}>
+                Portfolio
+              </Button>
             </div>
           </div>
           <div>

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
 import { Button } from './button';
 
@@ -46,6 +47,31 @@ export const TextButton: Story = {
       <Button variant="text-info">Info</Button>
       <Button variant="text-warning">Warning</Button>
       <Button variant="text-default">Default</Button>
+    </div>
+  ),
+};
+
+export const WithIcon: Story = {
+  render: () => (
+    <div className="flex flex-col space-y-hk-md items-start">
+      <Button variant="default" icon={<FiArrowLeft />}>
+        Go back
+      </Button>
+      <Button variant="primary" iconPosition="right" icon={<FiArrowRight />}>
+        Login
+      </Button>
+      <Button variant="outline-default" icon={<FiArrowLeft />}>
+        Go back
+      </Button>
+      <Button variant="outline-primary" iconPosition="right" icon={<FiArrowRight />}>
+        Login
+      </Button>
+      <Button variant="text-default" icon={<FiArrowLeft />}>
+        Go back
+      </Button>
+      <Button variant="text-primary" iconPosition="right" icon={<FiArrowRight />}>
+        Login
+      </Button>
     </div>
   ),
 };

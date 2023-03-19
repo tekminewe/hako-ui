@@ -50,15 +50,31 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     | 'text-warning'
     | 'text-danger'
     | 'text-default';
+
+  /**
+   * The button's icon
+   * @default undefined
+   * @type ReactNode
+   * @example "<IconSVG />"
+   */
+  icon?: React.ReactNode;
+
+  /**
+   * The button's icon position
+   * @default "left"
+   * @type "left" | "right"
+   * @example "right"
+   */
+  iconPosition?: 'left' | 'right';
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'primary', ...props }, ref) => {
+  ({ variant = 'primary', icon, iconPosition = 'left', ...props }, ref) => {
     return (
       <button
         {...props}
         ref={ref}
-        className={classNames(className, 'rounded-full border px-hk-md py-hk-xs', {
+        className={classNames(props.className, 'rounded-full border px-hk-md py-hk-xs', {
           'bg-primary border-primary text-on-primary': variant === 'primary',
           'bg-success border-success text-on-success': variant === 'success',
           'bg-info border-info text-on-info': variant === 'info',
@@ -79,8 +95,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'text-warning border-transparent': variant === 'text-warning',
           'text-danger border-transparent': variant === 'text-danger',
           'text-default border-transparent': variant === 'text-default',
+          'flex items-center': icon,
         })}
-      />
+      >
+        {iconPosition === 'left' && icon && <span className="mr-hk-xs">{icon}</span>}
+        {props.children}
+        {iconPosition === 'right' && icon && <span className="ml-hk-xs">{icon}</span>}
+      </button>
     );
   },
 );
