@@ -21,9 +21,9 @@ export interface NavbarBrandProps extends HTMLAttributes<HTMLDivElement> {
 
 export const NavbarBrand = forwardRef<HTMLDivElement, NavbarBrandProps>(({ className, ...props }, ref) => {
   return (
-    <div {...props} className={classNames('flex items-center space-x-sm', className)} ref={ref}>
+    <div {...props} className={classNames('flex items-center space-x-hk-sm cursor-pointer', className)} ref={ref}>
       {props.logo}
-      <h1 className="text-lg font-bold">{props.title}</h1>
+      <h1 className="text-hk-lg font-bold">{props.title}</h1>
     </div>
   );
 });
