@@ -6,7 +6,7 @@ export const Hero = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(({ clas
     <section
       {...props}
       ref={ref}
-      className={classNames(className, 'flex items-center justify-around container mx-auto')}
+      className={classNames(className, 'flex items-center justify-around container mx-auto h-[800px]')}
     />
   );
 });

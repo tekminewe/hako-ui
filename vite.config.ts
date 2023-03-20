@@ -15,7 +15,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: [path.resolve(__dirname, './src/components/index.ts'), path.resolve(__dirname, './plugin.ts')],
+      entry: [path.resolve(__dirname, './src/components/index.ts'), path.resolve(__dirname, './plugin.cjs')],
     },
     rollupOptions: {
       external: ['react'],
