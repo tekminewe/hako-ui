@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SolidButton: Story = {
   render: () => (
-    <div className="flex flex-col space-y-hk-md items-start">
+    <div className="flex flex-col space-y-4 items-start">
       <Button variant="primary">Primary</Button>
       <Button variant="success">Success</Button>
       <Button variant="danger">Danger</Button>
@@ -27,7 +27,7 @@ export const SolidButton: Story = {
 
 export const OutlineButton: Story = {
   render: () => (
-    <div className="flex flex-col space-y-hk-md items-start">
+    <div className="flex flex-col space-y-4 items-start">
       <Button variant="outline-primary">Primary</Button>
       <Button variant="outline-success">Success</Button>
       <Button variant="outline-danger">Danger</Button>
@@ -40,7 +40,7 @@ export const OutlineButton: Story = {
 
 export const TextButton: Story = {
   render: () => (
-    <div className="flex flex-col space-y-hk-md items-start">
+    <div className="flex flex-col space-y-4 items-start">
       <Button variant="text-primary">Primary</Button>
       <Button variant="text-success">Success</Button>
       <Button variant="text-danger">Danger</Button>
@@ -53,7 +53,7 @@ export const TextButton: Story = {
 
 export const WithIcon: Story = {
   render: () => (
-    <div className="flex flex-col space-y-hk-md items-start">
+    <div className="flex flex-col space-y-4 items-start">
       <Button variant="default" icon={<FiArrowLeft />}>
         Go back
       </Button>

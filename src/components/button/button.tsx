@@ -74,7 +74,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         {...props}
         ref={ref}
-        className={classNames(props.className, 'rounded-full border px-hk-md py-hk-xs', {
+        className={classNames(props.className, 'rounded-full border px-4 py-2', {
           'bg-primary border-primary text-on-primary': variant === 'primary',
           'bg-success border-success text-on-success': variant === 'success',
           'bg-info border-info text-on-info': variant === 'info',
@@ -98,9 +98,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'flex items-center': icon,
         })}
       >
-        {iconPosition === 'left' && icon && <span className="mr-hk-xs">{icon}</span>}
+        {iconPosition === 'left' && icon && <span className="mr-2">{icon}</span>}
         {props.children}
-        {iconPosition === 'right' && icon && <span className="ml-hk-xs">{icon}</span>}
+        {iconPosition === 'right' && icon && <span className="ml-2">{icon}</span>}
       </button>
     );
   },
