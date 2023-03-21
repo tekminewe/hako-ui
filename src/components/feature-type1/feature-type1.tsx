@@ -1,10 +1,19 @@
+import classNames from 'classnames';
+import { ReactNode } from 'react';
 import { Card } from '../card';
 
 export interface Feature {
   /**
+   * The icon of the feature
+   * @type {ReactNode}
+   * @example <Icon />
+   * @required
+   */
+  icon: ReactNode;
+
+  /**
    * The title of the feature
    * @type {string}
-   * @default ''
    * @example 'Feature 1'
    * @required
    */
@@ -13,7 +22,6 @@ export interface Feature {
   /**
    * The description of the feature
    * @type {string}
-   * @default ''
    * @example 'This is feature 1'
    * @required
    */
@@ -29,27 +37,16 @@ export interface Feature {
     /**
      * The title of the learn more
      * @type {string}
-     * @default ''
      * @example 'Learn More'
      * @required
      */
-    title: string;
+    title: ReactNode;
 
     /**
      * The link of the learn more
      * @type {string}
-     * @default ''
      * @example 'https://www.google.com'
      * @required
-     * @pattern ^https?:\/\/
-     * @patternDescription Must be a valid URL
-     * @format uri
-     * @formatDescription Must be a valid URL
-     * @maxLength 2083
-     * @maxLengthDescription Must be less than 2083 characters
-     * @minLength 1
-     * @minLengthDescription Must be at least 1 character
-     * @example 'https://www.google.com'
      */
     link: string;
   };
@@ -61,16 +58,18 @@ export interface FeatureType1Props {
    * @type {string}
    * @default ''
    * @example 'Feature Type 1'
+   * @required
    */
-  title?: string;
+  title: string;
 
   /**
    * The description of the feature
    * @type {string}
    * @default ''
    * @example 'This is a feature type 1'
+   * @required
    */
-  description?: string;
+  description: string;
 
   /**
    * The list of features
@@ -92,15 +91,20 @@ export const FeatureType1 = ({ title, description, features }: FeatureType1Props
       <div className="flex flex-col md:flex-row justify-between md:space-x-8 md:space-y-0 space-y-8">
         {features?.map((feature, index) => (
           <Card key={index}>
-            <div className="p-4">
-              <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-500 mb-2">{feature.description}</p>
-              {feature.learnMore && (
-                <a href={feature.learnMore.link} className="text-primary mt-8 block">
-                  {feature.learnMore.title}
-                </a>
-              )}
-            </div>
+            {feature.icon}
+            <h3 className="text-lg font-bold mb-2 mt-4">{feature.title}</h3>
+            <p
+              className={classNames('text-gray-500', {
+                'mb-8': !!feature.learnMore,
+              })}
+            >
+              {feature.description}
+            </p>
+            {feature.learnMore && (
+              <a href={feature.learnMore.link} className="text-primary flex justify-start items-center space-x-1">
+                {feature.learnMore.title}
+              </a>
+            )}
           </Card>
         ))}
       </div>
