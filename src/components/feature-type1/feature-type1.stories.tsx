@@ -76,7 +76,7 @@ export const SimpleWithLearnMore: Story = {
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         learnMore: {
-          title: 'Learn more about feature 1',
+          title: 'Learn more about feature 1 →',
           link: 'https://www.google.com',
         },
       },
@@ -92,7 +92,7 @@ export const SimpleWithLearnMore: Story = {
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         learnMore: {
-          title: 'Learn more about feature 2',
+          title: 'Learn more about feature 2 →',
           link: 'https://www.google.com',
         },
       },
@@ -108,12 +108,7 @@ export const SimpleWithLearnMore: Story = {
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         learnMore: {
-          title: (
-            <>
-              <span>Learn more about feature 3</span>
-              <FiArrowRight />
-            </>
-          ),
+          title: 'Learn more about feature 3 →',
           link: 'https://www.google.com',
         },
       },

@@ -101,7 +101,7 @@ export const FeatureType1 = ({ title, description, features }: FeatureType1Props
               {feature.description}
             </p>
             {feature.learnMore && (
-              <a href={feature.learnMore.link} className="text-primary flex justify-start items-center space-x-1">
+              <a href={feature.learnMore.link} className="text-primary">
                 {feature.learnMore.title}
               </a>
             )}
