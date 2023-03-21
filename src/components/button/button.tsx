@@ -69,12 +69,12 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', icon, iconPosition = 'left', ...props }, ref) => {
+  ({ variant = 'primary', icon, iconPosition = 'left', className, ...props }, ref) => {
     return (
       <button
         {...props}
         ref={ref}
-        className={classNames(props.className, 'rounded-full border px-4 py-2', {
+        className={classNames(className, 'rounded-full border px-4 py-2', {
           'bg-primary border-primary text-on-primary': variant === 'primary',
           'bg-success border-success text-on-success': variant === 'success',
           'bg-info border-info text-on-info': variant === 'info',
