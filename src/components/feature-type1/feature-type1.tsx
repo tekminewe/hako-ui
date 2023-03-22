@@ -88,7 +88,7 @@ export const FeatureType1 = ({ title, description, features }: FeatureType1Props
     <div className="flex flex-col items-center container mx-auto">
       <h2 className="text-5xl font-bold mb-8 text-center">{title}</h2>
       <p className="lg:w-1/2 mx-auto mb-12 text-center">{description}</p>
-      <div className="flex flex-col md:flex-row justify-between md:space-x-8 md:space-y-0 space-y-8">
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
         {features?.map((feature, index) => (
           <Card key={index}>
             {feature.icon}
