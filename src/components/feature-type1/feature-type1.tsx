@@ -56,7 +56,6 @@ export interface FeatureType1Props {
   /**
    * The title of the feature
    * @type {string}
-   * @default ''
    * @example 'Feature Type 1'
    * @required
    */
@@ -65,7 +64,6 @@ export interface FeatureType1Props {
   /**
    * The description of the feature
    * @type {string}
-   * @default ''
    * @example 'This is a feature type 1'
    * @required
    */
@@ -81,18 +79,19 @@ export interface FeatureType1Props {
 }
 
 /**
- * Feature List with Card and optional CTA
+ * Showcase your features with this component in a grid layout of 1 column for mobile, 3 columns for tablet desktop.
+ * Each feature consists of an icon, title, description, and optional learn more link.
  */
 export const FeatureType1 = ({ title, description, features }: FeatureType1Props) => {
   return (
     <div className="flex flex-col items-center container mx-auto">
-      <h2 className="text-5xl font-bold mb-8 text-center">{title}</h2>
+      <h2 className="text-4xl font-bold mb-4 text-center">{title}</h2>
       <p className="lg:w-1/2 mx-auto mb-12 text-center">{description}</p>
       <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
         {features?.map((feature, index) => (
           <Card key={index}>
             {feature.icon}
-            <h3 className="text-lg font-bold mb-2 mt-4">{feature.title}</h3>
+            <h3 className="text-lg font-semibold mb-2 mt-4">{feature.title}</h3>
             <p
               className={classNames('text-gray-500', {
                 'mb-8': !!feature.learnMore,
