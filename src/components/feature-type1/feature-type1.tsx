@@ -91,7 +91,7 @@ export const FeatureType1 = ({ title, description, features }: FeatureType1Props
         {features?.map((feature, index) => (
           <Card key={index}>
             {feature.icon}
-            <h3 className="text-lg font-semibold mb-2 mt-4">{feature.title}</h3>
+            <h3 className="text-lg font-semibold my-2">{feature.title}</h3>
             <p
               className={classNames('text-gray-500', {
                 'mb-8': !!feature.learnMore,

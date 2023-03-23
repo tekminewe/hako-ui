@@ -38,3 +38,37 @@ export const Simple: Story = {
     ],
   },
 };
+
+export const WithLabel: Story = {
+  args: {
+    title: 'Our Clients',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    projects: [
+      {
+        label: 'Logo Design',
+        image: '/images/project.png',
+        title: 'Project 1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      },
+      {
+        label: 'Web Development',
+        labelVariant: 'danger',
+        image: '/images/project.png',
+        title: 'Project 1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      },
+      {
+        label: 'SEO',
+        labelVariant: 'raw',
+        labelClassName: 'text-[#ff00ff] border-[#ff00ff]',
+        image: '/images/project.png',
+        title: 'Project 1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      },
+    ],
+  },
+};
