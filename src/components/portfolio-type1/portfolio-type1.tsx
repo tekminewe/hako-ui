@@ -97,7 +97,7 @@ export const PortfolioType1 = ({ title, description, projects }: PortfolioType1P
         return resultArray;
       }, [] as Project[][]);
     }, [projects]) ?? [];
-  const numOfPage = projectChunks?.length - 1;
+  const maxIndex = projectChunks?.length - 1;
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -132,34 +132,36 @@ export const PortfolioType1 = ({ title, description, projects }: PortfolioType1P
           );
         })}
       </Carousel>
-      <div className="flex items-center justify-center space-x-6 mt-4">
-        <div
-          className={classNames('text-2xl cursor-pointer', {
-            'opacity-50': activeIndex === 0,
-            'text-primary': activeIndex !== 0,
-          })}
-          onClick={() =>
-            setActiveIndex((index) => {
-              return index - 1 < 0 ? index : index - 1;
-            })
-          }
-        >
-          ←
+      {maxIndex > 0 && (
+        <div className="flex items-center justify-center space-x-6 mt-4">
+          <div
+            className={classNames('text-2xl cursor-pointer', {
+              'opacity-50': activeIndex === 0,
+              'text-primary': activeIndex !== 0,
+            })}
+            onClick={() =>
+              setActiveIndex((index) => {
+                return index - 1 < 0 ? index : index - 1;
+              })
+            }
+          >
+            ←
+          </div>
+          <div
+            className={classNames('text-2xl cursor-pointer', {
+              'opacity-50': activeIndex === maxIndex,
+              'text-primary': activeIndex !== maxIndex,
+            })}
+            onClick={() =>
+              setActiveIndex((index) => {
+                return index + 1 > maxIndex ? index : index + 1;
+              })
+            }
+          >
+            →
+          </div>
         </div>
-        <div
-          className={classNames('text-2xl cursor-pointer', {
-            'opacity-50': activeIndex === numOfPage,
-            'text-primary': activeIndex !== numOfPage,
-          })}
-          onClick={() =>
-            setActiveIndex((index) => {
-              return index + 1 > numOfPage ? index : index + 1;
-            })
-          }
-        >
-          →
-        </div>
-      </div>
+      )}
     </div>
   );
 };
