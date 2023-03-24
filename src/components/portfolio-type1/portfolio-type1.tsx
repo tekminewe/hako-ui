@@ -2,7 +2,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import { Badge, BadgeProps } from '../badge';
 import { Card } from '../card';
-import { useMemo, useState } from 'react';
+import { useLayoutEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 
 export interface Project {
@@ -83,10 +83,13 @@ export interface PortfolioType1Props {
  * Feature List with Card and optional CTA
  */
 export const PortfolioType1 = ({ title, description, projects }: PortfolioType1Props) => {
+  const [column, setColumn] = useState(() => {
+    return window.innerWidth >= 768 ? 3 : 1;
+  });
   const projectChunks =
     useMemo(() => {
       return projects?.reduce((resultArray, item, index) => {
-        const chunkIndex = Math.floor(index / 3);
+        const chunkIndex = Math.floor(index / column);
 
         if (!resultArray[chunkIndex]) {
           resultArray[chunkIndex] = [];
@@ -96,9 +99,25 @@ export const PortfolioType1 = ({ title, description, projects }: PortfolioType1P
 
         return resultArray;
       }, [] as Project[][]);
-    }, [projects]) ?? [];
+    }, [projects, column]) ?? [];
   const maxIndex = projectChunks?.length - 1;
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useLayoutEffect(() => {
+    const handleWindowResize = () => {
+      if (window.innerWidth >= 768) {
+        setColumn(3);
+      } else {
+        setColumn(1);
+      }
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
 
   return (
     <div className="container mx-auto">
@@ -113,7 +132,13 @@ export const PortfolioType1 = ({ title, description, projects }: PortfolioType1P
       >
         {projectChunks?.map((project, index) => {
           return (
-            <div className="grid gap-8 grid-cols-3" key={index}>
+            <div
+              className="grid gap-8"
+              key={index}
+              style={{
+                gridTemplateColumns: `repeat(${column}, minmax(0, 1fr))`,
+              }}
+            >
               {project?.map((project, index) => (
                 <Card className="text-left" key={index}>
                   <img className="rounded-md" src={project.image} alt={project.title} />
