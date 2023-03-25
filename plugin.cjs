@@ -59,9 +59,9 @@ module.exports = (options) => {
 
           [`--${cssVarPrefix}background`]: '#fafafa',
           [`--${cssVarPrefix}on-background`]: '#171717',
-          [`--${cssVarPrefix}background-dark`]: '#f5f5f5',
+          [`--${cssVarPrefix}background-dark`]: '#e5e5e5',
           [`--${cssVarPrefix}on-background-dark`]: '#171717',
-          [`--${cssVarPrefix}background-darker`]: '#e5e5e5',
+          [`--${cssVarPrefix}background-darker`]: '#a3a3a3',
           [`--${cssVarPrefix}on-background-darker`]: '#171717',
         },
         body: {

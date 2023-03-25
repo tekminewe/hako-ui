@@ -1,4 +1,6 @@
 export * from './navbar';
 export * from './hero';
 export * from './button';
-export * from './types';
+export * from './card';
+export * from './feature-type1';
+export * from './portfolio-type1';
