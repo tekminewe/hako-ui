@@ -80,7 +80,9 @@ export interface PortfolioType1Props {
 }
 
 /**
- * Feature List with Card and optional CTA
+ * Showcase your portfolio with this component by displaying your projects on a row featuring a title, description, and a list of projects. A project consists of an image, title, description, and an optional label.
+ * If the screen size is greater than or equal to 768px, the projects will be displayed in 3 columns. Otherwise, it will be displayed in 1 column.
+ * If there are more than 3 projects, the projects will be displayed in a carousel.
  */
 export const PortfolioType1 = ({ title, description, projects }: PortfolioType1Props) => {
   const [column, setColumn] = useState(() => {
