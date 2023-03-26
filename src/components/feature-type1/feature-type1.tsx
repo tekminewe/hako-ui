@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ReactNode } from 'react';
+import { forwardRef, HTMLAttributes, ReactNode } from 'react';
 import { Card } from '../card';
 
 export interface Feature {
@@ -52,7 +52,7 @@ export interface Feature {
   };
 }
 
-export interface FeatureType1Props {
+export interface FeatureType1Props extends HTMLAttributes<HTMLDivElement> {
   /**
    * The title of the feature
    * @type {string}
@@ -82,31 +82,35 @@ export interface FeatureType1Props {
  * Showcase your features with this component in a grid layout of 1 column for mobile, 3 columns for tablet desktop.
  * Each feature consists of an icon, title, description, and optional learn more link.
  */
-export const FeatureType1 = ({ title, description, features }: FeatureType1Props) => {
-  return (
-    <div className="flex flex-col items-center container mx-auto">
-      <h2 className="text-4xl font-bold mb-4 text-center">{title}</h2>
-      <p className="lg:w-1/2 mx-auto mb-12 text-center">{description}</p>
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
-        {features?.map((feature, index) => (
-          <Card key={index}>
-            {feature.icon}
-            <h3 className="text-lg font-semibold my-2">{feature.title}</h3>
-            <p
-              className={classNames('text-gray-500', {
-                'mb-8': !!feature.learnMore,
-              })}
-            >
-              {feature.description}
-            </p>
-            {feature.learnMore && (
-              <a href={feature.learnMore.link} className="text-primary">
-                {feature.learnMore.title}
-              </a>
-            )}
-          </Card>
-        ))}
+export const FeatureType1 = forwardRef<HTMLDivElement, FeatureType1Props>(
+  ({ title, description, features = [], className, ...props }, ref) => {
+    return (
+      <div ref={ref} className={classNames('flex flex-col items-center container mx-auto', className)} {...props}>
+        <h2 className="text-4xl font-bold mb-4 text-center">{title}</h2>
+        <p className="lg:w-1/2 mx-auto mb-12 text-center">{description}</p>
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
+          {features?.map((feature, index) => (
+            <Card key={index}>
+              {feature.icon}
+              <h3 className="text-lg font-semibold my-2">{feature.title}</h3>
+              <p
+                className={classNames('text-gray-500', {
+                  'mb-8': !!feature.learnMore,
+                })}
+              >
+                {feature.description}
+              </p>
+              {feature.learnMore && (
+                <a href={feature.learnMore.link} className="text-primary">
+                  {feature.learnMore.title}
+                </a>
+              )}
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  },
+);
+
+FeatureType1.displayName = 'FeatureType1';
