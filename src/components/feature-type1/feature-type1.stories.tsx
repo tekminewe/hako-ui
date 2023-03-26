@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FiArrowRight, FiBluetooth } from 'react-icons/fi';
+import { FiBluetooth } from 'react-icons/fi';
 
 import { FeatureType1 } from './feature-type1';
 
