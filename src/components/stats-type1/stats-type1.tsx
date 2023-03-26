@@ -1,7 +1,14 @@
 import classNames from 'classnames';
-import { forwardRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 export interface Stats {
+  /**
+   * The icon of the stats
+   * @type {ReactNode}
+   * @example <Icon />
+   */
+  icon?: ReactNode;
+
   /**
    * The title of the stats
    * @type {string}
@@ -34,9 +41,12 @@ export const StatsType1 = forwardRef<HTMLDivElement, StatsType1Props>(({ stats, 
     <div className={classNames(className, 'flex items-center space-x-20')} ref={ref} {...props}>
       {stats.map((stat, index) => {
         return (
-          <div key={index} className="text-center">
-            <p className="font-bold text-3xl">{stat.value}</p>
-            <p>{stat.title}</p>
+          <div key={index} className="flex space-x-4">
+            {stat.icon}
+            <div className="text-center">
+              <p className="font-semibold text-3xl text-primary">{stat.value}</p>
+              <p>{stat.title}</p>
+            </div>
           </div>
         );
       })}

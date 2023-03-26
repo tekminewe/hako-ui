@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
+import { ReactComponent as Icon } from 'assets/experience.svg';
 import { StatsType1 } from './stats-type1';
 
 const meta = {
@@ -23,6 +23,28 @@ export const NoIcon: Story = {
         value: '50+',
       },
       {
+        title: 'Year of Experiences',
+        value: '5+',
+      },
+    ],
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    stats: [
+      {
+        icon: <Icon width={60} />,
+        title: 'Happy Clients',
+        value: '1000+',
+      },
+      {
+        icon: <Icon width={60} />,
+        title: 'Active Projects',
+        value: '50+',
+      },
+      {
+        icon: <Icon width={60} />,
         title: 'Year of Experiences',
         value: '5+',
       },
