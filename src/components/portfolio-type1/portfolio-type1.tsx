@@ -74,6 +74,7 @@ export interface PortfolioType1Props {
   /**
    * The list of projects
    * @type {Project[]}
+   * @example [{ image: 'https://www.google.com/image.png', title: 'Project 1', description: 'This is project 1' }]
    * @default []
    */
   projects?: Project[];
@@ -84,24 +85,23 @@ export interface PortfolioType1Props {
  * If the screen size is greater than or equal to 768px, the projects will be displayed in 3 columns. Otherwise, it will be displayed in 1 column.
  * If there are more than 3 projects, the projects will be displayed in a carousel.
  */
-export const PortfolioType1 = ({ title, description, projects }: PortfolioType1Props) => {
+export const PortfolioType1 = ({ title, description, projects = [] }: PortfolioType1Props) => {
   const [column, setColumn] = useState(() => {
     return window.innerWidth >= 768 ? 3 : 1;
   });
-  const projectChunks =
-    useMemo(() => {
-      return projects?.reduce((resultArray, item, index) => {
-        const chunkIndex = Math.floor(index / column);
+  const projectChunks = useMemo(() => {
+    return projects?.reduce((resultArray, item, index) => {
+      const chunkIndex = Math.floor(index / column);
 
-        if (!resultArray[chunkIndex]) {
-          resultArray[chunkIndex] = [];
-        }
+      if (!resultArray[chunkIndex]) {
+        resultArray[chunkIndex] = [];
+      }
 
-        resultArray[chunkIndex].push(item);
+      resultArray[chunkIndex].push(item);
 
-        return resultArray;
-      }, [] as Project[][]);
-    }, [projects, column]) ?? [];
+      return resultArray;
+    }, [] as Project[][]);
+  }, [projects, column]);
   const maxIndex = projectChunks?.length - 1;
   const [activeIndex, setActiveIndex] = useState(0);
 

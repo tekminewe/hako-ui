@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { PortfolioType1 } from './portfolio-type1';
 
 const meta = {
-  title: 'Components/Portfolio/PortfolioType1',
+  title: 'Components/Portfolios/PortfolioType1',
   component: PortfolioType1,
   tags: ['autodocs'],
 } satisfies Meta<typeof PortfolioType1>;
