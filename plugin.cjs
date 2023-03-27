@@ -17,7 +17,9 @@ const colors = [
   'on-info',
 
   'background',
-  'on-background',
+  'on-background100',
+  'on-background75',
+  'on-background50',
 
   'background-dark',
   'on-background-dark',
@@ -58,7 +60,9 @@ module.exports = (options) => {
           [`--${cssVarPrefix}on-info`]: '#fafafa',
 
           [`--${cssVarPrefix}background`]: '#fafafa',
-          [`--${cssVarPrefix}on-background`]: '#171717',
+          [`--${cssVarPrefix}on-background100`]: '#171717',
+          [`--${cssVarPrefix}on-background75`]: '#525252',
+          [`--${cssVarPrefix}on-background50`]: '#a3a3a3',
           [`--${cssVarPrefix}background-dark`]: '#e5e5e5',
           [`--${cssVarPrefix}on-background-dark`]: '#171717',
           [`--${cssVarPrefix}background-darker`]: '#a3a3a3',
@@ -66,7 +70,7 @@ module.exports = (options) => {
         },
         body: {
           backgroundColor: theme('colors.background'),
-          color: theme('colors.on-background'),
+          color: theme('colors.on-background100'),
           fontSize: theme('fontSize.base'),
         },
       });
