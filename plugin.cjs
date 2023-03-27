@@ -70,7 +70,7 @@ module.exports = (options) => {
         },
         body: {
           backgroundColor: theme('colors.background'),
-          color: theme('colors.on-background'),
+          color: theme('colors.on-background100'),
           fontSize: theme('fontSize.base'),
         },
       });
