@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm run --filter hako-ui storybook",
+    "dev:web": "pnpm run --filter www.hako-ui.com dev",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "prettier": "prettier --write .",
     "prepare": "husky install"
