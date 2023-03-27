@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build-storybook": "pnpm run --filter hako-ui storybook build",
     "dev": "pnpm run --filter hako-ui storybook",
     "dev:web": "pnpm run --filter www.hako-ui.com dev",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
