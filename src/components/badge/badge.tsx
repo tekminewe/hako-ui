@@ -58,7 +58,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(({ className, varia
         'border-danger text-danger': variant === 'outline-danger',
         'border-info text-info': variant === 'outline-info',
         'border-warning text-warning': variant === 'outline-warning',
-        'border-on-background text-on-background': variant === 'outline-default',
+        'border-on-background100 text-on-background100': variant === 'outline-default',
       })}
       ref={ref}
       {...props}
