@@ -1,99 +1,27 @@
 {
   "name": "hako-ui",
-  "version": "0.0.10",
-  "license": "MIT",
-  "keywords": [
-    "hako-ui",
-    "typescript",
-    "html",
-    "css",
-    "component library",
-    "ui components",
-    "tailwind",
-    "tailwind css",
-    "tailwind components",
-    "tailwind elements",
-    "tailwind library",
-    "tailwind sections",
-    "tailwind css",
-    "tailwind ui",
-    "tailwind react",
-    "eslint",
-    "prettier",
-    "cjs",
-    "esm",
-    "umd"
-  ],
-  "author": {
-    "name": "Tek Min Ewe",
-    "email": "ewe.tekmin@outlook.com",
-    "url": "https://tekminewe.com"
-  },
-  "type": "module",
-  "files": [
-    "dist",
-    "plugin.js"
-  ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./plugin": {
-      "import": "./dist/plugin.js",
-      "require": "./dist/plugin.cjs"
-    }
-  },
-  "types": "./dist/components/index.d.ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "pnpm run --filter hako-ui build-storybook",
+    "dev": "pnpm run --filter hako-ui storybook",
+    "dev:web": "pnpm run --filter www.hako-ui.com dev",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "prettier": "prettier --write .",
-    "prepare": "husky install",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "prepare": "husky install"
   },
-  "dependencies": {
-    "classnames": "^2.3.2",
-    "framer-motion": "^10.8.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-responsive-carousel": "^3.2.23"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.5.16",
-    "@storybook/addon-essentials": "^7.0.0-rc.3",
-    "@storybook/addon-interactions": "^7.0.0-rc.3",
-    "@storybook/addon-links": "^7.0.0-rc.3",
-    "@storybook/blocks": "^7.0.0-rc.3",
-    "@storybook/react": "^7.0.0-rc.3",
-    "@storybook/react-vite": "^7.0.0-rc.3",
-    "@storybook/testing-library": "^0.0.14-next.1",
-    "@tekminewe/eslint-config-react": "^0.1.4",
+    "@commitlint/cli": "^17.5.0",
+    "@commitlint/config-conventional": "^17.4.4",
     "@tekminewe/prettier-config": "^0.1.4",
-    "@types/node": "^18.15.3",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "@vitejs/plugin-react-swc": "^3.0.0",
-    "autoprefixer": "^10.4.14",
-    "chromatic": "^6.17.1",
-    "husky": "^8.0.0",
-    "postcss": "^8.4.21",
-    "prettier": "^2.8.4",
-    "prettier-plugin-tailwindcss": "^0.2.5",
-    "prop-types": "^15.8.1",
-    "react-icons": "^4.8.0",
-    "storybook": "^7.0.0-rc.3",
-    "tailwindcss": "^3.2.7",
-    "typescript": "^4.9.3",
-    "vite": "^4.1.0",
-    "vite-plugin-dts": "^2.1.0",
-    "vite-plugin-svgr": "^2.4.0"
+    "husky": "^8.0.3",
+    "lerna": "^6.6.1",
+    "prettier": "^2.8.7",
+    "prettier-plugin-tailwindcss": "^0.2.5"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown ."

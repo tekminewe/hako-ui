@@ -1,17 +1,23 @@
-# Workflow name
 name: 'Visual Testing'
 
-# Event for the workflow
 on: push
 
 jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/hako-ui
     steps:
       - uses: actions/checkout@v1
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.0.2
+      - run: pwd
       - name: Install dependencies
-        run: yarn
+        run: pnpm install
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: ./packages/hako-ui
