@@ -10,6 +10,7 @@ importers:
       lerna: ^6.6.1
       prettier: ^2.8.7
       prettier-plugin-tailwindcss: ^0.2.5
+      typescript: ^4.9.3
     devDependencies:
       '@commitlint/cli': 17.5.0
       '@commitlint/config-conventional': 17.4.4
@@ -18,6 +19,7 @@ importers:
       lerna: 6.6.1
       prettier: 2.8.7
       prettier-plugin-tailwindcss: 0.2.5_prettier@2.8.7
+      typescript: 4.9.5
 
   packages/hako-ui:
     specifiers:
