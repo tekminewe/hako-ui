@@ -16,3 +16,10 @@ export const Simple: Story = {
     placeholder: 'Enter your email address',
   },
 };
+
+export const WithLabel: Story = {
+  args: {
+    ...Simple.args,
+    label: 'Email address',
+  },
+};
