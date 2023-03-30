@@ -23,3 +23,19 @@ export const WithLabel: Story = {
     label: 'Email address',
   },
 };
+
+export const WithError: Story = {
+  args: {
+    ...WithLabel.args,
+    status: 'error',
+    hint: 'Please enter a valid email address',
+  },
+};
+
+export const WithSuccess: Story = {
+  args: {
+    ...WithLabel.args,
+    status: 'success',
+    hint: 'Your email address is valid',
+  },
+};
