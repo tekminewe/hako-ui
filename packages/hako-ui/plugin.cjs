@@ -21,10 +21,11 @@ const colors = [
   'on-background50',
 
   'background-dark',
-  'on-background-dark',
+  'on-background-dark100',
+  'on-background-dark50',
 
   'background-darker',
-  'on-background-darker',
+  'on-background-darker100',
 ];
 
 /**
@@ -62,9 +63,10 @@ module.exports = (options) => {
           [`--${cssVarPrefix}on-background100`]: '#171717',
           [`--${cssVarPrefix}on-background50`]: '#a3a3a3',
           [`--${cssVarPrefix}background-dark`]: '#e5e5e5',
-          [`--${cssVarPrefix}on-background-dark`]: '#171717',
+          [`--${cssVarPrefix}on-background-dark100`]: '#171717',
+          [`--${cssVarPrefix}on-background-dark50`]: '#a3a3a3',
           [`--${cssVarPrefix}background-darker`]: '#a3a3a3',
-          [`--${cssVarPrefix}on-background-darker`]: '#171717',
+          [`--${cssVarPrefix}on-background-darker100`]: '#171717',
         },
         body: {
           backgroundColor: theme('colors.background'),
