@@ -21,6 +21,9 @@ export const SolidButton: Story = {
       <Button variant="info">Info</Button>
       <Button variant="warning">Warning</Button>
       <Button variant="default">Default</Button>
+      <Button variant="primary" loading>
+        Primary
+      </Button>
     </div>
   ),
 };
@@ -34,6 +37,9 @@ export const OutlineButton: Story = {
       <Button variant="outline-info">Info</Button>
       <Button variant="outline-warning">Warning</Button>
       <Button variant="outline-default">Default</Button>
+      <Button variant="outline-primary" loading>
+        Primary
+      </Button>
     </div>
   ),
 };
@@ -47,6 +53,9 @@ export const TextButton: Story = {
       <Button variant="text-info">Info</Button>
       <Button variant="text-warning">Warning</Button>
       <Button variant="text-default">Default</Button>
+      <Button variant="text-default" loading>
+        Primary
+      </Button>
     </div>
   ),
 };

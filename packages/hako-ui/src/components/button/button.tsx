@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { forwardRef } from 'react';
+import { CgSpinner } from 'react-icons/cg';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -66,6 +67,11 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
    * @example "right"
    */
   iconPosition?: 'left' | 'right';
+
+  /**
+   * Show loading state of the button
+   */
+  loading?: boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -74,7 +80,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         {...props}
         ref={ref}
-        className={classNames(className, 'rounded-md border px-4 py-2', {
+        className={classNames(className, 'rounded-md border px-4 py-2 relative', {
           'bg-primary border-primary text-on-primary': variant === 'primary',
           'bg-success border-success text-on-success': variant === 'success',
           'bg-info border-info text-on-info': variant === 'info',
@@ -97,9 +103,21 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'text-default border-transparent': variant === 'text-default',
           'flex items-center': icon,
         })}
+        disabled={props.disabled || props.loading}
       >
         {iconPosition === 'left' && icon && <span className="mr-2">{icon}</span>}
-        {props.children}
+        {props.loading && (
+          <div className="absolute flex items-center justify-center top-0 left-0 right-0 bottom-0">
+            <CgSpinner className="animate-spin" size={24} />
+          </div>
+        )}
+        <span
+          className={classNames({
+            invisible: props.loading,
+          })}
+        >
+          {props.children}
+        </span>
         {iconPosition === 'right' && icon && <span className="ml-2">{icon}</span>}
       </button>
     );

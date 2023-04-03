@@ -24,6 +24,13 @@ export const WithLabel: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    ...WithLabel.args,
+    disabled: true,
+  },
+};
+
 export const WithError: Story = {
   args: {
     ...WithLabel.args,
