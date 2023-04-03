@@ -11,6 +11,23 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Demo: Story = {
-  args: {},
+export const Default: Story = {};
+
+export const WithError: Story = {
+  args: {
+    inputConfig: {
+      name: {
+        hint: 'Please enter your name',
+        status: 'error',
+      },
+      email: {
+        hint: 'Please enter your email address',
+        status: 'error',
+      },
+      message: {
+        hint: 'Please enter your message',
+        status: 'error',
+      },
+    },
+  },
 };

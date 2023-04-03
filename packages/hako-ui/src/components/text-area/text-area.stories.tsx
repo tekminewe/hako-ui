@@ -27,6 +27,7 @@ export const WithLabel: Story = {
 export const WithError: Story = {
   args: {
     ...WithLabel.args,
+    required: true,
     status: 'error',
     hint: 'Your message is too long',
   },

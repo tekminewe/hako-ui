@@ -33,8 +33,12 @@ export interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ className, label = '', hint = '', status = 'default', ...props }, ref) => {
     return (
-      <span className="space-y-1 text-sm">
-        {label && <label htmlFor={props.id}>{label}</label>}
+      <div className="space-y-1 text-sm mb-1">
+        {label && (
+          <label htmlFor={props.id}>
+            {label} {props.required && <span className="text-danger">*</span>}
+          </label>
+        )}
         <input
           ref={ref}
           {...props}
@@ -52,17 +56,15 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             'focus:ring-2 focus:ring-primary focus:outline-none',
           )}
         />
-        {hint && (
-          <span
-            className={classNames({
-              'text-danger': status === 'error',
-              'text-success': status === 'success',
-            })}
-          >
-            {hint}
-          </span>
-        )}
-      </span>
+        <div
+          className={classNames('h-[17px]', {
+            'text-danger': status === 'error',
+            'text-success': status === 'success',
+          })}
+        >
+          {hint}
+        </div>
+      </div>
     );
   },
 );
