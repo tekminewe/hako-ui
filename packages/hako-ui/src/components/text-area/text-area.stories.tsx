@@ -24,9 +24,17 @@ export const WithLabel: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    ...WithLabel.args,
+    required: false,
+  },
+};
+
 export const WithError: Story = {
   args: {
     ...WithLabel.args,
+    required: true,
     status: 'error',
     hint: 'Your message is too long',
   },

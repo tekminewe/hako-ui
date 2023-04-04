@@ -33,15 +33,20 @@ export interface TextAreaProps extends React.HTMLProps<HTMLTextAreaElement> {
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ className, label = '', hint = '', status = 'default', rows = 5, ...props }, ref) => {
     return (
-      <span className="space-y-1 text-sm">
-        {label && <label htmlFor={props.id}>{label}</label>}
+      <div className="text-sm mb-1">
+        {label && (
+          <label htmlFor={props.id}>
+            {label}
+            {props.required && <span className="text-danger">*</span>}
+          </label>
+        )}
         <textarea
           ref={ref}
           {...props}
           rows={rows}
           className={classNames(
             className,
-            'rounded-md p-2 w-full',
+            'rounded-md p-2 w-full mt-1',
             'border-0 ring-1 ring-inset',
             {
               'ring-danger': status === 'error',
@@ -53,17 +58,15 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             'focus:ring-2 focus:ring-primary focus:outline-none',
           )}
         />
-        {hint && (
-          <span
-            className={classNames({
-              'text-danger': status === 'error',
-              'text-success': status === 'success',
-            })}
-          >
-            {hint}
-          </span>
-        )}
-      </span>
+        <div
+          className={classNames('h-[17px] mt-0', {
+            'text-danger': status === 'error',
+            'text-success': status === 'success',
+          })}
+        >
+          {hint}
+        </div>
+      </div>
     );
   },
 );
