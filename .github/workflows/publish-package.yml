@@ -23,6 +23,8 @@ jobs:
         run: pnpm install
       - name: Set package version
         run: pnpm version ${{ github.ref_name }}
+      - name: Build package
+        run: pnpm build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
