@@ -44,14 +44,16 @@
     "./plugin": {
       "import": "./dist/plugin.js",
       "require": "./dist/plugin.cjs"
+    },
+    "./style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "types": "./dist/components/index.d.ts",
   "scripts": {
-    "dev": "vite",
+    "dev": "storybook dev -p 6006",
     "build": "tsc && node ./scripts/build-index.cjs && vite build",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes"
   },
