@@ -62,10 +62,10 @@ module.exports = (options) => {
           [`--${cssVarPrefix}background`]: '#fafafa',
           [`--${cssVarPrefix}on-background100`]: '#171717',
           [`--${cssVarPrefix}on-background50`]: '#a3a3a3',
-          [`--${cssVarPrefix}background-dark`]: '#e5e5e5',
+          [`--${cssVarPrefix}background-dark`]: '#f5f5f5',
           [`--${cssVarPrefix}on-background-dark100`]: '#171717',
           [`--${cssVarPrefix}on-background-dark50`]: '#a3a3a3',
-          [`--${cssVarPrefix}background-darker`]: '#a3a3a3',
+          [`--${cssVarPrefix}background-darker`]: '#e5e5e5',
           [`--${cssVarPrefix}on-background-darker100`]: '#171717',
         },
         body: {

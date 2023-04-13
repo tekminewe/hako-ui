@@ -41,7 +41,7 @@ export const StatsType1 = forwardRef<HTMLDivElement, StatsType1Props>(({ stats, 
     <div className={classNames(className, 'flex items-center space-x-20')} ref={ref} {...props}>
       {stats.map((stat, index) => {
         return (
-          <div key={index} className="flex space-x-4">
+          <div key={index} className="flex items-center space-x-4">
             {stat.icon}
             <div className="text-center">
               <p className="font-semibold text-3xl text-primary">{stat.value}</p>

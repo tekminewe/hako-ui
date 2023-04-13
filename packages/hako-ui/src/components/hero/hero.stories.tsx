@@ -17,7 +17,7 @@ export const HeadingWithImage: Story = {
   args: {
     children: (
       <>
-        <div className="flex flex-1 justify-center">
+        <div className="flex flex-1 items-center justify-center">
           <div className="w-2/3">
             <p className="text-2xl font-medium">Hi there, I&apos;m</p>
             <p className="text-5xl font-bold">Peter Huntsman</p>
