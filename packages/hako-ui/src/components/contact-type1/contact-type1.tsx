@@ -4,7 +4,7 @@ import { ContactForm, ContactFormProps } from '../contact-form';
 
 export interface ContactType1Props extends HTMLAttributes<HTMLDivElement> {
   /**
-   * The title of the component.
+   * The title of the contact form.
    * @type {string}
    * @default 'Contact Us'
    * @required
@@ -12,7 +12,7 @@ export interface ContactType1Props extends HTMLAttributes<HTMLDivElement> {
   title: string;
 
   /**
-   * The description of the component.
+   * The description of the contact form.
    * @type {string}
    * @default 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
    * @required
