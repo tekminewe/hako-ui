@@ -15,7 +15,7 @@ export const Default: Story = {};
 
 export const WithError: Story = {
   args: {
-    inputConfig: {
+    inputProps: {
       name: {
         hint: 'Please enter your name',
         status: 'error',
