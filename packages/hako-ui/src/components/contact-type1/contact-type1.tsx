@@ -44,4 +44,4 @@ export const ContactType1 = forwardRef<HTMLDivElement, ContactType1Props>(
   },
 );
 
-ContactType1.displayName = 'FeatureType1';
+ContactType1.displayName = 'ContactType1';
