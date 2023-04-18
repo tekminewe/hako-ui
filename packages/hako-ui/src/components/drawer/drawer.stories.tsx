@@ -18,7 +18,7 @@ const Render = () => {
   return (
     <>
       <NavbarToggle onClick={() => setIsOpen((open) => !open)} />
-      <Drawer open={isOpen}>
+      <Drawer open={isOpen} onClose={() => setIsOpen(false)}>
         <div>Content</div>
       </Drawer>
     </>
