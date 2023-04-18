@@ -33,12 +33,27 @@ export interface NavbarLinksProps extends HTMLAttributes<HTMLUListElement> {
    * @example 0
    */
   selectedIndex?: number;
+
+  /**
+   * The direction of the links
+   * @default "horizontal"
+   * @type "horizontal" | "vertical"
+   * @example "vertical"
+   */
+  direction?: 'horizontal' | 'vertical';
 }
 
 export const NavbarLinks = forwardRef<HTMLUListElement, NavbarLinksProps>(
-  ({ links, onLinkClick, selectedIndex, linkClassName, className, ...props }, ref) => {
+  ({ links, onLinkClick, selectedIndex, linkClassName, className, direction = 'horizontal', ...props }, ref) => {
     return (
-      <ul {...props} className={classNames('flex items-center space-x-6', className)} ref={ref}>
+      <ul
+        {...props}
+        className={classNames('flex items-center', className, {
+          'flex-col space-y-6': direction === 'vertical',
+          'space-x-6': direction === 'horizontal',
+        })}
+        ref={ref}
+      >
         {links?.map((link, index) => (
           <li
             className={classNames(linkClassName, 'cursor-pointer font-medium', {

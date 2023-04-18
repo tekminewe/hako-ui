@@ -6,7 +6,7 @@ import { ReactComponent as Logo } from 'assets/logo.svg';
 import { NavbarLinks } from './navbar-links';
 
 const meta = {
-  title: 'Components/Navbar',
+  title: 'Components / Navbar',
   component: Navbar,
   tags: ['autodocs'],
 } satisfies Meta<typeof Navbar>;

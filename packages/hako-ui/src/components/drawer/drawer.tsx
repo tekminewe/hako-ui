@@ -40,7 +40,7 @@ const variants = {
 export const Drawer = forwardRef<HTMLElement, DrawerProps>(
   ({ className, open, width = 370, onClose, ...props }, ref) => {
     return (
-      <div>
+      <>
         <motion.nav
           {...props}
           ref={ref}
@@ -63,7 +63,7 @@ export const Drawer = forwardRef<HTMLElement, DrawerProps>(
             className="bg-overlay fixed top-0 left-0 right-0 bottom-0 z-40"
           />
         )}
-      </div>
+      </>
     );
   },
 );
