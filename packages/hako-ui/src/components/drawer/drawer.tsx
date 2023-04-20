@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { HTMLMotionProps, motion } from 'framer-motion';
 import { forwardRef } from 'react';
 
+export type DrawerAnchor = 'left' | 'right';
 export interface DrawerProps extends HTMLMotionProps<'nav'> {
   /**
    * If the drawer is open
@@ -26,28 +27,36 @@ export interface DrawerProps extends HTMLMotionProps<'nav'> {
    * @returns void
    */
   onClose?: () => void;
+
+  /**
+   * Where the drawer is anchored to the screen
+   * @default "right"
+   * @type DrawerAnchor
+   */
+  anchor?: 'left' | 'right';
 }
 
 const variants = {
-  open: {
-    x: 0,
-  },
-  close: ({ width }: { width: number }) => ({
-    x: `-${width}px`,
+  open: ({ width, anchor }: { width: number; anchor: DrawerAnchor }) => ({
+    x: anchor === 'left' ? 0 : `${window.innerWidth - width}px`,
+  }),
+  close: ({ width, anchor }: { width: number; anchor: DrawerAnchor }) => ({
+    x: anchor === 'left' ? `-${width}px` : `${window.innerWidth}px`,
   }),
 };
 
 export const Drawer = forwardRef<HTMLElement, DrawerProps>(
-  ({ className, open, width = 370, onClose, ...props }, ref) => {
+  ({ className, open, width = 370, onClose, anchor = 'right', ...props }, ref) => {
     return (
       <>
-        <motion.nav
+        <motion.section
           {...props}
           ref={ref}
           animate={open ? 'open' : 'close'}
           variants={variants}
           custom={{
             width,
+            anchor,
           }}
           initial={false}
           style={{
