@@ -37,11 +37,11 @@ export interface DrawerProps extends HTMLMotionProps<'nav'> {
 }
 
 const variants = {
-  open: ({ width, anchor }: { width: number; anchor: DrawerAnchor }) => ({
-    x: anchor === 'left' ? 0 : `${window.innerWidth - width}px`,
+  open: ({ anchor }: { width: number; anchor: DrawerAnchor }) => ({
+    x: anchor === 'left' ? 0 : 0,
   }),
   close: ({ width, anchor }: { width: number; anchor: DrawerAnchor }) => ({
-    x: anchor === 'left' ? `-${width}px` : `${window.innerWidth}px`,
+    x: anchor === 'left' ? `-${width}px` : `${width}px`,
   }),
 };
 
@@ -62,7 +62,10 @@ export const Drawer = forwardRef<HTMLElement, DrawerProps>(
           style={{
             width: `${width}px`,
           }}
-          className={classNames(className, 'fixed top-0 bottom-0 bg-background z-50 shadow-lg')}
+          className={classNames(className, 'fixed top-0 bottom-0 bg-background z-50 shadow-lg', {
+            'left-0': anchor === 'left',
+            'right-0': anchor === 'right',
+          })}
         />
         {open && (
           <motion.div

@@ -51,7 +51,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>((props, ref
         <NavbarLinks links={props.links} className="hidden lg:flex" />
         <NavbarToggle containerClassName="lg:hidden" onClick={handleToggle} />
       </Navbar>
-      <Drawer className="lg:hidden p-4" open={show} onClose={handleClose}>
+      <Drawer anchor="right" className="lg:hidden p-4" open={show} onClose={handleClose}>
         <div className="flex justify-end">
           <div className="p-4 cursor-pointer" onClick={handleClose}>
             <TfiClose />
