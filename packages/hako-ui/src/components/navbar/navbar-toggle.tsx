@@ -12,9 +12,9 @@ export interface NavbarToggleProps extends SVGAttributes<SVGElement> {
   containerClassName?: string;
 }
 
-export const NavbarToggle = forwardRef<HTMLDivElement, NavbarToggleProps>((props, ref) => {
+export const NavbarToggle = forwardRef<HTMLDivElement, NavbarToggleProps>(({ containerClassName, ...props }, ref) => {
   return (
-    <div ref={ref} className={classNames('cursor-pointer', props.containerClassName)}>
+    <div ref={ref} className={classNames('cursor-pointer', containerClassName)}>
       <CiMenuBurger {...props} />
     </div>
   );
