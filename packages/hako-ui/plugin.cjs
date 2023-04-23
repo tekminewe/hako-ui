@@ -80,6 +80,7 @@ module.exports = (options) => {
       theme: {
         extend: {
           colors: {
+            overlay: 'rgba(0, 0, 0, 0.15)',
             ...generateColors(cssVarPrefix),
           },
         },

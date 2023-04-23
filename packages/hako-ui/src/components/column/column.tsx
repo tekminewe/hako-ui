@@ -33,4 +33,4 @@ export const Column = forwardRef<HTMLDivElement, ColumnProps>(({ className, hori
   );
 });
 
-Column.displayName = 'Card';
+Column.displayName = 'Column';

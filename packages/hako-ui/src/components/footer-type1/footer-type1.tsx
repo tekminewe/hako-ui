@@ -12,7 +12,7 @@ export interface FooterType1Props extends React.HTMLAttributes<HTMLElement> {
 }
 export const FooterType1 = forwardRef<HTMLElement, FooterType1Props>(({ className, copyright = '', ...props }, ref) => {
   return (
-    <section
+    <footer
       ref={ref}
       className={classNames(className, 'text-on-background75 h-[120px] flex items-center justify-center')}
       {...props}
@@ -20,7 +20,7 @@ export const FooterType1 = forwardRef<HTMLElement, FooterType1Props>(({ classNam
       <div className="container mx-auto text-center">
         <p>{copyright}</p>
       </div>
-    </section>
+    </footer>
   );
 });
 FooterType1.displayName = 'FooterType1';
