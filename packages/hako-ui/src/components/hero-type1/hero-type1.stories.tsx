@@ -27,9 +27,19 @@ export const WithoutCTA2: Story = {
   },
 };
 
-export const Full: Story = {
+export const WithoutImage: Story = {
   args: {
     ...WithoutCTA2.args,
     cta2Text: 'Learn more →',
+  },
+};
+
+export const Full: Story = {
+  args: {
+    ...WithoutImage.args,
+    image: {
+      src: './images/people1.webp',
+      alt: 'hero-image',
+    },
   },
 };

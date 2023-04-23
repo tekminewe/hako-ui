@@ -1,6 +1,49 @@
 import { MouseEventHandler, ReactNode, forwardRef } from 'react';
 import { Button } from '../button';
 import { Hero, HeroProps } from '../hero/hero';
+import classNames from 'classnames';
+
+export interface HeroType1PropsImage {
+  /**
+   * Image source
+   * @type string
+   * @example './images/people1.webp'
+   * @required
+   */
+  src: string;
+
+  /**
+   * Image source set
+   * @type string
+   * @example './images/people1.webp 1x'
+   * @default undefined
+   */
+  srcSet?: string;
+
+  /**
+   * Image alt
+   * @type string
+   * @example 'hero-image'
+   * @default undefined
+   */
+  alt?: string;
+
+  /**
+   * Image width
+   * @type number
+   * @example 500
+   * @default undefined
+   */
+  width?: number;
+
+  /**
+   * Image height
+   * @type number
+   * @example 500
+   * @default undefined
+   */
+  height?: number;
+}
 
 export interface HeroType1Props extends HeroProps {
   /**
@@ -58,18 +101,34 @@ export interface HeroType1Props extends HeroProps {
    * @default undefined
    */
   onCTA2Click?: MouseEventHandler<HTMLButtonElement>;
+
+  /**
+   * Image of the hero
+   * @type HeroType1PropsImage
+   * @example { src: './images/people1.webp' }
+   * @default undefined
+   */
+  image?: HeroType1PropsImage;
 }
 
 export const HeroType1 = forwardRef<HTMLElement, HeroType1Props>(
-  ({ title, subtitle, description, ctaText, cta2Text, onCTA2Click, onCTAClick, ...props }, ref) => {
+  ({ title, subtitle, description, ctaText, cta2Text, onCTA2Click, onCTAClick, image, ...props }, ref) => {
     return (
       <Hero {...props} ref={ref}>
         <div className="flex flex-1 items-center justify-center">
-          <div className="w-2/3">
+          <div
+            className={classNames('w-2/3', {
+              'text-center': !image,
+            })}
+          >
             <p className="text-5xl font-bold mb-4">{title}</p>
             {subtitle && <p className="text-2xl font-medium text-primary mb-4">{subtitle}</p>}
             <p className="mb-9">{description}</p>
-            <div className="flex items-center space-x-4">
+            <div
+              className={classNames('flex items-center space-x-4', {
+                'justify-center': !image,
+              })}
+            >
               <Button onClick={onCTAClick}>{ctaText}</Button>
               {cta2Text && (
                 <Button onClick={onCTA2Click} variant="text-default">
@@ -79,13 +138,11 @@ export const HeroType1 = forwardRef<HTMLElement, HeroType1Props>(
             </div>
           </div>
         </div>
-        <div className="flex justify-center flex-1">
-          <img
-            src="./images/people1.webp"
-            srcSet="./images/people1.webp 1x, ./images/people1@2x.webp 2x, ./images/people1@3x.webp 3x"
-            alt="hero-image"
-          />
-        </div>
+        {image && (
+          <div className="flex justify-center flex-1">
+            <img src={image.src} srcSet={image.srcSet} alt={image.alt} width={image.width} height={image.height} />
+          </div>
+        )}
       </Hero>
     );
   },
