@@ -112,12 +112,12 @@ export interface HeroType1Props extends HeroProps {
 }
 
 export const HeroType1 = forwardRef<HTMLElement, HeroType1Props>(
-  ({ title, subtitle, description, ctaText, cta2Text, onCTA2Click, onCTAClick, image, ...props }, ref) => {
+  ({ title, subtitle, description, ctaText, cta2Text, onCTA2Click, onCTAClick, className, image, ...props }, ref) => {
     return (
-      <Hero {...props} ref={ref}>
+      <Hero {...props} className={classNames('flex-col space-y-8 lg:space-y-0 lg:flex-row', className)} ref={ref}>
         <div className="flex flex-1 items-center justify-center">
           <div
-            className={classNames('w-2/3', {
+            className={classNames('lg:w-2/3', {
               'text-center': !image,
             })}
           >
