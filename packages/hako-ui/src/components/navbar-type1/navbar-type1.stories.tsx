@@ -19,3 +19,21 @@ export const Default: Story = {
     links: ['Home', 'About', 'Services', 'Portfolio', 'Contact'],
   },
 };
+
+export const LogoOnly: Story = {
+  args: {
+    logo: <Logo width={30} height={30} />,
+  },
+};
+
+export const TitleOnly: Story = {
+  args: {
+    title: 'Hako UI',
+  },
+};
+
+export const LinkOnly: Story = {
+  args: {
+    links: ['Home', 'About', 'Services', 'Portfolio', 'Contact'],
+  },
+};

@@ -19,11 +19,11 @@ export interface NavbarBrandProps extends HTMLAttributes<HTMLDivElement> {
   logo?: ReactNode;
 }
 
-export const NavbarBrand = forwardRef<HTMLDivElement, NavbarBrandProps>(({ className, ...props }, ref) => {
+export const NavbarBrand = forwardRef<HTMLDivElement, NavbarBrandProps>(({ className, logo, title, ...props }, ref) => {
   return (
     <div {...props} className={classNames('flex items-center space-x-4 cursor-pointer', className)} ref={ref}>
-      {props.logo}
-      <h1 className="text-xl font-bold">{props.title}</h1>
+      {logo}
+      {title && <h1 className="text-xl font-bold">{title}</h1>}
     </div>
   );
 });
