@@ -15,7 +15,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
   ({ className, containerClassName, children, ...props }, ref) => {
     return (
       <nav {...props} ref={ref} className={classNames(className, 'flex items-center h-[70px]')}>
-        <div className={classNames(containerClassName, 'container mx-auto')}>{children}</div>
+        <div className={classNames(containerClassName, 'flex items-center container mx-auto')}>{children}</div>
       </nav>
     );
   },

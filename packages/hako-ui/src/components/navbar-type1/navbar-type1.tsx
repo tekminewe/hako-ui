@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { MouseEventHandler, forwardRef, useState } from 'react';
 import { TfiClose } from 'react-icons/tfi';
 import { Navbar, NavbarProps } from '../navbar/navbar';
 import { NavbarBrand } from '../navbar/navbar-brand';
@@ -6,6 +6,7 @@ import { NavbarLinks, NavbarLinksProps } from '../navbar/navbar-links';
 import { NavbarToggle } from '../navbar/navbar-toggle';
 import { Drawer } from '../drawer';
 import classNames from 'classnames';
+import { Button } from '../button';
 
 export interface NavbarType1Props extends NavbarProps {
   /**
@@ -46,10 +47,26 @@ export interface NavbarType1Props extends NavbarProps {
    * @example 0
    */
   selectedIndex?: number;
+
+  /**
+   * Title of the cta button
+   * @type string
+   * @example "Get Started"
+   * @default undefined
+   */
+  cta?: string;
+
+  /**
+   * The callback function to be called when the cta button is clicked
+   * @type MouseEventHandler<HTMLButtonElement>
+   * @example () => console.log("Cta clicked")
+   * @default undefined
+   */
+  onCtaClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
-  ({ containerClassName, title, links, onLinkClick, selectedIndex, logo, ...props }, ref) => {
+  ({ containerClassName, title, links, onLinkClick, selectedIndex, logo, cta, onCtaClick, ...props }, ref) => {
     const [show, setShow] = useState(false);
 
     const handleToggle = () => {
@@ -60,24 +77,34 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
       setShow(false);
     };
 
+    const hasBrand = !!title || !!logo;
+    const hasLeftContent = cta || !!links?.length;
+
     return (
       <>
         <Navbar
           ref={ref}
-          containerClassName={classNames(containerClassName, 'flex', {
-            'justify-between': !!links?.length,
-            'justify-start': !links?.length,
+          containerClassName={classNames(containerClassName, {
+            'justify-between': hasLeftContent && hasBrand,
+            'justify-end': !hasBrand,
           })}
           {...props}
         >
-          <NavbarBrand logo={logo} title={title} />
-          <NavbarLinks
-            links={links}
-            className="hidden lg:flex"
-            onLinkClick={onLinkClick}
-            selectedIndex={selectedIndex}
-          />
-          <NavbarToggle containerClassName="lg:hidden" onClick={handleToggle} />
+          {hasBrand && <NavbarBrand logo={logo} title={title} />}
+          {hasLeftContent && (
+            <div className="flex self-end items-center space-x-4">
+              {!!links?.length && (
+                <NavbarLinks
+                  links={links}
+                  className="hidden lg:flex"
+                  onLinkClick={onLinkClick}
+                  selectedIndex={selectedIndex}
+                />
+              )}
+              {cta && <Button onClick={onCtaClick}>{cta}</Button>}
+              {!!links?.length && <NavbarToggle containerClassName="lg:hidden" onClick={handleToggle} />}
+            </div>
+          )}
         </Navbar>
         {!!links?.length && (
           <Drawer anchor="right" className="lg:hidden p-4" open={show} onClose={handleClose}>

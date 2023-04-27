@@ -12,11 +12,19 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Example: Story = {
   args: {
     logo: <Logo width={30} height={30} />,
     title: 'Hako UI',
     links: ['Home', 'About', 'Services', 'Portfolio', 'Contact'],
+    cta: 'Sign up',
+  },
+};
+
+export const Example2: Story = {
+  args: {
+    title: 'Hako UI',
+    cta: 'Sign up',
   },
 };
 
@@ -35,5 +43,11 @@ export const TitleOnly: Story = {
 export const LinkOnly: Story = {
   args: {
     links: ['Home', 'About', 'Services', 'Portfolio', 'Contact'],
+  },
+};
+
+export const CtaOnly: Story = {
+  args: {
+    cta: 'Sign up',
   },
 };

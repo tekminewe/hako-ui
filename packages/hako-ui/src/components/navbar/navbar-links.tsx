@@ -8,7 +8,7 @@ export interface NavbarLinksProps extends HTMLAttributes<HTMLUListElement> {
    * @type string[]
    * @example ["Home", "About", "Contact"]
    */
-  links?: string[];
+  links: string[];
 
   /**
    * The callback function to be called when a link is clicked
