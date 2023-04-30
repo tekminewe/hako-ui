@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SimpleMenu: Story = {
   args: {
-    className: 'justify-between',
+    containerClassName: 'justify-between',
     children: (
       <>
         <NavbarBrand logo={<Logo width={30} height={30} />} title="Hako UI" />
