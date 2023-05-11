@@ -57,7 +57,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           )}
         />
         <div
-          className={classNames('h-[17px]', {
+          className={classNames('min-h-[20px]', {
             'text-danger': status === 'error',
             'text-success': status === 'success',
           })}
