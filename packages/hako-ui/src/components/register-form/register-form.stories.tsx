@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const WithError: Story = {
+export const WithInputError: Story = {
   args: {
     inputProps: {
       email: {
