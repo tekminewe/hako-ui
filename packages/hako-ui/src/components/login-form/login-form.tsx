@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo, useState } from 'react';
 import { TextInput, TextInputProps } from '../text-input';
 import { Card } from '../card';
 import { Button, ButtonProps } from '../button';
@@ -7,7 +7,15 @@ import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-export type LoginFormSubmitHandler = (data: { email: string; password: string }) => Promise<void> | void;
+export type LoginFormSubmitResult = {
+  status: 'success' | 'error';
+  message?: string;
+};
+
+export type LoginFormSubmitHandler = (data: {
+  email: string;
+  password: string;
+}) => Promise<LoginFormSubmitResult> | LoginFormSubmitResult;
 
 export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, 'onSubmit'> {
   /**
@@ -64,6 +72,8 @@ type Inputs = {
  */
 export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
   ({ title, description, inputProps: inputConfig, onSubmit, ...props }, ref) => {
+    const [status, setStatus] = useState('');
+    const [loading, setLoading] = useState(false);
     const schema = useMemo(() => {
       return zod.object({
         email: zod.string().email('Please enter a valid email address'),
@@ -77,19 +87,38 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
     } = useForm<Inputs>({
       resolver: zodResolver(schema),
     });
-    const submit = handleSubmit((data) => {
-      onSubmit?.(data);
+    const submit = handleSubmit(async (data) => {
+      try {
+        setLoading(true);
+        const result = await onSubmit?.(data);
+        if (result && result.status === 'error') {
+          setStatus(result?.message ?? '');
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
     });
 
     return (
-      <Card>
+      <Card className="max-w-[375px] mx-auto">
         <div className="flex flex-col items-center space-y-2 pb-8">
           <p className="text-center text-xl font-semibold">{title ?? 'Welcome'}</p>
           <p className="text-sm">{description ?? 'Log in to continue'}</p>
         </div>
+        {status && (
+          <div
+            className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 rounded mb-4 text-sm"
+            role="alert"
+          >
+            <span>{status}</span>
+          </div>
+        )}
         <form ref={ref} {...props}>
           <TextInput
             {...inputConfig?.email}
+            disabled={loading || inputConfig?.email?.disabled}
             placeholder={inputConfig?.email?.placeholder ?? 'Please enter your email address'}
             label={inputConfig?.email?.label ?? 'Email address'}
             required={inputConfig?.email?.required ?? true}
@@ -99,6 +128,8 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
           />
           <TextInput
             {...inputConfig?.password}
+            type="password"
+            disabled={loading || inputConfig?.password?.disabled}
             placeholder={inputConfig?.password?.placeholder ?? 'Please enter your password'}
             label={inputConfig?.password?.label ?? 'Password'}
             required={inputConfig?.password?.required ?? true}
@@ -109,6 +140,7 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
           <Button
             {...inputConfig?.submit}
             type="submit"
+            disabled={loading || inputConfig?.submit?.disabled}
             onClick={submit}
             className={classNames(inputConfig?.submit?.className, 'mt-2 w-full md:w-fit')}
           >
