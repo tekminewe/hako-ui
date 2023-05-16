@@ -197,7 +197,7 @@ export const RegisterForm = forwardRef<HTMLFormElement, RegisterFormProps>(
         </Card>
         <p className="text-sm">
           {loginHint}
-          <a className="ml-2 text-primary cursor-pointer" href={loginLink} onClick={onLoginClick}>
+          <a className="ml-2 text-primary cursor-pointer font-semibold" href={loginLink} onClick={onLoginClick}>
             {loginText}
           </a>
         </p>

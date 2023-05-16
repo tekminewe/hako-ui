@@ -1,4 +1,4 @@
-import { forwardRef, useMemo, useState } from 'react';
+import { forwardRef, MouseEventHandler, useMemo, useState } from 'react';
 import { TextInput, TextInputProps } from '../text-input';
 import { Card } from '../card';
 import { Button, ButtonProps } from '../button';
@@ -59,6 +59,38 @@ export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, '
    * @returns
    */
   onSubmit?: LoginFormSubmitHandler;
+
+  /**
+   * The hint to let users know they can create an account if they don't have one.
+   * @type string
+   * @default 'Don't have an account yet?'
+   * @example 'Don't have an account yet?'
+   */
+  registerHint?: string;
+
+  /**
+   * The text for the register link.
+   * @type string
+   * @default 'Sign up'
+   * @example 'Sign up'
+   */
+  registerText?: string;
+
+  /**
+   * The link to the register page.
+   * @type string
+   * @example '/register'
+   * @default '/register'
+   */
+  registerLink?: string;
+
+  /**
+   * The handler to be called when the register link is clicked.
+   * @type MouseEventHandler<HTMLSpanElement>
+   * @example () => console.log('Register link clicked')
+   * @default undefined
+   */
+  onRegisterClick?: MouseEventHandler<HTMLSpanElement>;
 }
 
 type Inputs = {
@@ -71,7 +103,20 @@ type Inputs = {
  * It contains email and password inputs and a submit button.
  */
 export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
-  ({ title, description, inputProps: inputConfig, onSubmit, ...props }, ref) => {
+  (
+    {
+      title,
+      description,
+      inputProps: inputConfig,
+      onSubmit,
+      registerHint = "Don't have an account yet?",
+      registerText = 'Sign up now',
+      registerLink = '/register',
+      onRegisterClick,
+      ...props
+    },
+    ref,
+  ) => {
     const [status, setStatus] = useState('');
     const [loading, setLoading] = useState(false);
     const schema = useMemo(() => {
@@ -102,52 +147,60 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
     });
 
     return (
-      <Card className="max-w-[375px] w-full mx-2 md:mx-auto">
-        <div className="flex flex-col items-center space-y-2 pb-8">
-          <p className="text-center text-xl font-semibold">{title ?? 'Welcome'}</p>
-          <p className="text-sm">{description ?? 'Log in to continue'}</p>
-        </div>
-        {status && (
-          <div
-            className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 rounded mb-4 text-sm"
-            role="alert"
-          >
-            <span>{status}</span>
+      <div className="max-w-[375px] w-full mx-2 md:mx-auto">
+        <Card className="mb-2">
+          <div className="flex flex-col items-center space-y-2 pb-8">
+            <p className="text-center text-xl font-semibold">{title ?? 'Welcome'}</p>
+            <p className="text-sm">{description ?? 'Log in to continue'}</p>
           </div>
-        )}
-        <form ref={ref} {...props}>
-          <TextInput
-            {...inputConfig?.email}
-            disabled={loading || inputConfig?.email?.disabled}
-            placeholder={inputConfig?.email?.placeholder ?? 'Please enter your email address'}
-            label={inputConfig?.email?.label ?? 'Email address'}
-            required={inputConfig?.email?.required ?? true}
-            hint={errors.email?.message}
-            status={errors.email ? 'error' : 'default'}
-            {...register('email')}
-          />
-          <TextInput
-            {...inputConfig?.password}
-            type="password"
-            disabled={loading || inputConfig?.password?.disabled}
-            placeholder={inputConfig?.password?.placeholder ?? 'Please enter your password'}
-            label={inputConfig?.password?.label ?? 'Password'}
-            required={inputConfig?.password?.required ?? true}
-            hint={errors.password?.message}
-            status={errors.password ? 'error' : 'default'}
-            {...register('password')}
-          />
-          <Button
-            {...inputConfig?.submit}
-            type="submit"
-            disabled={loading || inputConfig?.submit?.disabled}
-            onClick={submit}
-            className={classNames(inputConfig?.submit?.className, 'mt-2 w-full')}
-          >
-            {inputConfig?.submit?.children ?? 'Continue'}
-          </Button>
-        </form>
-      </Card>
+          {status && (
+            <div
+              className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 rounded mb-4 text-sm"
+              role="alert"
+            >
+              <span>{status}</span>
+            </div>
+          )}
+          <form ref={ref} {...props}>
+            <TextInput
+              {...inputConfig?.email}
+              disabled={loading || inputConfig?.email?.disabled}
+              placeholder={inputConfig?.email?.placeholder ?? 'Please enter your email address'}
+              label={inputConfig?.email?.label ?? 'Email address'}
+              required={inputConfig?.email?.required ?? true}
+              hint={errors.email?.message}
+              status={errors.email ? 'error' : 'default'}
+              {...register('email')}
+            />
+            <TextInput
+              {...inputConfig?.password}
+              type="password"
+              disabled={loading || inputConfig?.password?.disabled}
+              placeholder={inputConfig?.password?.placeholder ?? 'Please enter your password'}
+              label={inputConfig?.password?.label ?? 'Password'}
+              required={inputConfig?.password?.required ?? true}
+              hint={errors.password?.message}
+              status={errors.password ? 'error' : 'default'}
+              {...register('password')}
+            />
+            <Button
+              {...inputConfig?.submit}
+              type="submit"
+              disabled={loading || inputConfig?.submit?.disabled}
+              onClick={submit}
+              className={classNames(inputConfig?.submit?.className, 'mt-2 w-full')}
+            >
+              {inputConfig?.submit?.children ?? 'Continue'}
+            </Button>
+          </form>
+        </Card>
+        <p className="text-sm">
+          {registerHint}
+          <a className="ml-2 text-primary cursor-pointer font-semibold" href={registerLink} onClick={onRegisterClick}>
+            {registerText}
+          </a>
+        </p>
+      </div>
     );
   },
 );
