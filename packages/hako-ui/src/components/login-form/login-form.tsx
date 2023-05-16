@@ -102,7 +102,7 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
     });
 
     return (
-      <Card className="max-w-[375px] mx-auto">
+      <Card className="max-w-[375px] w-full mx-2 md:mx-auto">
         <div className="flex flex-col items-center space-y-2 pb-8">
           <p className="text-center text-xl font-semibold">{title ?? 'Welcome'}</p>
           <p className="text-sm">{description ?? 'Log in to continue'}</p>
@@ -142,7 +142,7 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
             type="submit"
             disabled={loading || inputConfig?.submit?.disabled}
             onClick={submit}
-            className={classNames(inputConfig?.submit?.className, 'mt-2 w-full md:w-fit')}
+            className={classNames(inputConfig?.submit?.className, 'mt-2 w-full')}
           >
             {inputConfig?.submit?.children ?? 'Continue'}
           </Button>

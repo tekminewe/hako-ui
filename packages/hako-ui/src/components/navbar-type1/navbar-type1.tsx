@@ -42,7 +42,6 @@ export interface NavbarType1Props extends NavbarProps {
 
   /**
    * The index of the selected link
-   * @default undefined
    * @type number
    * @example 0
    */
@@ -52,7 +51,6 @@ export interface NavbarType1Props extends NavbarProps {
    * Title of the cta button
    * @type string
    * @example "Get Started"
-   * @default undefined
    */
   cta?: string;
 
@@ -60,13 +58,41 @@ export interface NavbarType1Props extends NavbarProps {
    * The callback function to be called when the cta button is clicked
    * @type MouseEventHandler<HTMLButtonElement>
    * @example () => console.log("Cta clicked")
-   * @default undefined
    */
   onCtaClick?: MouseEventHandler<HTMLButtonElement>;
+
+  /**
+   * The profile photo url
+   * @type string
+   * @example 'https://cdn.fakercloud.com/avatars/calebogden_128.jpg'
+   */
+  profilePhotoUrl?: string;
+
+  /**
+   * The callback function to be called when the profile photo is clicked
+   * @type MouseEventHandler<HTMLImageElement>
+   * @example () => console.log("Profile photo clicked")
+   */
+  onProfilePhotoClick?: MouseEventHandler<HTMLImageElement>;
 }
 
 export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
-  ({ containerClassName, title, links, onLinkClick, selectedIndex, logo, cta, onCtaClick, ...props }, ref) => {
+  (
+    {
+      containerClassName,
+      title,
+      links,
+      onLinkClick,
+      selectedIndex,
+      logo,
+      cta,
+      onCtaClick,
+      profilePhotoUrl,
+      onProfilePhotoClick,
+      ...props
+    },
+    ref,
+  ) => {
     const [show, setShow] = useState(false);
 
     const handleToggle = () => {
@@ -78,7 +104,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
     };
 
     const hasBrand = !!title || !!logo;
-    const hasLeftContent = cta || !!links?.length;
+    const hasLeftContent = cta || !!links?.length || !!profilePhotoUrl;
 
     return (
       <>
@@ -99,6 +125,14 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
                   className="hidden lg:flex"
                   onLinkClick={onLinkClick}
                   selectedIndex={selectedIndex}
+                />
+              )}
+              {!!profilePhotoUrl && (
+                <img
+                  src={profilePhotoUrl}
+                  alt="Profile"
+                  className="w-8 h-8 rounded-full cursor-pointer"
+                  onClick={onProfilePhotoClick}
                 />
               )}
               {cta && <Button onClick={onCtaClick}>{cta}</Button>}
