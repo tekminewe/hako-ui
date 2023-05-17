@@ -165,6 +165,7 @@ export const RegisterForm = forwardRef<HTMLFormElement, RegisterFormProps>(
           <form ref={ref} {...props}>
             <TextInput
               {...inputConfig?.email}
+              autoComplete="email"
               disabled={loading || inputConfig?.email?.disabled}
               placeholder={inputConfig?.email?.placeholder ?? 'Please enter your email address'}
               label={inputConfig?.email?.label ?? 'Email address'}
@@ -176,6 +177,7 @@ export const RegisterForm = forwardRef<HTMLFormElement, RegisterFormProps>(
             <TextInput
               {...inputConfig?.password}
               type="password"
+              autoComplete="new-password"
               disabled={loading || inputConfig?.password?.disabled}
               placeholder={inputConfig?.password?.placeholder ?? 'Please enter your password'}
               label={inputConfig?.password?.label ?? 'Password'}
