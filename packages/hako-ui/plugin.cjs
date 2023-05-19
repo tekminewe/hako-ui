@@ -20,6 +20,7 @@ const colors = [
   'background',
   'on-background100',
   'on-background50',
+  'on-background10',
 
   'background-dark',
   'on-background-dark100',
@@ -64,6 +65,7 @@ module.exports = (options) => {
           [`--${cssVarPrefix}background`]: '#fafafa',
           [`--${cssVarPrefix}on-background100`]: '#171717',
           [`--${cssVarPrefix}on-background50`]: '#a3a3a3',
+          [`--${cssVarPrefix}on-background10`]: '#d6d3d1',
           [`--${cssVarPrefix}background-dark`]: '#f5f5f5',
           [`--${cssVarPrefix}on-background-dark100`]: '#171717',
           [`--${cssVarPrefix}on-background-dark50`]: '#a3a3a3',
