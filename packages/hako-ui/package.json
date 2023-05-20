@@ -34,26 +34,30 @@
     "dist",
     "plugin.js"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./index.cjs",
+  "module": "./index.js",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./index.js",
+      "require": "./index.cjs"
+    },
+    "./*": {
+      "import": "./*/index.js",
+      "require": "./*/index.cjs"
     },
     "./plugin": {
-      "import": "./dist/plugin.js",
-      "require": "./dist/plugin.cjs"
+      "import": "./plugin.js",
+      "require": "./plugin.cjs"
     },
     "./style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
+      "import": "./style.css",
+      "require": "./style.css"
     }
   },
-  "types": "./dist/components/index.d.ts",
+  "types": "./index.d.ts",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "tsc && node ./scripts/build-index.cjs && vite build",
+    "build": "tsc && node ./scripts/build-index.cjs && vite build && cp package.json dist/ && cp README.md dist/",
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes"
   },
@@ -87,6 +91,7 @@
     "chromatic": "^6.17.1",
     "postcss": "^8.4.21",
     "prop-types": "^15.8.1",
+    "rollup-plugin-generate-package-json": "^3.2.0",
     "storybook": "^7.0.0-rc.3",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.3",

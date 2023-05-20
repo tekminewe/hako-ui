@@ -112,6 +112,9 @@ importers:
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
+      rollup-plugin-generate-package-json:
+        specifier: ^3.2.0
+        version: 3.2.0(rollup@3.20.2)
       storybook:
         specifier: ^7.0.0-rc.3
         version: 7.0.0-rc.8
@@ -126,10 +129,10 @@ importers:
         version: 4.2.1(@types/node@18.15.10)
       vite-plugin-dts:
         specifier: ^2.1.0
-        version: 2.1.0(@types/node@18.15.10)(vite@4.2.1)
+        version: 2.1.0(@types/node@18.15.10)(rollup@3.20.2)(vite@4.2.1)
       vite-plugin-svgr:
         specifier: ^2.4.0
-        version: 2.4.0(vite@4.2.1)
+        version: 2.4.0(rollup@3.20.2)(vite@4.2.1)
 
   packages/www.hako-ui.com:
     dependencies:
@@ -3167,7 +3170,7 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@rollup/pluginutils@5.0.2:
+  /@rollup/pluginutils@5.0.2(rollup@3.20.2):
     resolution:
       { integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA== }
     engines: { node: '>=14.0.0' }
@@ -3180,6 +3183,7 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
+      rollup: 3.20.2
     dev: true
 
   /@rushstack/node-core-library@3.55.2(@types/node@18.15.10):
@@ -3793,13 +3797,13 @@ packages:
       telejson: 7.0.4
     dev: true
 
-  /@storybook/channel-postmessage@7.0.10:
+  /@storybook/channel-postmessage@7.0.12:
     resolution:
-      { integrity: sha512-Y5ZSp9WYH3HznQ2rrGN78Y5fYM16Bfvyn3iKy5QD38gsQk1gTrra1osIZ0X+lk3sep14D4oW4QMW3DCSrn0Big== }
+      { integrity: sha512-Tc7kQZ5yxlZ44Nmmzec92JaDJ6UZ3Ze4cBfiHik4XcnM1PtN8hr8VFoC6a2AIm1ybfIRenfT5w9TH5yriiPIhw== }
     dependencies:
-      '@storybook/channels': 7.0.10
-      '@storybook/client-logger': 7.0.10
-      '@storybook/core-events': 7.0.10
+      '@storybook/channels': 7.0.12
+      '@storybook/client-logger': 7.0.12
+      '@storybook/core-events': 7.0.12
       '@storybook/global': 5.0.0
       qs: 6.11.1
       telejson: 7.0.4
@@ -3829,9 +3833,9 @@ packages:
       { integrity: sha512-2tI/ECbQcXjncYGLVdrttNT8adIp6kV/bnQGJWmF5hBXZ7Izwyq1WRPTgPT++RihmOOTHvkRx4GCKfwluOrNpA== }
     dev: true
 
-  /@storybook/channels@7.0.10:
+  /@storybook/channels@7.0.12:
     resolution:
-      { integrity: sha512-hdPaGV3W7s6MkVcg33S5hmkVgqXC16AA7H0ID9MROiU1lQzolKhSqCs2iVfGPQfmWzEJeqWQoEXU7dmCclRM0w== }
+      { integrity: sha512-KDdDmDs8kxAJU+vndTqTNazjLO+XoIPiTRlfP7mk7cgHiQXSjMYy3JSCQ7W0of0Q+9VSl/ve9CNbnGbcQF7rNQ== }
     dev: true
 
   /@storybook/cli@7.0.0-rc.8:
@@ -3899,9 +3903,9 @@ packages:
       '@storybook/global': 5.0.0
     dev: true
 
-  /@storybook/client-logger@7.0.10:
+  /@storybook/client-logger@7.0.12:
     resolution:
-      { integrity: sha512-hb8tO+w28ErzjEw69ERMtZT81Xyg835FQjH6Y42ejoGcBA9Z0W6RZmx4RgkcIUOlYXkU6lSnNVne9gXodV4/Hw== }
+      { integrity: sha512-MQMtIgGEgdixvxnBvZ2m8hhc0DGJWeCpHtxg7oqBLBEBmCYFueTqDZHl4Z6SoCrK0a2YS5X/BIXOcEtP1ulMKw== }
     dependencies:
       '@storybook/global': 5.0.0
     dev: true
@@ -4013,9 +4017,9 @@ packages:
       { integrity: sha512-KsKf+Ob6zQ8+IJ9oDD5xqASwYGzcjT08azBjSt4yocHIJ3mY741h88YDS0wcwnM+JrV6iFYlY0hiK35lnBEddA== }
     dev: true
 
-  /@storybook/core-events@7.0.10:
+  /@storybook/core-events@7.0.12:
     resolution:
-      { integrity: sha512-OyBqhxVQOdI78Vgv6nKwXOdIVNChyfktpdxQZP1rz9MpO6MrqMaGAUL7k8xQMQAVx0VY+dAMYZB3bnyN2IC8FA== }
+      { integrity: sha512-VTmb/zjbz3o1bg+bATzLigVXMVDC/S1FP8CqIrz4mkiys52139FGzMandL2Y2AecPZPGss7ZRdfma28HKVYTRg== }
     dev: true
 
   /@storybook/core-server@7.0.0-rc.8:
@@ -4156,15 +4160,15 @@ packages:
       '@storybook/preview-api': 7.0.0-rc.8
     dev: true
 
-  /@storybook/instrumenter@7.0.10:
+  /@storybook/instrumenter@7.0.12:
     resolution:
-      { integrity: sha512-Z+kIidnxaq3tneUnIKB2d0DCqb4lwUdOS/AC43LNvd9C6BWYgj89cIPdLDTNhOWa0ZiEju7wTS+K/3uMvcHZ4w== }
+      { integrity: sha512-jx4rb4AMT1YIOpE0HCdfyLvpYU+94wPkC9vt7sZGWAp7nnYG+KO/lx3XCJaR9qQPIxVYejJtWkeGn4RID79SoQ== }
     dependencies:
-      '@storybook/channels': 7.0.10
-      '@storybook/client-logger': 7.0.10
-      '@storybook/core-events': 7.0.10
+      '@storybook/channels': 7.0.12
+      '@storybook/client-logger': 7.0.12
+      '@storybook/core-events': 7.0.12
       '@storybook/global': 5.0.0
-      '@storybook/preview-api': 7.0.10
+      '@storybook/preview-api': 7.0.12
     dev: true
 
   /@storybook/manager-api@7.0.0-rc.8(react-dom@18.2.0)(react@18.2.0):
@@ -4240,17 +4244,17 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /@storybook/preview-api@7.0.10:
+  /@storybook/preview-api@7.0.12:
     resolution:
-      { integrity: sha512-URj2YJKbs8hc6JZQ3aA+MmjB4hTSzGZAVFVs3kLUEuaQPDbU1RT5GKxedwF5zlMnkZQPNoaUtopN3z7aF+SKFQ== }
+      { integrity: sha512-YI/AfHszIOYt967fsRlc7j6I0zZB+RSsBwD/nMA8y9vszdpQ0MgRhxHgQxFf6cgqbuQcdCsnTIpT0iQ4GHjDXg== }
     dependencies:
-      '@storybook/channel-postmessage': 7.0.10
-      '@storybook/channels': 7.0.10
-      '@storybook/client-logger': 7.0.10
-      '@storybook/core-events': 7.0.10
+      '@storybook/channel-postmessage': 7.0.12
+      '@storybook/channels': 7.0.12
+      '@storybook/client-logger': 7.0.12
+      '@storybook/core-events': 7.0.12
       '@storybook/csf': 0.1.0
       '@storybook/global': 5.0.0
-      '@storybook/types': 7.0.10
+      '@storybook/types': 7.0.12
       '@types/qs': 6.9.7
       dequal: 2.0.3
       lodash: 4.17.21
@@ -4407,8 +4411,8 @@ packages:
     resolution:
       { integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw== }
     dependencies:
-      '@storybook/client-logger': 7.0.10
-      '@storybook/instrumenter': 7.0.10
+      '@storybook/client-logger': 7.0.12
+      '@storybook/instrumenter': 7.0.12
       '@testing-library/dom': 8.20.0
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.0)
       ts-dedent: 2.2.0
@@ -4454,11 +4458,11 @@ packages:
       file-system-cache: 2.0.2
     dev: true
 
-  /@storybook/types@7.0.10:
+  /@storybook/types@7.0.12:
     resolution:
-      { integrity: sha512-mFktvN8PjjDFJSjck4spikmjtr0AwfOhcEtIf4UCmUD5JHgGppkQmvO6483nGcprSFcWOvD2uYGs8Wp32wG/MQ== }
+      { integrity: sha512-nlvU4MyO2grwPCRQ8alA3AnY1bQxGJ6A4QgJu+1MhtjVenifFlxOQX4H1OiA+YXfjlV096oO5LrxvetJPFAKKQ== }
     dependencies:
-      '@storybook/channels': 7.0.10
+      '@storybook/channels': 7.0.12
       '@types/babel__core': 7.20.0
       '@types/express': 4.17.17
       file-system-cache: 2.0.2
@@ -12753,6 +12757,18 @@ packages:
       glob: 9.3.2
     dev: true
 
+  /rollup-plugin-generate-package-json@3.2.0(rollup@3.20.2):
+    resolution:
+      { integrity: sha512-+Kq1kFVr+maxW/mZB+E+XuaieCXVZqjl2tNU9k3TtAMs3NOaeREa5sRHy67qKDmcnFtZZukIQ3dFCcnV+r0xyw== }
+    engines: { node: '>=8.3' }
+    peerDependencies:
+      rollup: '>=1.0.0'
+    dependencies:
+      read-pkg: 5.2.0
+      rollup: 3.20.2
+      write-pkg: 4.0.0
+    dev: true
+
   /rollup@3.19.1:
     resolution:
       { integrity: sha512-lAbrdN7neYCg/8WaoWn/ckzCtz+jr70GFfYdlf50OF7387HTg+wiuiqJRFYawwSPpqfqDNYqK7smY/ks2iAudg== }
@@ -14139,7 +14155,7 @@ packages:
     engines: { node: '>= 0.8' }
     dev: true
 
-  /vite-plugin-dts@2.1.0(@types/node@18.15.10)(vite@4.2.1):
+  /vite-plugin-dts@2.1.0(@types/node@18.15.10)(rollup@3.20.2)(vite@4.2.1):
     resolution:
       { integrity: sha512-Vw0FdCuM3VLR4hTFHh0yMEzfwI7NyFvPIMFwvE+Q0t4qtoHIfYOP/JXs7nTnHuQk87FSjlhGeIJ1fLBcktgPgA== }
     engines: { node: ^14.18.0 || >=16.0.0 }
@@ -14148,7 +14164,7 @@ packages:
     dependencies:
       '@babel/parser': 7.21.3
       '@microsoft/api-extractor': 7.34.4(@types/node@18.15.10)
-      '@rollup/pluginutils': 5.0.2
+      '@rollup/pluginutils': 5.0.2(rollup@3.20.2)
       '@rushstack/node-core-library': 3.55.2(@types/node@18.15.10)
       debug: 4.3.4
       fast-glob: 3.2.12
@@ -14163,13 +14179,13 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-svgr@2.4.0(vite@4.2.1):
+  /vite-plugin-svgr@2.4.0(rollup@3.20.2)(vite@4.2.1):
     resolution:
       { integrity: sha512-q+mJJol6ThvqkkJvvVFEndI4EaKIjSI0I3jNFgSoC9fXAz1M7kYTVUin8fhUsFojFDKZ9VHKtX6NXNaOLpbsHA== }
     peerDependencies:
       vite: ^2.6.0 || 3 || 4
     dependencies:
-      '@rollup/pluginutils': 5.0.2
+      '@rollup/pluginutils': 5.0.2(rollup@3.20.2)
       '@svgr/core': 6.5.1
       vite: 4.2.1(@types/node@18.15.10)
     transitivePeerDependencies:
