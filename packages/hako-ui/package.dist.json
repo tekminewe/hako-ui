@@ -1,0 +1,8 @@
+{
+  "name": "hako-ui",
+  "sideEffects": false,
+  "type": "module",
+  "module": "./index.js",
+  "main": "./index.js",
+  "types": "./index.d.ts"
+}

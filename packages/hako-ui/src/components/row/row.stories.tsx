@@ -1,39 +1,39 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Column } from './column';
+import { Row } from './row';
 
 const meta = {
-  title: 'Components / Layouts / Column',
-  component: Column,
+  title: 'Components / Layouts / Row',
+  component: Row,
   tags: ['autodocs'],
-} satisfies Meta<typeof Column>;
+} satisfies Meta<typeof Row>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const HorizontalAligment: Story = {
+export const VerticalAlignment: Story = {
   render: () => (
-    <Column className="space-y-8">
-      <Column horizontalAlign="center">
+    <Row className="space-x-8 h-[100px]">
+      <Row verticalAlign="center">
         <div className="bg-success">Item 1</div>
         <div className="bg-danger100">Item 2</div>
         <div className="bg-info">Item 3</div>
-      </Column>
-      <Column horizontalAlign="left">
+      </Row>
+      <Row verticalAlign="top">
         <div className="bg-success">Item 1</div>
         <div className="bg-danger100">Item 2</div>
         <div className="bg-info">Item 3</div>
-      </Column>
-      <Column horizontalAlign="right">
+      </Row>
+      <Row verticalAlign="bottom">
         <div className="bg-success">Item 1</div>
         <div className="bg-danger100">Item 2</div>
         <div className="bg-info">Item 3</div>
-      </Column>
-      <Column horizontalAlign="stretch">
+      </Row>
+      <Row verticalAlign="stretch">
         <div className="bg-success">Item 1</div>
         <div className="bg-danger100">Item 2</div>
         <div className="bg-info">Item 3</div>
-      </Column>
-    </Column>
+      </Row>
+    </Row>
   ),
 };

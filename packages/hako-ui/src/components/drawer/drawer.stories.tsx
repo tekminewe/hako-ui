@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Drawer, DrawerAnchor } from './drawer';
+import { Drawer } from './drawer';
 import { useState } from 'react';
 import { Button } from '../button';
 
@@ -36,16 +36,24 @@ const Render = () => {
           Right
         </Button>
       </div>
-      <Drawer open={open === 1} onClose={() => setOpen(0)} anchor="left">
+      <Drawer open={open === 1} onClose={() => setOpen(0)} behavior="always-hidden">
         <div>Left Drawer</div>
       </Drawer>
-      <Drawer open={open === 2} onClose={() => setOpen(0)}>
+      <Drawer open={open === 2} onClose={() => setOpen(0)} anchor="right" behavior="always-hidden">
         <div>Right Drawer</div>
       </Drawer>
     </>
   );
 };
 
-export const Default: Story = {
+export const AlwaysHidden: Story = {
   render: Render,
+};
+
+export const AlwaysShow: Story = {
+  args: {
+    behavior: 'always-show',
+    children: 'Drawer',
+    className: 'border-r',
+  },
 };

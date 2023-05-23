@@ -36,7 +36,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       <div className="space-y-1 text-sm mb-1">
         {label && (
           <label htmlFor={props.id}>
-            {label} {props.required && <span className="text-danger">*</span>}
+            {label} {props.required && <span className="text-danger100">*</span>}
           </label>
         )}
         <input
@@ -47,7 +47,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             'rounded-md p-2 w-full',
             'border-0 ring-1 ring-inset',
             {
-              'ring-danger': status === 'error',
+              'ring-danger100': status === 'error',
               'ring-success': status === 'success',
               'ring-background-darker': status === 'default',
             },
@@ -57,8 +57,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           )}
         />
         <div
-          className={classNames('h-[17px]', {
-            'text-danger': status === 'error',
+          className={classNames('min-h-[20px]', {
+            'text-danger100': status === 'error',
             'text-success': status === 'success',
           })}
         >

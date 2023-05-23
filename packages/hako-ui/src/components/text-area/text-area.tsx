@@ -37,7 +37,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         {label && (
           <label htmlFor={props.id}>
             {label}
-            {props.required && <span className="text-danger">*</span>}
+            {props.required && <span className="text-danger100">*</span>}
           </label>
         )}
         <textarea
@@ -49,7 +49,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             'rounded-md p-2 w-full mt-1',
             'border-0 ring-1 ring-inset',
             {
-              'ring-danger': status === 'error',
+              'ring-danger100': status === 'error',
               'ring-success': status === 'success',
               'ring-background-darker': status === 'default',
             },
@@ -60,7 +60,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         />
         <div
           className={classNames('h-[17px] mt-0', {
-            'text-danger': status === 'error',
+            'text-danger100': status === 'error',
             'text-success': status === 'success',
           })}
         >

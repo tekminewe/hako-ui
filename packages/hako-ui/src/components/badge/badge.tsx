@@ -48,14 +48,14 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(({ className, varia
       className={classNames(className, 'px-1 py-[2px] text-xs rounded border', {
         'bg-primary border-primary text-on-primary': variant === 'primary',
         'bg-success border-success text-on-success': variant === 'success',
-        'bg-danger border-danger text-on-danger': variant === 'danger',
+        'bg-danger100 border-danger100 text-on-danger100': variant === 'danger',
         'bg-info border-info text-on-info': variant === 'info',
         'bg-warning border-warning text-on-warning': variant === 'warning',
         'bg-background-dark border-background-dark text-on-background-dark100': variant === 'default',
 
         'border-primary text-primary': variant === 'outline-primary',
         'border-success text-success': variant === 'outline-success',
-        'border-danger text-danger': variant === 'outline-danger',
+        'border-danger100 text-danger100': variant === 'outline-danger',
         'border-info text-info': variant === 'outline-info',
         'border-warning text-warning': variant === 'outline-warning',
         'border-on-background100 text-on-background100': variant === 'outline-default',

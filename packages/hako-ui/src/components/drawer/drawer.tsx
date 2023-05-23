@@ -34,6 +34,17 @@ export interface DrawerProps extends HTMLMotionProps<'nav'> {
    * @type DrawerAnchor
    */
   anchor?: 'left' | 'right';
+
+  /**
+   * The behavior of the drawer
+   * If set to "always-hidden", the drawer will be hidden on all screen sizes
+   * If set to "always-show", the drawer will be shown on all screen sizes
+   *
+   * @default "responsive"
+   * @type "always-hidden" | "always-show"
+   * @example "always-hidden"
+   */
+  behavior?: 'always-hidden' | 'always-show';
 }
 
 const variants = {
@@ -46,14 +57,14 @@ const variants = {
 };
 
 export const Drawer = forwardRef<HTMLElement, DrawerProps>(
-  ({ className, open, width = 370, onClose, anchor = 'right', ...props }, ref) => {
+  ({ className, open, width = 370, onClose, anchor = 'left', behavior = 'always-hidden', ...props }, ref) => {
     return (
       <>
         <motion.section
           {...props}
           ref={ref}
           animate={open ? 'open' : 'close'}
-          variants={variants}
+          variants={behavior !== 'always-show' ? variants : undefined}
           custom={{
             width,
             anchor,
@@ -62,9 +73,10 @@ export const Drawer = forwardRef<HTMLElement, DrawerProps>(
           style={{
             width: `${width}px`,
           }}
-          className={classNames(className, 'fixed top-0 bottom-0 bg-background z-50 shadow-lg', {
+          className={classNames(className, 'bg-background min-h-screen', {
             'left-0': anchor === 'left',
             'right-0': anchor === 'right',
+            'fixed top-0 bottom-0 z-50 shadow-lg': behavior === 'always-hidden',
           })}
         />
         {open && (
