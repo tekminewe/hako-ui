@@ -1,5 +1,6 @@
 'use client';
 
+import { MouseEventHandler } from 'react';
 import { SidebarItem, SidebarItemProps } from './item';
 
 interface SidebarSection {
@@ -45,6 +46,7 @@ export const SidebarSection = ({ sections }: SidebarSectionProps) => {
                     title={item.title}
                     icon={item.icon}
                     subItems={item.subItems}
+                    onClick={item.onClick}
                     alwaysShowSubItems={item.alwaysShowSubItems}
                   />
                 );
