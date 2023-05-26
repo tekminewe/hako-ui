@@ -1,3 +1,5 @@
+'use client';
+
 import { MouseEventHandler, forwardRef, useState } from 'react';
 import { TfiClose } from 'react-icons/tfi';
 import { Navbar, NavbarProps } from '../navbar/navbar';

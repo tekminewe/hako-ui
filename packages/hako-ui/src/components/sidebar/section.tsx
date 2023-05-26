@@ -1,20 +1,38 @@
-interface SidebarSection {
-  title?: string;
-  items: SidebarItem[];
-}
+'use client';
 
-interface SidebarItem {
-  title: string;
-  icon?: React.ReactNode;
+import { SidebarItem, SidebarItemProps } from './item';
+
+interface SidebarSection {
+  /**
+   * Title of the section
+   * @type string
+   * @example 'Dashboard'
+   * @default undefined
+   */
+  title?: string;
+
+  /**
+   * Items of the section
+   * @type SidebarItemProps[]
+   * @required
+   * @example [{ title: 'Users' }]
+   */
+  items: SidebarItemProps[];
 }
 
 export interface SidebarSectionProps {
+  /**
+   * The sections of the sidebar
+   * @type SidebarSection[]
+   * @required
+   * @example [{ title: 'Dashboard', items: [{ title: 'Users' }] }]
+   */
   sections: SidebarSection[];
 }
 
 export const SidebarSection = ({ sections }: SidebarSectionProps) => {
   return (
-    <div className="p-4">
+    <div className="p-4 font-medium">
       {sections.map((section, index) => {
         return (
           <div key={section.title + '' + index}>
@@ -22,13 +40,13 @@ export const SidebarSection = ({ sections }: SidebarSectionProps) => {
             <ul>
               {section.items.map((item, index) => {
                 return (
-                  <li
-                    className="flex items-center space-x-2 font-semibold p-2 hover:bg-background-dark rounded cursor-pointer"
+                  <SidebarItem
                     key={item.title + index}
-                  >
-                    {item.icon && <span>{item.icon}</span>}
-                    <a>{item.title}</a>
-                  </li>
+                    title={item.title}
+                    icon={item.icon}
+                    subItems={item.subItems}
+                    alwaysShowSubItems={item.alwaysShowSubItems}
+                  />
                 );
               })}
             </ul>

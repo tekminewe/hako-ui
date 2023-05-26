@@ -14,6 +14,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Complete: Story = {
   args: {
+    className: 'border-r border-gray-200',
     sections: [
       {
         items: [
@@ -28,6 +29,47 @@ export const Complete: Story = {
           {
             title: 'Permissions',
             icon: <AiOutlineApartment size={24} />,
+            subItems: [
+              {
+                title: 'Roles',
+              },
+              {
+                title: 'Users',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+};
+
+export const AlwaysShowSubItems: Story = {
+  args: {
+    className: 'border-r border-gray-200',
+    sections: [
+      {
+        items: [
+          {
+            title: 'Dashboard',
+            icon: <AiOutlineHome size={24} />,
+          },
+          {
+            title: 'Support',
+            icon: <AiOutlineMessage size={24} />,
+          },
+          {
+            title: 'Permissions',
+            icon: <AiOutlineApartment size={24} />,
+            alwaysShowSubItems: true,
+            subItems: [
+              {
+                title: 'Roles',
+              },
+              {
+                title: 'Users',
+              },
+            ],
           },
         ],
       },
