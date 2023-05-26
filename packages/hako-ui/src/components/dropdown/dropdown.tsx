@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { forwardRef, MouseEventHandler, useEffect, useLayoutEffect, useState } from 'react';
 import { Portal } from '../portal';
