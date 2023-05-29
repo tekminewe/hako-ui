@@ -11,7 +11,7 @@ export interface TableProps extends HTMLAttributes<HTMLTableElement> {
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(({ columns, datas, className, ...props }, ref) => {
   return (
-    <div className={classNames('overflow-x-auto min-w-full', className)} {...props} ref={ref}>
+    <div className={classNames('overflow-x-auto border min-w-full', className)} {...props} ref={ref}>
       <table className="min-w-full divide-y divide-background-darker">
         <TableHeader columns={columns} />
         <tbody>
