@@ -1,9 +1,10 @@
+import { ReactNode } from 'react';
 import { TableColumn } from './header';
 
 export interface TableRowProps {
   columns: TableColumn[];
 
-  data: Record<string, string | number>;
+  data: Record<string, unknown>;
 }
 
 export const TableRow = ({ data, columns }: TableRowProps) => {
@@ -12,7 +13,7 @@ export const TableRow = ({ data, columns }: TableRowProps) => {
       {columns.map((column, index) => {
         return (
           <td key={index} className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            {data[column.key]}
+            {data[column.key] as ReactNode}
           </td>
         );
       })}

@@ -6,7 +6,7 @@ import classNames from 'classnames';
 export interface TableProps extends HTMLAttributes<HTMLTableElement> {
   columns: TableColumn[];
 
-  datas: Record<string, string | number>[];
+  datas: Record<string, unknown>[];
 }
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(({ columns, datas, className, ...props }, ref) => {
