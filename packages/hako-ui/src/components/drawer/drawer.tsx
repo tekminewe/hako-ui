@@ -75,7 +75,7 @@ export const Drawer = forwardRef<HTMLElement, DrawerProps>(
           style={{
             width: `${width}px`,
           }}
-          className={classNames(className, 'bg-background min-h-screen', {
+          className={classNames(className, 'bg-neutral5 min-h-screen', {
             'left-0': anchor === 'left',
             'right-0': anchor === 'right',
             'fixed top-0 bottom-0 z-50 shadow-lg': behavior === 'always-hidden',

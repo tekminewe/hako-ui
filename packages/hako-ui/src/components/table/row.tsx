@@ -29,7 +29,7 @@ export const TableRow = ({ data, columns }: TableRowProps) => {
   };
 
   return (
-    <tr className="border-b border-background-darker">
+    <tr className="border-b border-neutral20">
       {columns.map((column, index) => {
         return (
           <td key={index} className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

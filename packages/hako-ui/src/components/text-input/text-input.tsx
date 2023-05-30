@@ -49,10 +49,10 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             {
               'ring-danger100': status === 'error',
               'ring-success': status === 'success',
-              'ring-background-darker': status === 'default',
+              'ring-neutral20': status === 'default',
             },
-            'bg-background-dark text-on-background-dark100',
-            'placeholder:text-on-background-dark50',
+            'bg-neutral10 text-neutral90',
+            'placeholder:text-neutral40',
             'focus:ring-2 focus:ring-primary focus:outline-none',
           )}
         />

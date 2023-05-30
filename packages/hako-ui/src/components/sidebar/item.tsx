@@ -77,7 +77,7 @@ export const SidebarItem = ({ title, icon, subItems, onClick, alwaysShowSubItems
   return (
     <li>
       <button
-        className="flex items-center space-x-2 p-2 hover:bg-background-dark rounded cursor-pointer w-full"
+        className="flex items-center space-x-2 p-2 hover:bg-neutral10 rounded cursor-pointer w-full"
         onClick={handleClick}
       >
         {icon && <span>{icon}</span>}
@@ -94,7 +94,7 @@ export const SidebarItem = ({ title, icon, subItems, onClick, alwaysShowSubItems
             return (
               <li key={subItem.title + index}>
                 <button
-                  className="text-left pl-10 p-2 hover:bg-background-dark rounded cursor-pointer w-full"
+                  className="text-left pl-10 p-2 hover:bg-neutral10 rounded cursor-pointer w-full"
                   onClick={subItem.onClick}
                 >
                   {subItem.title}
