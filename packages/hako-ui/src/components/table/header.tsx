@@ -35,10 +35,10 @@ export interface TableHeaderProps {
 export const TableHeader = ({ columns }: TableHeaderProps) => {
   return (
     <thead>
-      <tr className="border-b border-gray-300">
+      <tr className="border-b border-neutral30">
         {columns.map((column, index) => {
           return (
-            <th key={index} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th key={index} className="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider">
               {column.title}
             </th>
           );

@@ -32,7 +32,7 @@ export const TableRow = ({ data, columns }: TableRowProps) => {
     <tr className="border-b border-neutral20">
       {columns.map((column, index) => {
         return (
-          <td key={index} className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+          <td key={index} className="px-6 py-4 whitespace-nowrap text-sm">
             {column.render ? column.render(data[column.key]) : (renderData(data[column.key]) as ReactNode)}
           </td>
         );

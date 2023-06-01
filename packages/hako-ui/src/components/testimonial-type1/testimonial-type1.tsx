@@ -91,7 +91,7 @@ export const TestimonialType1 = forwardRef<HTMLDivElement, TestimonialType1Props
               <img className="rounded-full !h-[80px] !w-[80px]" src={testimonial.avatarUrl} alt={testimonial.name} />
               <h3 className="font-semibold my-2">{testimonial.name}</h3>
               <h3 className="text-sm my-2">{testimonial.designation}</h3>
-              <p className="text-gray-500">{`"${testimonial.message}"`}</p>
+              <p className="text-neutral50">{`"${testimonial.message}"`}</p>
             </div>
           ))}
         </Carousel>

@@ -132,7 +132,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           ref={ref}
           className={classNames(
             className,
-            'dropdown fixed rounded-md shadow-md border bg-neutral5 border-neutral30 divide-y py-2 min-w-[100px] text-sm z-10',
+            'dropdown fixed rounded-md shadow-md border bg-neutral5 border-neutral20 divide-y py-2 min-w-[100px] text-sm z-10',
           )}
           style={{ ...anchorStyle, ...style }}
           {...props}

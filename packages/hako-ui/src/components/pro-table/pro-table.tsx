@@ -1,3 +1,4 @@
+import { Button } from '../button';
 import { Table, TableProps } from '../table';
 
 export interface ProTableProps extends TableProps {
@@ -7,6 +8,7 @@ export interface ProTableProps extends TableProps {
 export const ProTable = ({ request, ...props }: ProTableProps) => {
   return (
     <div>
+      <Button></Button>
       <Table {...props} />
     </div>
   );

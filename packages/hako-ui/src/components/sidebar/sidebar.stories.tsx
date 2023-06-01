@@ -47,6 +47,9 @@ export const Complete: Story = {
 export const AlwaysShowSubItems: Story = {
   args: {
     className: 'border-r border-gray-200',
+    backgroundClassName: 'bg-purple-600',
+    hoverClassName: 'hover:bg-purple-800',
+    textClassName: 'text-white',
     sections: [
       {
         items: [
