@@ -46,7 +46,7 @@ const generateColors = (prefix) => {
 module.exports = (options) => {
   const { cssVarPrefix = 'hk-' } = options || {};
   return plugin(
-    ({ addBase, theme }) => {
+    ({ addBase, theme, addComponents }) => {
       addBase({
         ':root': {
           [`--${cssVarPrefix}primary`]: '#7c3aed',
@@ -78,6 +78,36 @@ module.exports = (options) => {
           backgroundColor: theme('colors.background'),
           color: theme('colors.on-background100'),
           fontSize: theme('fontSize.base'),
+        },
+      });
+      addComponents({
+        '.hk-typo-h1': {
+          fontSize: theme('fontSize.3xl'),
+          lineHeight: theme('lineHeight.9'),
+          fontWeight: theme('fontWeight.semibold'),
+        },
+        '.hk-typo-h2': {
+          fontSize: theme('fontSize.2xl'),
+          lineHeight: theme('lineHeight.8'),
+          fontWeight: theme('fontWeight.semibold'),
+        },
+        '.hk-typo-h3': {
+          fontSize: theme('fontSize.xl'),
+          lineHeight: theme('lineHeight.7'),
+          fontWeight: theme('fontWeight.semibold'),
+        },
+        '.hk-typo-highlight': {
+          fontSize: theme('fontSize.sm'),
+          fontWeight: theme('fontWeight.medium'),
+          lineHeight: theme('lineHeight.5'),
+        },
+        '.hk-typo-body': {
+          fontSize: theme('fontSize.sm'),
+          lineHeight: theme('lineHeight.5'),
+        },
+        '.hk-typo-small': {
+          fontSize: theme('fontSize.xs'),
+          lineHeight: theme('lineHeight.4'),
         },
       });
     },
