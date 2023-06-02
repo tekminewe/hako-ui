@@ -1,7 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
-import { forwardRef, HTMLAttributes, useMemo, useState } from 'react';
+import { forwardRef, HTMLAttributes, useMemo } from 'react';
 
 export type DrawerAnchor = 'left' | 'right';
 export interface DrawerProps extends HTMLAttributes<HTMLElement> {
@@ -61,7 +61,7 @@ export const Drawer = forwardRef<HTMLElement, DrawerProps>(
       }
 
       return '0px';
-    }, [open]);
+    }, [behavior, open, width]);
 
     return (
       <>

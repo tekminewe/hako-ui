@@ -39,11 +39,11 @@ export interface SidebarSectionProps {
 
 export const SidebarSection = ({ sections, hoverClassName }: SidebarSectionProps) => {
   return (
-    <div className="p-4 font-medium">
+    <div className="p-4 space-y-8">
       {sections.map((section, index) => {
         return (
           <div key={section.title + '' + index}>
-            {section.title && <div>{section.title}</div>}
+            {section.title && <div className="text-xs font-medium mb-2">{section.title}</div>}
             <ul>
               {section.items.map((item, index) => {
                 return (

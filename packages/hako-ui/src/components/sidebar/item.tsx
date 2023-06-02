@@ -92,7 +92,10 @@ export const SidebarItem = ({
   return (
     <li>
       <button
-        className={classNames('flex items-center space-x-2 p-2 rounded cursor-pointer w-full', hoverClassName)}
+        className={classNames('flex items-center space-x-2 p-2 rounded w-full', {
+          [`cursor-pointer ${hoverClassName}`]: !alwaysShowSubItems,
+          'cursor-default': alwaysShowSubItems,
+        })}
         onClick={handleClick}
       >
         {icon && <span>{icon}</span>}
@@ -109,7 +112,9 @@ export const SidebarItem = ({
             return (
               <li key={subItem.title + index}>
                 <button
-                  className={classNames('text-left pl-10 p-2 rounded cursor-pointer w-full', hoverClassName)}
+                  className={classNames('text-left p-2 font-light rounded cursor-pointer w-full', hoverClassName, {
+                    'pl-10': !!icon,
+                  })}
                   onClick={subItem.onClick}
                 >
                   {subItem.title}
