@@ -51,7 +51,8 @@ export interface DrawerProps extends HTMLAttributes<HTMLElement> {
 export const Drawer = forwardRef<HTMLElement, DrawerProps>(
   ({ className, open, width = 250, onClose, anchor = 'left', behavior = 'always-hidden', ...props }, ref) => {
     const displayWidth: string = useMemo(() => {
-      if (open) {
+      const shouldDisplay = open || behavior === 'always-show';
+      if (shouldDisplay) {
         if (isNaN(+width)) {
           return `${width}`;
         } else {
@@ -80,7 +81,9 @@ export const Drawer = forwardRef<HTMLElement, DrawerProps>(
             },
           )}
         />
-        {open && <div onClick={onClose} className="bg-overlay fixed top-0 left-0 right-0 bottom-0 z-40" />}
+        {open && behavior !== 'always-show' && (
+          <div onClick={onClose} className="bg-overlay fixed top-0 left-0 right-0 bottom-0 z-40" />
+        )}
       </>
     );
   },
