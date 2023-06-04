@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { TableColumn } from './header';
+import classNames from 'classnames';
 
 export interface TableRowProps<T extends object> {
   /**
@@ -38,7 +39,12 @@ export const TableRow = <T extends object>({ data, columns, onClick }: TableRowP
   };
 
   return (
-    <tr className="border-b border-neutral20" onClick={(e) => onClick?.(data, e)}>
+    <tr
+      className={classNames('border-b border-neutral20', {
+        'hover:bg-neutral10 cursor-pointer': !!onClick,
+      })}
+      onClick={(e) => onClick?.(data, e)}
+    >
       {columns.map((column, index) => {
         return (
           <td key={index} className="px-6 py-4 whitespace-nowrap text-sm">

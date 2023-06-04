@@ -11,7 +11,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Complete: Story = {
+export const Simple: Story = {
   args: {
     columns: [
       {
@@ -51,6 +51,60 @@ export const Complete: Story = {
         action: 'Edit',
       },
     ],
+  },
+};
+
+export const Clickable: Story = {
+  args: {
+    columns: [],
+    data: [],
+  },
+  render: () => {
+    return (
+      <div>
+        <Table<{ name: string; email: string; role: string; status: string; action: string }>
+          columns={[
+            {
+              title: 'Name',
+              key: 'name',
+            },
+            {
+              title: 'Email',
+              key: 'email',
+            },
+            {
+              title: 'Role',
+              key: 'role',
+            },
+            {
+              title: 'Status',
+              key: 'status',
+            },
+            {
+              title: 'Action',
+              key: 'action',
+            },
+          ]}
+          data={[
+            {
+              name: 'John Doe',
+              email: 'haha@mail.com',
+              role: 'Admin',
+              status: 'Active',
+              action: 'Edit',
+            },
+            {
+              name: 'John Doe',
+              email: 'hehe@mail.com',
+              role: 'Admin',
+              status: 'Active',
+              action: 'Edit',
+            },
+          ]}
+          onRowClick={console.log}
+        />
+      </div>
+    );
   },
 };
 
