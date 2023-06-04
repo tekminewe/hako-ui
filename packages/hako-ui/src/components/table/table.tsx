@@ -63,6 +63,6 @@ const Component = <T extends object>(
   );
 };
 
-export const Table = forwardRef(Component) as <T extends Record<string, unknown>>(
+export const Table = forwardRef(Component) as <T extends object>(
   props: TableProps<T> & { ref?: React.ForwardedRef<HTMLTableColElement> },
 ) => ReturnType<typeof Component>;

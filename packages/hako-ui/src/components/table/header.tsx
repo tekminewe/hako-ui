@@ -13,7 +13,7 @@ export interface TableColumn<T> {
    * @required
    * @example 'id'
    */
-  key: keyof T;
+  key: string;
 
   /**
    * The render function of the column.
