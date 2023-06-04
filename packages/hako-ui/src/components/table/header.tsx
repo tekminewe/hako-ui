@@ -1,4 +1,4 @@
-export interface TableColumn {
+export interface TableColumn<T> {
   /**
    * The title of the column.
    * @type {string}
@@ -13,26 +13,26 @@ export interface TableColumn {
    * @required
    * @example 'id'
    */
-  key: string;
+  key: keyof T;
 
   /**
    * The render function of the column.
    * @param data
    * @returns
    */
-  render?: (data: unknown) => React.ReactNode;
+  render?: (data: T[keyof T]) => React.ReactNode;
 }
 
-export interface TableHeaderProps {
+export interface TableHeaderProps<T> {
   /**
    * The columns of the table.
    * @type {TableColumn[]}
    * @required
    */
-  columns: TableColumn[];
+  columns: TableColumn<T>[];
 }
 
-export const TableHeader = ({ columns }: TableHeaderProps) => {
+export const TableHeader = <T,>({ columns }: TableHeaderProps<T>) => {
   return (
     <thead>
       <tr className="border-b border-neutral30">

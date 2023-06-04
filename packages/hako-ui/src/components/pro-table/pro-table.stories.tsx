@@ -35,7 +35,7 @@ export const Complete: Story = {
         key: 'action',
       },
     ],
-    datas: [
+    data: [
       {
         name: 'John Doe',
         email: 'haha@mail.com',

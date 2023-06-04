@@ -35,7 +35,7 @@ export const Complete: Story = {
         key: 'action',
       },
     ],
-    datas: [
+    data: [
       {
         name: 'John Doe',
         email: 'haha@mail.com',
@@ -51,5 +51,33 @@ export const Complete: Story = {
         action: 'Edit',
       },
     ],
+  },
+};
+
+export const Empty: Story = {
+  args: {
+    columns: [
+      {
+        title: 'Name',
+        key: 'name',
+      },
+      {
+        title: 'Email',
+        key: 'email',
+      },
+      {
+        title: 'Role',
+        key: 'role',
+      },
+      {
+        title: 'Status',
+        key: 'status',
+      },
+      {
+        title: 'Action',
+        key: 'action',
+      },
+    ],
+    data: [],
   },
 };
