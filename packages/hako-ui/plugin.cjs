@@ -75,8 +75,8 @@ module.exports = (options) => {
           [`--${cssVarPrefix}neutral5`]: '#fafafa',
         },
         body: {
-          backgroundColor: theme('colors.background'),
-          color: theme('colors.on-background100'),
+          backgroundColor: theme('colors.neutral5'),
+          color: theme('colors.neutral90'),
           fontSize: theme('fontSize.base'),
         },
       });
