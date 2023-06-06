@@ -45,7 +45,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(({ className, variant = 'primary', ...props }, ref) => {
   return (
     <span
-      className={classNames(className, 'px-1 py-[2px] text-xs rounded border', {
+      className={classNames(className, 'px-1 py-[2px] text-xs hk-rounded border', {
         'bg-primary border-primary text-on-primary': variant === 'primary',
         'bg-success border-success text-on-success': variant === 'success',
         'bg-danger100 border-danger100 text-on-danger100': variant === 'danger',

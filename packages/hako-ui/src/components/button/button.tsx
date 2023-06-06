@@ -80,7 +80,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         {...props}
         ref={ref}
-        className={classNames(className, 'rounded-md border px-4 py-2 relative', {
+        className={classNames(className, 'hk-rounded border px-4 py-2 relative', {
           'bg-primary border-primary text-on-primary': variant === 'primary',
           'bg-success border-success text-on-success': variant === 'success',
           'bg-info border-info text-on-info': variant === 'info',

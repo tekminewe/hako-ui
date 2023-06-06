@@ -44,7 +44,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           {...props}
           className={classNames(
             className,
-            'rounded-md p-2 w-full',
+            'hk-rounded p-2 w-full',
             'border-0 ring-1 ring-inset',
             {
               'ring-danger100': status === 'error',

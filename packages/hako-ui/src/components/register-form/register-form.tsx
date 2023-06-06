@@ -156,7 +156,7 @@ export const RegisterForm = forwardRef<HTMLFormElement, RegisterFormProps>(
           </div>
           {status && (
             <div
-              className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 rounded mb-4 text-sm"
+              className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 hk-rounded mb-4 text-sm"
               role="alert"
             >
               <span>{status}</span>

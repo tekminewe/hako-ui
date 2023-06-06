@@ -46,7 +46,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           rows={rows}
           className={classNames(
             className,
-            'rounded-md p-2 w-full mt-1',
+            'hk-rounded p-2 w-full mt-1',
             'border-0 ring-1 ring-inset',
             {
               'ring-danger100': status === 'error',
