@@ -153,7 +153,7 @@ export const PortfolioType1 = forwardRef<HTMLDivElement, PortfolioType1Props>(
                       </div>
                     )}
                     <p className="text-lg font-semibold my-2">{project.title}</p>
-                    <p className="text-gray-500">{project.description}</p>
+                    <p className="text-neutral50">{project.description}</p>
                   </Card>
                 ))}
               </div>

@@ -17,17 +17,17 @@ const colors = [
   'info',
   'on-info',
 
-  'background',
-  'on-background100',
-  'on-background50',
-  'on-background10',
-
-  'background-dark',
-  'on-background-dark100',
-  'on-background-dark50',
-
-  'background-darker',
-  'on-background-darker100',
+  'neutral100',
+  'neutral90',
+  'neutral80',
+  'neutral70',
+  'neutral60',
+  'neutral50',
+  'neutral40',
+  'neutral30',
+  'neutral20',
+  'neutral10',
+  'neutral5',
 ];
 
 /**
@@ -46,7 +46,7 @@ const generateColors = (prefix) => {
 module.exports = (options) => {
   const { cssVarPrefix = 'hk-' } = options || {};
   return plugin(
-    ({ addBase, theme }) => {
+    ({ addBase, theme, addComponents }) => {
       addBase({
         ':root': {
           [`--${cssVarPrefix}primary`]: '#7c3aed',
@@ -62,20 +62,52 @@ module.exports = (options) => {
           [`--${cssVarPrefix}info`]: '#2196f3',
           [`--${cssVarPrefix}on-info`]: '#fafafa',
 
-          [`--${cssVarPrefix}background`]: '#fafafa',
-          [`--${cssVarPrefix}on-background100`]: '#171717',
-          [`--${cssVarPrefix}on-background50`]: '#a3a3a3',
-          [`--${cssVarPrefix}on-background10`]: '#d6d3d1',
-          [`--${cssVarPrefix}background-dark`]: '#f5f5f5',
-          [`--${cssVarPrefix}on-background-dark100`]: '#171717',
-          [`--${cssVarPrefix}on-background-dark50`]: '#a3a3a3',
-          [`--${cssVarPrefix}background-darker`]: '#e5e5e5',
-          [`--${cssVarPrefix}on-background-darker100`]: '#171717',
+          [`--${cssVarPrefix}neutral100`]: '#0a0a0a',
+          [`--${cssVarPrefix}neutral90`]: '#171717',
+          [`--${cssVarPrefix}neutral80`]: '#262626',
+          [`--${cssVarPrefix}neutral70`]: '#404040',
+          [`--${cssVarPrefix}neutral60`]: '#525252',
+          [`--${cssVarPrefix}neutral50`]: '#737373',
+          [`--${cssVarPrefix}neutral40`]: '#a3a3a3',
+          [`--${cssVarPrefix}neutral30`]: '#d4d4d4',
+          [`--${cssVarPrefix}neutral20`]: '#e5e5e5',
+          [`--${cssVarPrefix}neutral10`]: '#f5f5f5',
+          [`--${cssVarPrefix}neutral5`]: '#fafafa',
         },
         body: {
-          backgroundColor: theme('colors.background'),
-          color: theme('colors.on-background100'),
+          backgroundColor: theme('colors.neutral5'),
+          color: theme('colors.neutral90'),
           fontSize: theme('fontSize.base'),
+        },
+      });
+      addComponents({
+        '.hk-typo-h1': {
+          fontSize: theme('fontSize.3xl'),
+          lineHeight: theme('lineHeight.9'),
+          fontWeight: theme('fontWeight.semibold'),
+        },
+        '.hk-typo-h2': {
+          fontSize: theme('fontSize.2xl'),
+          lineHeight: theme('lineHeight.8'),
+          fontWeight: theme('fontWeight.semibold'),
+        },
+        '.hk-typo-h3': {
+          fontSize: theme('fontSize.xl'),
+          lineHeight: theme('lineHeight.7'),
+          fontWeight: theme('fontWeight.semibold'),
+        },
+        '.hk-typo-highlight': {
+          fontSize: theme('fontSize.sm'),
+          fontWeight: theme('fontWeight.medium'),
+          lineHeight: theme('lineHeight.5'),
+        },
+        '.hk-typo-body': {
+          fontSize: theme('fontSize.sm'),
+          lineHeight: theme('lineHeight.5'),
+        },
+        '.hk-typo-small': {
+          fontSize: theme('fontSize.xs'),
+          lineHeight: theme('lineHeight.4'),
         },
       });
     },

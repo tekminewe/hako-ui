@@ -1,5 +1,6 @@
 'use client';
 
+import classNames from 'classnames';
 import { MouseEventHandler, useState } from 'react';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
@@ -44,6 +45,13 @@ export interface SidebarItemProps {
    * @example true
    */
   alwaysShowSubItems?: boolean;
+
+  /**
+   * The className of the item when hovered
+   * @type string
+   * @example 'hover:bg-gray-200'
+   */
+  hoverClassName?: string;
 }
 
 export interface SidebarSubItem {
@@ -64,7 +72,14 @@ export interface SidebarSubItem {
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const SidebarItem = ({ title, icon, subItems, onClick, alwaysShowSubItems = false }: SidebarItemProps) => {
+export const SidebarItem = ({
+  title,
+  icon,
+  subItems,
+  onClick,
+  hoverClassName,
+  alwaysShowSubItems = false,
+}: SidebarItemProps) => {
   const [isOpen, setIsOpen] = useState(alwaysShowSubItems);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (subItems) {
@@ -77,7 +92,10 @@ export const SidebarItem = ({ title, icon, subItems, onClick, alwaysShowSubItems
   return (
     <li>
       <button
-        className="flex items-center space-x-2 p-2 hover:bg-background-dark rounded cursor-pointer w-full"
+        className={classNames('flex items-center space-x-2 p-2 rounded w-full', {
+          [`cursor-pointer ${hoverClassName}`]: !alwaysShowSubItems,
+          'cursor-default': alwaysShowSubItems,
+        })}
         onClick={handleClick}
       >
         {icon && <span>{icon}</span>}
@@ -94,7 +112,9 @@ export const SidebarItem = ({ title, icon, subItems, onClick, alwaysShowSubItems
             return (
               <li key={subItem.title + index}>
                 <button
-                  className="text-left pl-10 p-2 hover:bg-background-dark rounded cursor-pointer w-full"
+                  className={classNames('text-left p-2 font-light rounded cursor-pointer w-full', hoverClassName, {
+                    'pl-10': !!icon,
+                  })}
                   onClick={subItem.onClick}
                 >
                   {subItem.title}

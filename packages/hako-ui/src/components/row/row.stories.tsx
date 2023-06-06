@@ -37,3 +37,19 @@ export const VerticalAlignment: Story = {
     </Row>
   ),
 };
+
+export const LayoutColumn: Story = {
+  render: () => (
+    <Row className="space-x-8">
+      <Row className="border border-gray-200 justify-center rounded p-2" xs={3}>
+        xs=3
+      </Row>
+      <Row className="border border-gray-200 justify-center text-center rounded p-2" xs={5}>
+        xs=5
+      </Row>
+      <Row className="border border-gray-200 justify-center text-center rounded p-2" xs={4}>
+        xs=4
+      </Row>
+    </Row>
+  ),
+};

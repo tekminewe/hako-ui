@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@tekminewe/eslint-config-react'],
+  extends: ['@tekminewe/eslint-config-react', 'plugin:storybook/recommended'],
 };

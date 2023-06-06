@@ -36,10 +36,10 @@ const Render = () => {
           Right
         </Button>
       </div>
-      <Drawer open={open === 1} onClose={() => setOpen(0)} behavior="always-hidden">
+      <Drawer className="bg-white" open={open === 1} onClose={() => setOpen(0)} behavior="always-hidden">
         <div>Left Drawer</div>
       </Drawer>
-      <Drawer open={open === 2} onClose={() => setOpen(0)} anchor="right" behavior="always-hidden">
+      <Drawer className="bg-white" open={open === 2} onClose={() => setOpen(0)} anchor="right" behavior="always-hidden">
         <div>Right Drawer</div>
       </Drawer>
     </>

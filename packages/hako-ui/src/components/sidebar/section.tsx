@@ -1,6 +1,5 @@
 'use client';
 
-import { MouseEventHandler } from 'react';
 import { SidebarItem, SidebarItemProps } from './item';
 
 interface SidebarSection {
@@ -29,15 +28,22 @@ export interface SidebarSectionProps {
    * @example [{ title: 'Dashboard', items: [{ title: 'Users' }] }]
    */
   sections: SidebarSection[];
+
+  /**
+   * The className of the item when hovered
+   * @type string
+   * @example 'bg-gray-200'
+   */
+  hoverClassName?: string;
 }
 
-export const SidebarSection = ({ sections }: SidebarSectionProps) => {
+export const SidebarSection = ({ sections, hoverClassName }: SidebarSectionProps) => {
   return (
-    <div className="p-4 font-medium">
+    <div className="p-4 space-y-8">
       {sections.map((section, index) => {
         return (
           <div key={section.title + '' + index}>
-            {section.title && <div>{section.title}</div>}
+            {section.title && <div className="text-xs font-medium mb-2">{section.title}</div>}
             <ul>
               {section.items.map((item, index) => {
                 return (
@@ -48,6 +54,7 @@ export const SidebarSection = ({ sections }: SidebarSectionProps) => {
                     subItems={item.subItems}
                     onClick={item.onClick}
                     alwaysShowSubItems={item.alwaysShowSubItems}
+                    hoverClassName={hoverClassName}
                   />
                 );
               })}

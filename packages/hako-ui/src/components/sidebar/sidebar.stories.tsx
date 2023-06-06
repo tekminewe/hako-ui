@@ -47,6 +47,9 @@ export const Complete: Story = {
 export const AlwaysShowSubItems: Story = {
   args: {
     className: 'border-r border-gray-200',
+    backgroundClassName: 'bg-purple-600',
+    hoverClassName: 'hover:bg-purple-800',
+    textClassName: 'text-white',
     sections: [
       {
         items: [
@@ -70,6 +73,59 @@ export const AlwaysShowSubItems: Story = {
                 title: 'Users',
               },
             ],
+          },
+        ],
+      },
+    ],
+  },
+};
+
+export const WithoutIcon: Story = {
+  args: {
+    className: 'border-r border-gray-200',
+    backgroundClassName: 'bg-purple-600',
+    hoverClassName: 'hover:bg-purple-800',
+    textClassName: 'text-white',
+    sections: [
+      {
+        items: [
+          {
+            title: 'Dashboard',
+          },
+          {
+            title: 'Support',
+            alwaysShowSubItems: true,
+            subItems: [
+              {
+                title: 'Chat',
+              },
+              {
+                title: 'Agents',
+              },
+            ],
+          },
+          {
+            title: 'Permissions',
+            alwaysShowSubItems: true,
+            subItems: [
+              {
+                title: 'Roles',
+              },
+              {
+                title: 'Users',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'My Teams',
+        items: [
+          {
+            title: 'Teams',
+          },
+          {
+            title: 'Organizations',
           },
         ],
       },

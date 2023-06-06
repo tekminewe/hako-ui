@@ -94,7 +94,7 @@ export const FeatureType1 = forwardRef<HTMLDivElement, FeatureType1Props>(
               {feature.icon}
               <h3 className="text-lg font-semibold my-2">{feature.title}</h3>
               <p
-                className={classNames('text-gray-500', {
+                className={classNames('text-neutral50', {
                   'mb-8': !!feature.learnMore,
                 })}
               >
