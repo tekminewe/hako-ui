@@ -35,7 +35,7 @@ export interface TableHeaderProps<T> {
 export const TableHeader = <T,>({ columns }: TableHeaderProps<T>) => {
   return (
     <thead>
-      <tr className="border-b border-neutral30">
+      <tr className="border-b hk-border">
         {columns.map((column, index) => {
           return (
             <th key={index} className="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider">
