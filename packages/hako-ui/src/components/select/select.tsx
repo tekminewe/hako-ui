@@ -51,7 +51,10 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
         <button
           {...props}
           onClick={handleClick}
-          className={classNames('hk-border border hk-rounded p-1 pl-3 overflow-hidden flex items-center', className)}
+          className={classNames(
+            'hk-border border hk-rounded p-1 pl-3 overflow-hidden flex items-center bg-neutral5',
+            className,
+          )}
           ref={buttonRef}
         >
           <span className="truncate text-sm flex-1">{placeholder}</span>

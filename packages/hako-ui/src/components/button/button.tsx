@@ -86,14 +86,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'bg-info border-info text-on-info': variant === 'info',
           'bg-warning border-warning text-on-warning': variant === 'warning',
           'bg-danger100 border-danger100 text-on-danger100': variant === 'danger',
-          'bg-neutral10 hk-border text-neutral90': variant === 'default',
+          'bg-neutral10 hk-border': variant === 'default',
 
           'border-primary text-primary': variant === 'outline-primary',
           'border-success text-success': variant === 'outline-success',
           'border-info text-info': variant === 'outline-info',
           'border-warning text-warning': variant === 'outline-warning',
           'border-danger100 text-danger100': variant === 'outline-danger',
-          'border-neutral90 text-neutral90': variant === 'outline-default',
+          'border-neutral90': variant === 'outline-default',
 
           'text-primary border-transparent': variant === 'text-primary',
           'text-success border-transparent': variant === 'text-success',

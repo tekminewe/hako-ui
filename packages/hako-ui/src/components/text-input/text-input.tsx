@@ -51,7 +51,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               'ring-success': status === 'success',
               'ring-neutral20': status === 'default',
             },
-            'bg-neutral10 text-neutral90',
+            'bg-neutral5',
             'placeholder:text-neutral40',
             'focus:ring-2 focus:ring-primary focus:outline-none',
           )}

@@ -163,7 +163,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           ref={ref}
           className={classNames(
             className,
-            'dropdown fixed hk-rounded shadow-md border bg-neutral10 hk-border divide-y py-2 min-w-[100px] text-sm z-10',
+            'dropdown fixed hk-rounded shadow-md border bg-neutral5 hk-border divide-y py-2 min-w-[100px] text-sm z-10',
           )}
           style={{ ...anchorStyle, ...style }}
           {...props}
@@ -177,7 +177,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
                       key={item.id}
                       onClick={(e) => onItemClick?.(item, e)}
                       className={classNames(
-                        'px-4 py-2 cursor-pointer hover:bg-neutral20 font-light overflow-hidden truncate',
+                        'px-4 py-2 cursor-pointer hover:bg-neutral10 font-light overflow-hidden truncate',
                         getClassNameForItem?.(item, sectionIndex, index),
                       )}
                     >

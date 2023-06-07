@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Select } from './select';
 
 const meta = {
-  title: 'Components / Select',
+  title: 'Components / Forms / Select',
   component: Select,
   tags: ['autodocs'],
 } satisfies Meta<typeof Select>;

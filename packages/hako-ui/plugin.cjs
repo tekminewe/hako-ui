@@ -74,7 +74,7 @@ module.exports = (options) => {
           [`--${cssVarPrefix}neutral30`]: '#d4d4d4',
           [`--${cssVarPrefix}neutral20`]: '#e5e5e5',
           [`--${cssVarPrefix}neutral10`]: '#f5f5f5',
-          [`--${cssVarPrefix}neutral5`]: '#fafafa',
+          [`--${cssVarPrefix}neutral5`]: '#fdfdfd',
 
           [`--${cssVarPrefix}rounded`]: '0.375rem',
         },
