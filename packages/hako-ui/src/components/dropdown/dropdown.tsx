@@ -2,7 +2,8 @@
 
 import classNames from 'classnames';
 import { forwardRef, useEffect, useLayoutEffect, useState } from 'react';
-import { Portal } from '../portal';
+import { ImSpinner2 } from 'react-icons/im';
+import { createPortal } from 'react-dom';
 
 export interface DropdownItem {
   /**
@@ -88,6 +89,13 @@ export interface DropdownProps extends Omit<React.HTMLProps<HTMLDivElement>, 'ch
    * @default undefined
    */
   getClassNameForItem?: (item: DropdownItem, sectionIndex: number, itemIndex: number) => string;
+
+  /**
+   * If true, the dropdown will show a loading indicator
+   * @type boolean
+   * @default false
+   */
+  loading?: boolean;
 }
 
 const offsetTop = 4;
@@ -103,6 +111,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
       style,
       onClose,
       getClassNameForItem,
+      loading = false,
       ...props
     },
     ref,
@@ -157,18 +166,23 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
       return null;
     }
 
-    return (
-      <Portal>
-        <div
-          ref={ref}
-          className={classNames(
-            className,
-            'dropdown fixed hk-rounded shadow-md border bg-neutral5 hk-border divide-y py-2 min-w-[100px] text-sm z-10',
-          )}
-          style={{ ...anchorStyle, ...style }}
-          {...props}
-        >
-          {sections.map((section, sectionIndex) => {
+    return createPortal(
+      <div
+        ref={ref}
+        className={classNames(
+          className,
+          'dropdown fixed hk-rounded shadow-md border bg-neutral5 hk-border divide-y py-2 min-w-[100px] text-sm z-10',
+        )}
+        style={{ ...anchorStyle, ...style }}
+        {...props}
+      >
+        {loading && (
+          <div className="flex justify-center py-2">
+            <ImSpinner2 className="animate-spin text-neutral50" size={24} />
+          </div>
+        )}
+        {!loading &&
+          sections.map((section, sectionIndex) => {
             return (
               <ul key={sectionIndex}>
                 {section.items.map((item, index) => {
@@ -188,8 +202,8 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
               </ul>
             );
           })}
-        </div>
-      </Portal>
+      </div>,
+      document.body,
     );
   },
 );

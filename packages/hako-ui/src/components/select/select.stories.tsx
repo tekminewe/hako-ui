@@ -11,7 +11,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Complete: Story = {
+export const Short: Story = {
   args: {
     placeholder: 'Favourite places',
     dropdownTitle: 'Places',
@@ -28,6 +28,28 @@ export const Complete: Story = {
       {
         id: 3,
         label: 'My Grandparents House',
+      },
+    ],
+  },
+};
+
+export const Long: Story = {
+  args: {
+    placeholder: 'Unassigned',
+    dropdownTitle: 'Places',
+    className: 'w-[250px]',
+    options: [
+      {
+        id: 1,
+        label: 'James',
+      },
+      {
+        id: 2,
+        label: 'Katherine',
+      },
+      {
+        id: 3,
+        label: 'Oliver',
       },
     ],
   },

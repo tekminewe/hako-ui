@@ -24,10 +24,23 @@ export interface SelectProps extends HTMLAttributes<HTMLButtonElement> {
    * @example [{ id: 'home', label: 'Home' }]
    */
   options: SelectOption[];
+
+  /**
+   * If true, the select will display a loading spinner.
+   * @type boolean
+   * @default false
+   */
+  loading?: boolean;
+
+  /**
+   * The callback fired when the select is opened.
+   * @returns
+   */
+  onOpen?: () => void;
 }
 
 export const Select = forwardRef<HTMLButtonElement, SelectProps>(
-  ({ placeholder = 'Please select...', options, className, dropdownTitle, ...props }, ref) => {
+  ({ placeholder = 'Please select...', options, className, dropdownTitle, loading = false, onOpen, ...props }, ref) => {
     const [open, setOpen] = useState(false);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -43,7 +56,12 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     }, [dropdownTitle, options]);
 
     const handleClick = () => {
-      setOpen((open) => !open);
+      setOpen((open) => {
+        if (!open) {
+          onOpen?.();
+        }
+        return !open;
+      });
     };
 
     return (
@@ -57,7 +75,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           )}
           ref={buttonRef}
         >
-          <span className="truncate text-sm flex-1">{placeholder}</span>
+          <span className="truncate text-sm flex-1 text-left text-neutral70">{placeholder}</span>
           <span className="text-neutral40 px-2">
             <GoTriangleUp size={10} />
             <GoTriangleDown size={10} />
@@ -71,7 +89,8 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           anchorPosition="bottom-left"
           open={open}
           sections={section}
-        ></Dropdown>
+          loading={loading}
+        />
       </>
     );
   },

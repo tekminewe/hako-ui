@@ -125,3 +125,25 @@ export const MultipleSection: Story = {
     ],
   },
 };
+
+export const Loading: Story = {
+  args: {
+    open: true,
+    loading: true,
+    sections: [
+      {
+        title: 'Section 1',
+        items: [
+          {
+            id: 1,
+            label: 'Item 1',
+          },
+          {
+            id: 2,
+            label: 'Item 2',
+          },
+        ],
+      },
+    ],
+  },
+};
