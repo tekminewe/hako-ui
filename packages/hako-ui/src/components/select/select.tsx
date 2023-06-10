@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import { forwardRef, HTMLAttributes, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { Dropdown, DropdownItem } from '../dropdown';
+import { Dropdown, DropdownItem, DropdownItemClickHandler } from '../dropdown';
 import { GoTriangleDown, GoTriangleUp } from 'react-icons/go';
 
 export type SelectOption = DropdownItem;
+export type SelectOptionClickHandler = DropdownItemClickHandler;
 
 export interface SelectProps extends HTMLAttributes<HTMLButtonElement> {
   /**
@@ -28,6 +29,7 @@ export interface SelectProps extends HTMLAttributes<HTMLButtonElement> {
   /**
    * If true, the select will display a loading spinner.
    * @type boolean
+   * @example true
    * @default false
    */
   loading?: boolean;
@@ -35,12 +37,45 @@ export interface SelectProps extends HTMLAttributes<HTMLButtonElement> {
   /**
    * The callback fired when the select is opened.
    * @returns
+   * @example () => { console.log('opened') }
+   * @default undefined
    */
   onOpen?: () => void;
+
+  /**
+   * The callback fired when an option is clicked.
+   * @param item The clicked option
+   * @param event The click event
+   * @returns
+   * @example (item, event) => { console.log(item, event) }
+   * @default undefined
+   */
+  onOptionClick?: SelectOptionClickHandler;
+
+  /**
+   * The value of the select.
+   * @type string
+   * @example "home"
+   * @default undefined
+   */
+  value?: DropdownItem['id'];
 }
 
 export const Select = forwardRef<HTMLButtonElement, SelectProps>(
-  ({ placeholder = 'Please select...', options, className, dropdownTitle, loading = false, onOpen, ...props }, ref) => {
+  (
+    {
+      placeholder = 'Please select...',
+      options,
+      className,
+      dropdownTitle,
+      loading = false,
+      onOpen,
+      onOptionClick,
+      value,
+      ...props
+    },
+    ref,
+  ) => {
     const [open, setOpen] = useState(false);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -64,6 +99,19 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
       });
     };
 
+    const getSelectedValue = () => {
+      if (value) {
+        return options.find((option) => option.id === value)?.label;
+      }
+
+      return placeholder;
+    };
+
+    const handleOptionClick: DropdownItemClickHandler = (...args) => {
+      setOpen(false);
+      onOptionClick?.(...args);
+    };
+
     return (
       <>
         <button
@@ -75,7 +123,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           )}
           ref={buttonRef}
         >
-          <span className="truncate text-sm flex-1 text-left text-neutral70">{placeholder}</span>
+          <span className="truncate text-sm flex-1 text-left">{getSelectedValue()}</span>
           <span className="text-neutral40 px-2">
             <GoTriangleUp size={10} />
             <GoTriangleDown size={10} />
@@ -90,6 +138,8 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           open={open}
           sections={section}
           loading={loading}
+          selectedItemId={value}
+          onItemClick={handleOptionClick}
         />
       </>
     );

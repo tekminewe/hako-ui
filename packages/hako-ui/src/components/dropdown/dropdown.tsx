@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { forwardRef, useEffect, useLayoutEffect, useState } from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 import { createPortal } from 'react-dom';
+import { BiCheck } from 'react-icons/bi';
 
 export interface DropdownItem {
   /**
@@ -32,6 +33,8 @@ export interface DropdownSection {
    */
   items: DropdownItem[];
 }
+
+export type DropdownItemClickHandler = (item: DropdownItem, event: React.MouseEvent<HTMLLIElement>) => void;
 
 export interface DropdownProps extends Omit<React.HTMLProps<HTMLDivElement>, 'children'> {
   /**
@@ -76,11 +79,11 @@ export interface DropdownProps extends Omit<React.HTMLProps<HTMLDivElement>, 'ch
 
   /**
    * The callback function to be called when the dropdown item is clicked
-   * @type React.ReactNode
+   * @type DropdownItemClickHandler
    * @example () => console.log('Click');
    * @default undefined
    */
-  onItemClick?: (item: DropdownItem, event: React.MouseEvent<HTMLLIElement>) => void;
+  onItemClick?: DropdownItemClickHandler;
 
   /**
    * The callback method to get the class name for the dropdown item
@@ -96,6 +99,14 @@ export interface DropdownProps extends Omit<React.HTMLProps<HTMLDivElement>, 'ch
    * @default false
    */
   loading?: boolean;
+
+  /**
+   * The id of the selected item
+   * @type string
+   * @example "home"
+   * @default undefined
+   */
+  selectedItemId?: DropdownItem['id'];
 }
 
 const offsetTop = 4;
@@ -112,6 +123,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
       onClose,
       getClassNameForItem,
       loading = false,
+      selectedItemId,
       ...props
     },
     ref,
@@ -186,16 +198,21 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
             return (
               <ul key={sectionIndex}>
                 {section.items.map((item, index) => {
+                  const selected = item.id === selectedItemId;
                   return (
                     <li
                       key={item.id}
                       onClick={(e) => onItemClick?.(item, e)}
                       className={classNames(
-                        'px-4 py-2 cursor-pointer hover:bg-neutral10 font-light overflow-hidden truncate',
+                        'px-4 py-2 cursor-pointer hover:bg-neutral10 font-light overflow-hidden truncate flex justify-between items-center',
                         getClassNameForItem?.(item, sectionIndex, index),
+                        {
+                          'font-medium': selected,
+                        },
                       )}
                     >
-                      {item.label}
+                      <span>{item.label}</span>
+                      {selected && <BiCheck className="text-primary" size={18} />}
                     </li>
                   );
                 })}

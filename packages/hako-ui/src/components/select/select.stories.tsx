@@ -54,3 +54,26 @@ export const Long: Story = {
     ],
   },
 };
+
+export const Selected: Story = {
+  args: {
+    placeholder: 'Unassigned',
+    dropdownTitle: 'Places',
+    className: 'w-[250px]',
+    value: 3,
+    options: [
+      {
+        id: 1,
+        label: 'James',
+      },
+      {
+        id: 2,
+        label: 'Katherine',
+      },
+      {
+        id: 3,
+        label: 'Oliver',
+      },
+    ],
+  },
+};
