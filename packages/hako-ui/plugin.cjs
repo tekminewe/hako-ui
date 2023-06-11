@@ -81,7 +81,8 @@ module.exports = (options) => {
         body: {
           backgroundColor: theme('colors.neutral5'),
           color: theme('colors.neutral90'),
-          fontSize: theme('fontSize.base'),
+          fontSize: theme('fontSize.sm'),
+          lineHeight: theme('lineHeight.5'),
         },
       });
       addComponents({
