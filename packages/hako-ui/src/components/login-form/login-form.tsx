@@ -121,8 +121,8 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
     const [loading, setLoading] = useState(false);
     const schema = useMemo(() => {
       return zod.object({
-        email: zod.string().email('Please enter a valid email address'),
-        password: zod.string(),
+        email: zod.string().trim().email('Please enter a valid email address'),
+        password: zod.string().trim(),
       });
     }, []);
     const {

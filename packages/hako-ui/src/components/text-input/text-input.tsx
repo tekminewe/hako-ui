@@ -63,10 +63,10 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           </label>
         )}
         <div
-          className={classNames('bg-neutral5 hk-rounded border overflow-hidden', {
+          className={classNames('bg-neutral5 hk-rounded border overflow-hidden', 'flex items-stretch', {
             'border-danger100': !focus && status === 'error',
             'border-success': !focus && status === 'success',
-            'hk-border': !focus && status === 'default',
+            'hk-border': status === 'default',
             'shadow-[inset_0px_0px_0px_2px_var(--hk-primary)]': focus,
           })}
         >
@@ -80,7 +80,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               'bg-transparent p-2 w-full placeholder:text-neutral40 focus:outline-none border-0',
             )}
           />
-          {andorment && <span>{andorment}</span>}
+          {andorment && <span className="pr-2">{andorment}</span>}
         </div>
         <div
           className={classNames('min-h-[20px]', {

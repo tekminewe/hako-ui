@@ -52,7 +52,7 @@ export const WithAndorment: Story = {
   args: {
     label: 'Your Hako UI subdomain',
     andorment: (
-      <div className="px-4 h-full flex items-center justify-center">
+      <div className="h-full flex items-center justify-center">
         <p>.hakoui.com</p>
       </div>
     ),

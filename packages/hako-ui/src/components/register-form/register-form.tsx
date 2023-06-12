@@ -164,10 +164,13 @@ export const RegisterForm = forwardRef<HTMLFormElement, RegisterFormProps>(
     const [loading, setLoading] = useState(false);
     const schema = useMemo(() => {
       const schema = zod.object({
-        email: zod.string().email('Please enter a valid email address'),
-        password: zod.string().refine((value) => {
-          return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value);
-        }, 'Password should consist of at least 8 characters, one uppercase, one lowercase, one number and one special character'),
+        email: zod.string().trim().email('Please enter a valid email address'),
+        password: zod
+          .string()
+          .trim()
+          .refine((value) => {
+            return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value);
+          }, 'Password should consist of at least 8 characters, one uppercase, one lowercase, one number and one special character'),
       });
 
       if (extraFields.includes('FirstLastName')) {
