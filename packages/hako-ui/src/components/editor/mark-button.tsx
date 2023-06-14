@@ -1,7 +1,6 @@
 import { useSlate } from 'slate-react';
 import { Editor } from 'slate';
 import { EditorFormat } from './types';
-import classNames from 'classnames';
 import { Button } from './button';
 
 export interface MarkButtonProps {

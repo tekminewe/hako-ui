@@ -1,5 +1,18 @@
 import { useCallback, useState } from 'react';
-import { BiBold, BiItalic, BiUnderline } from 'react-icons/bi';
+import {
+  LuHeading1,
+  LuItalic,
+  LuBold,
+  LuCode,
+  LuUnderline,
+  LuQuote,
+  LuListOrdered,
+  LuList,
+  LuAlignLeft,
+  LuAlignRight,
+  LuAlignJustify,
+  LuAlignCenter,
+} from 'react-icons/lu';
 import { createEditor, Editor as SlateEditor } from 'slate';
 import isHotkey from 'is-hotkey';
 import { withReact, Slate, Editable, RenderElementProps, RenderLeafProps } from 'slate-react';
@@ -8,12 +21,13 @@ import { Element } from './element';
 import { Leaf } from './leaf';
 import { EditorFormat } from './types';
 import { MarkButton } from './mark-button';
+import { BlockButton } from './block-button';
 
 const HOTKEYS: Record<string, EditorFormat> = {
   'mod+b': 'bold',
   'mod+i': 'italic',
   'mod+u': 'underline',
-  // 'mod+`': 'code',
+  'mod+`': 'code',
 };
 
 const initialValue = [
@@ -70,16 +84,52 @@ export const Editor = ({ onChange }: EditorProps) => {
     <Slate editor={editor} initialValue={initialValue}>
       <Toolbar>
         <MarkButton format="bold">
-          <BiBold />
+          <LuBold size={22} />
         </MarkButton>
         <MarkButton format="italic">
-          <BiItalic />
+          <LuItalic size={22} />
         </MarkButton>
         <MarkButton format="underline">
-          <BiUnderline />
+          <LuUnderline size={22} />
         </MarkButton>
+        <MarkButton format="code">
+          <LuCode size={22} />
+        </MarkButton>
+        <BlockButton format="heading-one">
+          <LuHeading1 size={24} />
+        </BlockButton>
+        <BlockButton format="heading-two">
+          <LuHeading1 size={24} />
+        </BlockButton>
+        <BlockButton format="block-quote">
+          <LuQuote size={24} />
+        </BlockButton>
+        <BlockButton format="numbered-list">
+          <LuListOrdered size={24} />
+        </BlockButton>
+        <BlockButton format="bulleted-list">
+          <LuList size={24} />
+        </BlockButton>
+        <BlockButton format="left">
+          <LuAlignLeft size={24} />
+        </BlockButton>
+        <BlockButton format="center">
+          <LuAlignCenter size={24} />
+        </BlockButton>
+        <BlockButton format="right">
+          <LuAlignRight size={24} />
+        </BlockButton>
+        <BlockButton format="justify">
+          <LuAlignJustify size={24} />
+        </BlockButton>
       </Toolbar>
-      <Editable renderElement={renderElement} renderLeaf={renderLeaf} spellCheck onKeyDown={handleChange} />
+      <Editable
+        className="p-2 focus:outline-none"
+        renderElement={renderElement}
+        renderLeaf={renderLeaf}
+        spellCheck
+        onKeyDown={handleChange}
+      />
     </Slate>
   );
 };

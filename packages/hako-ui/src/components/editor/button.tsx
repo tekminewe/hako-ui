@@ -9,8 +9,9 @@ export const Button = ({ className, isActive, children, ...props }: ButtonProps)
   return (
     <button
       {...props}
-      className={classNames(className, {
-        'bg-primary': isActive,
+      className={classNames(className, 'hk-rounded', {
+        'bg-neutral70 text-neutral5': isActive,
+        'text-neutral70': !isActive,
       })}
     >
       {children}
