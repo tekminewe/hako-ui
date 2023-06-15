@@ -15,6 +15,7 @@ export const Default: Story = {};
 
 export const WithInputError: Story = {
   args: {
+    extraFields: ['FirstLastName', 'FullName'],
     inputProps: {
       email: {
         hint: 'Please enter your email address',

@@ -40,7 +40,7 @@ export const TableRow = <T extends object>({ data, columns, onClick }: TableRowP
 
   return (
     <tr
-      className={classNames('border-b border-neutral20', {
+      className={classNames('border-b', {
         'hover:bg-neutral10 cursor-pointer': !!onClick,
       })}
       onClick={(e) => onClick?.(data, e)}

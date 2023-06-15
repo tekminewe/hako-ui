@@ -28,6 +28,8 @@ const colors = [
   'neutral20',
   'neutral10',
   'neutral5',
+
+  'rounded',
 ];
 
 /**
@@ -72,12 +74,15 @@ module.exports = (options) => {
           [`--${cssVarPrefix}neutral30`]: '#d4d4d4',
           [`--${cssVarPrefix}neutral20`]: '#e5e5e5',
           [`--${cssVarPrefix}neutral10`]: '#f5f5f5',
-          [`--${cssVarPrefix}neutral5`]: '#fafafa',
+          [`--${cssVarPrefix}neutral5`]: '#fdfdfd',
+
+          [`--${cssVarPrefix}rounded`]: '0.375rem',
         },
         body: {
           backgroundColor: theme('colors.neutral5'),
           color: theme('colors.neutral90'),
-          fontSize: theme('fontSize.base'),
+          fontSize: theme('fontSize.sm'),
+          lineHeight: theme('lineHeight.5'),
         },
       });
       addComponents({
@@ -108,6 +113,12 @@ module.exports = (options) => {
         '.hk-typo-small': {
           fontSize: theme('fontSize.xs'),
           lineHeight: theme('lineHeight.4'),
+        },
+        '.hk-rounded': {
+          borderRadius: `var(--${cssVarPrefix}rounded)`,
+        },
+        '.hk-border': {
+          borderColor: theme('colors.neutral30'),
         },
       });
     },

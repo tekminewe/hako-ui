@@ -7,6 +7,8 @@ import { Button, ButtonProps } from '../button';
 import classNames from 'classnames';
 import * as zod from 'zod';
 
+export type RegisterFormExtraFields = 'FirstLastName' | 'FullName';
+
 export type RegisterFormSubmitResult = {
   status: 'success' | 'error';
   message?: string;
@@ -14,6 +16,9 @@ export type RegisterFormSubmitResult = {
 export type RegisterFormSubmitHandler = (data: {
   email: string;
   password: string;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
 }) => Promise<RegisterFormSubmitResult> | RegisterFormSubmitResult;
 
 export interface RegisterFormProps extends Omit<React.HTMLProps<HTMLFormElement>, 'onSubmit'> {
@@ -36,17 +41,44 @@ export interface RegisterFormProps extends Omit<React.HTMLProps<HTMLFormElement>
    */
   inputProps?: {
     /**
+     * The configuration for the first name input.
+     * @type Partial<TextInputProps>
+     * @default undefined
+     */
+    firstName?: Partial<TextInputProps>;
+
+    /**
+     * The configuration for the last name input.
+     * @type Partial<TextInputProps>
+     * @default undefined
+     */
+    lastName?: Partial<TextInputProps>;
+
+    /**
+     * The configuration for the full name input.
+     * @type Partial<TextInputProps>
+     * @default undefined
+     */
+    fullName?: Partial<TextInputProps>;
+
+    /**
      * The configuration for the email input.
+     * @type Partial<TextInputProps>
+     * @default undefined
      */
     email?: Partial<TextInputProps>;
 
     /**
      * The configuration for the password input.
+     * @type Partial<TextInputProps>
+     * @default undefined
      */
     password?: Partial<TextInputProps>;
 
     /**
      * The configuration for the submit button.
+     * @type Partial<TextInputProps>
+     * @default undefined
      */
     submit?: Partial<ButtonProps>;
   };
@@ -90,11 +122,22 @@ export interface RegisterFormProps extends Omit<React.HTMLProps<HTMLFormElement>
    * @default undefined
    */
   onLoginClick?: MouseEventHandler<HTMLSpanElement>;
+
+  /**
+   * The extra fields to be included in the register form.
+   * @type RegisterFormExtraFields[]
+   * @example ['FirstLastName']
+   * @default []
+   */
+  extraFields?: RegisterFormExtraFields[];
 }
 
 type Inputs = {
   email: string;
   password: string;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
 };
 
 /**
@@ -112,6 +155,7 @@ export const RegisterForm = forwardRef<HTMLFormElement, RegisterFormProps>(
       loginText = 'Login here',
       onLoginClick,
       loginLink = '/login',
+      extraFields = [],
       ...props
     },
     ref,
@@ -119,12 +163,30 @@ export const RegisterForm = forwardRef<HTMLFormElement, RegisterFormProps>(
     const [status, setStatus] = useState('');
     const [loading, setLoading] = useState(false);
     const schema = useMemo(() => {
-      return zod.object({
-        email: zod.string().email('Please enter a valid email address'),
-        password: zod.string().refine((value) => {
-          return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value);
-        }, 'Password should consist of at least 8 characters, one uppercase, one lowercase, one number and one special character'),
+      const schema = zod.object({
+        email: zod.string().trim().email('Please enter a valid email address'),
+        password: zod
+          .string()
+          .trim()
+          .refine((value) => {
+            return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value);
+          }, 'Password should consist of at least 8 characters, one uppercase, one lowercase, one number and one special character'),
       });
+
+      if (extraFields.includes('FirstLastName')) {
+        return schema.extend({
+          firstName: zod.string().nonempty('Please enter your first name'),
+          lastName: zod.string().nonempty('Please enter your last name'),
+        });
+      }
+
+      if (extraFields.includes('FullName')) {
+        return schema.extend({
+          fullName: zod.string().nonempty('Please enter your full name'),
+        });
+      }
+
+      return schema;
     }, []);
     const {
       handleSubmit,
@@ -156,13 +218,52 @@ export const RegisterForm = forwardRef<HTMLFormElement, RegisterFormProps>(
           </div>
           {status && (
             <div
-              className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 rounded mb-4 text-sm"
+              className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 hk-rounded mb-4 text-sm"
               role="alert"
             >
               <span>{status}</span>
             </div>
           )}
           <form ref={ref} {...props}>
+            {extraFields.includes('FirstLastName') && (
+              <>
+                <TextInput
+                  {...inputConfig?.firstName}
+                  autoComplete="given-name"
+                  disabled={loading || inputConfig?.firstName?.disabled}
+                  placeholder={inputConfig?.firstName?.placeholder ?? 'Please enter your first name'}
+                  label={inputConfig?.firstName?.label ?? 'First name'}
+                  required={inputConfig?.firstName?.required ?? true}
+                  hint={errors.firstName?.message}
+                  status={errors.firstName ? 'error' : 'default'}
+                  {...register('firstName')}
+                />
+                <TextInput
+                  {...inputConfig?.lastName}
+                  autoComplete="family-name"
+                  disabled={loading || inputConfig?.lastName?.disabled}
+                  placeholder={inputConfig?.lastName?.placeholder ?? 'Please enter your last name'}
+                  label={inputConfig?.lastName?.label ?? 'Last name'}
+                  required={inputConfig?.lastName?.required ?? true}
+                  hint={errors.lastName?.message}
+                  status={errors.lastName ? 'error' : 'default'}
+                  {...register('lastName')}
+                />
+              </>
+            )}
+            {extraFields.includes('FullName') && (
+              <TextInput
+                {...inputConfig?.fullName}
+                autoComplete="name"
+                disabled={loading || inputConfig?.fullName?.disabled}
+                placeholder={inputConfig?.fullName?.placeholder ?? 'Please enter your full name'}
+                label={inputConfig?.fullName?.label ?? 'Full name'}
+                required={inputConfig?.fullName?.required ?? true}
+                hint={errors.fullName?.message}
+                status={errors.fullName ? 'error' : 'default'}
+                {...register('fullName')}
+              />
+            )}
             <TextInput
               {...inputConfig?.email}
               autoComplete="email"

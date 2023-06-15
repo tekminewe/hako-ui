@@ -5,7 +5,7 @@ import { Button } from '../button';
 import { Dropdown, DropdownProps } from './dropdown';
 
 const meta = {
-  title: 'Components/Dropdown',
+  title: 'Components / Dropdown',
   component: Dropdown,
   tags: ['autodocs'],
 } satisfies Meta<typeof Dropdown>;
@@ -54,14 +54,19 @@ export const WithAnchor: Story = {
   render: Render,
   args: {
     sections: [
-      [
-        {
-          label: 'Item 1',
-        },
-        {
-          label: 'Item 2',
-        },
-      ],
+      {
+        title: 'Section 1',
+        items: [
+          {
+            id: 1,
+            label: 'Item 1',
+          },
+          {
+            id: 2,
+            label: 'Item 2',
+          },
+        ],
+      },
     ],
   },
 };
@@ -70,14 +75,19 @@ export const SingleSection: Story = {
   args: {
     open: true,
     sections: [
-      [
-        {
-          label: 'Item 1',
-        },
-        {
-          label: 'Item 2',
-        },
-      ],
+      {
+        title: 'Section 1',
+        items: [
+          {
+            id: 1,
+            label: 'Item 1',
+          },
+          {
+            id: 2,
+            label: 'Item 2',
+          },
+        ],
+      },
     ],
   },
 };
@@ -86,22 +96,54 @@ export const MultipleSection: Story = {
   args: {
     open: true,
     sections: [
-      [
-        {
-          label: 'Item 1',
-        },
-        {
-          label: 'Item 2',
-        },
-      ],
-      [
-        {
-          label: 'Item 1',
-        },
-        {
-          label: 'Item 2',
-        },
-      ],
+      {
+        title: 'Section 1',
+        items: [
+          {
+            id: 1,
+            label: 'Item 1',
+          },
+          {
+            id: 2,
+            label: 'Item 2',
+          },
+        ],
+      },
+      {
+        title: 'Section 2',
+        items: [
+          {
+            id: 1,
+            label: 'Item 1',
+          },
+          {
+            id: 2,
+            label: 'Item 2',
+          },
+        ],
+      },
+    ],
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    open: true,
+    loading: true,
+    sections: [
+      {
+        title: 'Section 1',
+        items: [
+          {
+            id: 1,
+            label: 'Item 1',
+          },
+          {
+            id: 2,
+            label: 'Item 2',
+          },
+        ],
+      },
     ],
   },
 };

@@ -144,7 +144,7 @@ export const PortfolioType1 = forwardRef<HTMLDivElement, PortfolioType1Props>(
               >
                 {project?.map((project, index) => (
                   <Card className="text-left" key={index}>
-                    <img className="rounded-md" src={project.image} alt={project.title} />
+                    <img className="hk-rounded" src={project.image} alt={project.title} />
                     {project.label && (
                       <div className="mt-2">
                         <Badge className={project.labelClassName} variant={project.labelVariant}>
