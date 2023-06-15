@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { ReactNode } from 'react';
 import { useSlate } from 'slate-react';
 import { Editor, Element as SlateElement, Transforms } from 'slate';

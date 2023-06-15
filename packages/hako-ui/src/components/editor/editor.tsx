@@ -1,6 +1,8 @@
 import { useCallback, useState } from 'react';
+import './editor.scss';
 import {
   LuHeading1,
+  LuHeading2,
   LuItalic,
   LuBold,
   LuCode,
@@ -22,6 +24,7 @@ import { Leaf } from './leaf';
 import { EditorFormat } from './types';
 import { MarkButton } from './mark-button';
 import { BlockButton } from './block-button';
+import { withHistory } from 'slate-history';
 
 const HOTKEYS: Record<string, EditorFormat> = {
   'mod+b': 'bold',
@@ -47,7 +50,7 @@ interface EditorProps {
 }
 
 export const Editor = ({ onChange }: EditorProps) => {
-  const [editor] = useState(() => withReact(createEditor()));
+  const [editor] = useState(() => withHistory(withReact(createEditor())));
   const renderElement = useCallback((props: RenderElementProps) => <Element {...props} />, []);
   const renderLeaf = useCallback((props: RenderLeafProps) => <Leaf {...props} />, []);
 
@@ -99,7 +102,7 @@ export const Editor = ({ onChange }: EditorProps) => {
           <LuHeading1 size={24} />
         </BlockButton>
         <BlockButton format="heading-two">
-          <LuHeading1 size={24} />
+          <LuHeading2 size={24} />
         </BlockButton>
         <BlockButton format="block-quote">
           <LuQuote size={24} />
@@ -124,7 +127,7 @@ export const Editor = ({ onChange }: EditorProps) => {
         </BlockButton>
       </Toolbar>
       <Editable
-        className="p-2 focus:outline-none"
+        className="p-2 focus:outline-none editor"
         renderElement={renderElement}
         renderLeaf={renderLeaf}
         spellCheck
