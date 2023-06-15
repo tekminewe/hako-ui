@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import './editor.scss';
+import './editor.css';
 import {
   LuHeading1,
   LuHeading2,
