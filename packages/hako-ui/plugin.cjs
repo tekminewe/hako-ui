@@ -83,6 +83,7 @@ module.exports = (options) => {
           color: theme('colors.neutral90'),
           fontSize: theme('fontSize.sm'),
           lineHeight: theme('lineHeight.5'),
+          borderColor: `var(--${cssVarPrefix}neutral30)`,
         },
       });
       addComponents({

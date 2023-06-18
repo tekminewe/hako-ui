@@ -9,7 +9,7 @@ export const Button = ({ className, isActive, children, ...props }: ButtonProps)
   return (
     <button
       {...props}
-      className={classNames(className, 'hk-rounded flex items-center justify-center', {
+      className={classNames(className, 'hk-rounded flex items-center justify-center p-1', {
         'bg-neutral70 text-neutral5': isActive,
         'text-neutral70': !isActive,
       })}
