@@ -6,6 +6,7 @@ import { Card } from '../card';
 import { Button, ButtonProps } from '../button';
 import classNames from 'classnames';
 import * as zod from 'zod';
+import { Alert } from '../alert';
 
 export type RegisterFormExtraFields = 'FirstLastName' | 'FullName';
 
@@ -19,7 +20,7 @@ export type RegisterFormSubmitHandler = (data: {
   firstName?: string;
   lastName?: string;
   fullName?: string;
-}) => Promise<RegisterFormSubmitResult> | RegisterFormSubmitResult;
+}) => Promise<RegisterFormSubmitResult> | RegisterFormSubmitResult | undefined;
 
 export interface RegisterFormProps extends Omit<React.HTMLProps<HTMLFormElement>, 'onSubmit'> {
   /**
@@ -216,14 +217,7 @@ export const RegisterForm = forwardRef<HTMLFormElement, RegisterFormProps>(
             <p className="text-center text-xl font-semibold">{title ?? 'Welcome'}</p>
             <p className="text-sm">{description ?? 'Create an account to continue'}</p>
           </div>
-          {status && (
-            <div
-              className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 hk-rounded mb-4 text-sm"
-              role="alert"
-            >
-              <span>{status}</span>
-            </div>
-          )}
+          {status && <Alert>{status}</Alert>}
           <form ref={ref} {...props}>
             {extraFields.includes('FirstLastName') && (
               <>

@@ -6,13 +6,19 @@ import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Alert } from '../alert';
 
 export type LoginFormSubmitResult = {
   status: 'success' | 'error';
   message?: string;
 };
 
+const DomainAndorment = () => {
+  return <p className="h-full flex items-center">.engagely.com</p>;
+};
+
 export type LoginFormSubmitHandler = (data: {
+  subdomain: string;
   email: string;
   password: string;
 }) => Promise<LoginFormSubmitResult> | LoginFormSubmitResult;
@@ -36,6 +42,11 @@ export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, '
    * The configuration for the input fields.
    */
   inputProps?: {
+    /**
+     * The configuration for the subdomain input.
+     */
+    subdomain?: Partial<TextInputProps>;
+
     /**
      * The configuration for the email input.
      */
@@ -94,6 +105,7 @@ export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, '
 }
 
 type Inputs = {
+  subdomain: string;
   email: string;
   password: string;
 };
@@ -123,6 +135,7 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
       return zod.object({
         email: zod.string().trim().email('Please enter a valid email address'),
         password: zod.string().trim(),
+        subdomain: zod.string().trim(),
       });
     }, []);
     const {
@@ -153,15 +166,19 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
             <p className="text-center text-xl font-semibold">{title ?? 'Welcome'}</p>
             <p className="text-sm">{description ?? 'Log in to continue'}</p>
           </div>
-          {status && (
-            <div
-              className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 hk-rounded mb-4 text-sm"
-              role="alert"
-            >
-              <span>{status}</span>
-            </div>
-          )}
+          {status && <Alert>{status}</Alert>}
           <form ref={ref} {...props}>
+            <TextInput
+              {...inputConfig?.subdomain}
+              disabled={loading || inputConfig?.subdomain?.disabled}
+              placeholder={inputConfig?.subdomain?.placeholder ?? 'Please enter your subdomain'}
+              label={inputConfig?.subdomain?.label ?? 'Your organization URL'}
+              required={inputConfig?.subdomain?.required ?? true}
+              hint={errors.subdomain?.message}
+              status={errors.subdomain ? 'error' : 'default'}
+              andorment={<DomainAndorment />}
+              {...register('subdomain')}
+            />
             <TextInput
               {...inputConfig?.email}
               autoComplete="email"
