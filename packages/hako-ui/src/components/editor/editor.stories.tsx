@@ -12,7 +12,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    required: true,
+    label: 'Editor',
+    hint: 'This is a hint',
+    status: 'success',
+  },
 };
 
 export const Disabled: Story = {
