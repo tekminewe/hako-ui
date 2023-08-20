@@ -75,7 +75,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', icon, iconPosition = 'left', className, ...props }, ref) => {
+  ({ variant = 'primary', icon, iconPosition = 'left', className, loading, ...props }, ref) => {
     return (
       <button
         {...props}
@@ -103,17 +103,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'text-default border-transparent': variant === 'text-default',
           'flex items-center': icon,
         })}
-        disabled={props.disabled || props.loading}
+        disabled={props.disabled || loading}
       >
         {iconPosition === 'left' && icon && <span className="mr-2">{icon}</span>}
-        {props.loading && (
+        {loading && (
           <div className="absolute flex items-center justify-center top-0 left-0 right-0 bottom-0">
             <CgSpinner className="animate-spin" size={24} />
           </div>
         )}
         <span
           className={classNames({
-            invisible: props.loading,
+            invisible: loading,
           })}
         >
           {props.children}

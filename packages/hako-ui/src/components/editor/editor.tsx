@@ -156,7 +156,7 @@ export const Editor = ({
           {label} {required && <span className="text-danger100">*</span>}
         </label>
       )}
-      <div className="border hk-rounded">
+      <div>
         <Slate
           editor={editor}
           initialValue={value}
