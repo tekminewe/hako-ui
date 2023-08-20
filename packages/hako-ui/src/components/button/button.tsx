@@ -7,48 +7,24 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
    * The button's variant
    * @default "primary"
    * @type  | 'primary'
-    | 'success'
-    | 'danger'
-    | 'info'
-    | 'warning'
     | 'danger'
     | 'default'
     | 'outline-primary'
-    | 'outline-success'
-    | 'outline-danger'
-    | 'outline-info'
-    | 'outline-warning'
     | 'outline-danger'
     | 'outline-default'
     | 'text-primary'
-    | 'text-success'
-    | 'text-danger'
-    | 'text-info'
-    | 'text-warning'
     | 'text-danger'
     | 'text-default'
    * @example "success"
    */
   variant?:
     | 'primary'
-    | 'success'
-    | 'danger'
-    | 'info'
-    | 'warning'
     | 'danger'
     | 'default'
     | 'outline-primary'
-    | 'outline-success'
-    | 'outline-danger'
-    | 'outline-info'
-    | 'outline-warning'
     | 'outline-danger'
     | 'outline-default'
     | 'text-primary'
-    | 'text-success'
-    | 'text-danger'
-    | 'text-info'
-    | 'text-warning'
     | 'text-danger'
     | 'text-default';
 
@@ -82,23 +58,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={classNames(className, 'hk-rounded border px-4 py-2 relative', {
           'bg-primary border-primary text-on-primary': variant === 'primary',
-          'bg-success border-success text-on-success': variant === 'success',
-          'bg-info border-info text-on-info': variant === 'info',
-          'bg-warning border-warning text-on-warning': variant === 'warning',
           'bg-danger100 border-danger100 text-on-danger100': variant === 'danger',
           'bg-neutral10 hk-border': variant === 'default',
 
           'border-primary text-primary': variant === 'outline-primary',
-          'border-success text-success': variant === 'outline-success',
-          'border-info text-info': variant === 'outline-info',
-          'border-warning text-warning': variant === 'outline-warning',
           'border-danger100 text-danger100': variant === 'outline-danger',
           'border-neutral90': variant === 'outline-default',
 
           'text-primary border-transparent': variant === 'text-primary',
-          'text-success border-transparent': variant === 'text-success',
-          'text-info border-transparent': variant === 'text-info',
-          'text-warning border-transparent': variant === 'text-warning',
           'text-danger100 border-transparent': variant === 'text-danger',
           'text-default border-transparent': variant === 'text-default',
           'flex items-center': icon,

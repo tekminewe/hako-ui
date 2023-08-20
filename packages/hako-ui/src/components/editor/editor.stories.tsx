@@ -17,6 +17,7 @@ export const Default: Story = {
     label: 'Editor',
     hint: 'This is a hint',
     status: 'success',
+    inputContainerClassName: 'hk-border border hk-rounded',
   },
 };
 

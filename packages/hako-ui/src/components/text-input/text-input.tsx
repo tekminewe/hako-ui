@@ -65,7 +65,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div
           className={classNames('bg-neutral5 hk-rounded border overflow-hidden', 'flex items-stretch', {
             'border-danger100': !focus && status === 'error',
-            'border-success': !focus && status === 'success',
+            'border-success-border': !focus && status === 'success',
             'hk-border': status === 'default',
             'shadow-[inset_0px_0px_0px_2px_var(--hk-primary)]': focus,
           })}
@@ -85,7 +85,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div
           className={classNames('min-h-[20px]', {
             'text-danger100': status === 'error',
-            'text-success': status === 'success',
+            'text-success-text': status === 'success',
           })}
         >
           {hint}

@@ -106,6 +106,14 @@ interface EditorProps {
    * @example 'error'
    */
   status?: 'error' | 'success' | 'default';
+
+  /**
+   * The class name for the input container.
+   * @type {string}
+   * @default undefined
+   * @example 'bg-gray-100'
+   */
+  inputContainerClassName?: string;
 }
 
 export const Editor = ({
@@ -117,6 +125,7 @@ export const Editor = ({
   disabled = false,
   value = initialValue,
   previewOnly = false,
+  inputContainerClassName,
 }: EditorProps) => {
   const [editor] = useState(() => withHistory(withReact(createEditor())));
   const renderElement = useCallback((props: RenderElementProps) => <Element {...props} />, []);
@@ -156,7 +165,7 @@ export const Editor = ({
           {label} {required && <span className="text-danger100">*</span>}
         </label>
       )}
-      <div>
+      <div className={inputContainerClassName}>
         <Slate
           editor={editor}
           initialValue={value}
@@ -225,7 +234,7 @@ export const Editor = ({
       <div
         className={classNames('min-h-[20px]', {
           'text-danger100': status === 'error',
-          'text-success': status === 'success',
+          'text-success-text': status === 'success',
         })}
       >
         {hint}
