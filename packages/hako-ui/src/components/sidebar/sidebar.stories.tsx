@@ -132,3 +132,13 @@ export const WithoutIcon: Story = {
     ],
   },
 };
+
+export const WithHeader: Story = {
+  args: {
+    ...Complete.args,
+    header: {
+      title: 'Adam Inc.',
+      subtitle: 'Tek Min',
+    },
+  },
+};

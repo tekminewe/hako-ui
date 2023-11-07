@@ -86,6 +86,14 @@ export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, '
   registerLink?: string;
 
   /**
+   * Whether to hide the register link.
+   * @type boolean
+   * @default false
+   * @example true
+   */
+  hideRegister?: boolean;
+
+  /**
    * The handler to be called when the register link is clicked.
    * @type MouseEventHandler<HTMLSpanElement>
    * @example () => console.log('Register link clicked')
@@ -113,6 +121,7 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
       registerHint = "Don't have an account yet?",
       registerText = 'Sign up now',
       registerLink = '/register',
+      hideRegister = false,
       onRegisterClick,
       ...props
     },
@@ -190,12 +199,14 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
             </Button>
           </form>
         </Card>
-        <p className="text-sm">
-          {registerHint}
-          <a className="ml-2 text-primary cursor-pointer font-semibold" href={registerLink} onClick={onRegisterClick}>
-            {registerText}
-          </a>
-        </p>
+        {!hideRegister && (
+          <p className="text-sm">
+            {registerHint}
+            <a className="ml-2 text-primary cursor-pointer font-semibold" href={registerLink} onClick={onRegisterClick}>
+              {registerText}
+            </a>
+          </p>
+        )}
       </div>
     );
   },
