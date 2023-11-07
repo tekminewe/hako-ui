@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import { Drawer, DrawerProps } from '../drawer';
 import { SidebarSection, SidebarSectionProps } from './section';
 import classNames from 'classnames';
-import { Header, HeaderProps } from './header';
+import { SidebarHeader, SidebarHeaderProps } from './header';
 
 export interface SidebarProps extends DrawerProps {
   /**
@@ -42,7 +42,7 @@ export interface SidebarProps extends DrawerProps {
    * @type SidebarHeader
    * @example { title: 'Dashboard', subtitle: 'Admin' }
    */
-  header?: HeaderProps;
+  header?: SidebarHeaderProps;
 }
 
 export const Sidebar = forwardRef<HTMLElement, SidebarProps>(
@@ -65,7 +65,7 @@ export const Sidebar = forwardRef<HTMLElement, SidebarProps>(
         behavior="always-show"
         ref={ref}
       >
-        {header && <Header {...header} />}
+        {header && <SidebarHeader {...header} />}
         {sections && <SidebarSection sections={sections} hoverClassName={hoverClassName} />}
       </Drawer>
     );
