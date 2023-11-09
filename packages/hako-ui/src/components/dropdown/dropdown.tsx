@@ -115,7 +115,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
     {
       className,
       anchorTo = null,
-      anchorPosition = 'bottom-right',
+      anchorPosition = 'bottom-left',
       onItemClick,
       open = false,
       sections,
