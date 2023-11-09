@@ -57,7 +57,7 @@ export const SidebarHeader = ({ title, subtitle, dropdown }: SidebarHeaderProps)
           {...dropdown}
           style={{
             ...dropdown.style,
-            minWidth: `${dropdown.style?.minWidth ?? anchorRef.current?.clientWidth}px`,
+            minWidth: `${dropdown.style?.minWidth ?? (anchorRef.current?.clientWidth ?? 0) - 16}px`,
           }}
           open={showDropdown}
           ref={null}
