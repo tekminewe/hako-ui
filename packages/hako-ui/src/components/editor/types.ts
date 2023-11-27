@@ -11,4 +11,5 @@ export type EditorFormat =
   | 'left'
   | 'center'
   | 'right'
-  | 'justify';
+  | 'justify'
+  | 'list-item';

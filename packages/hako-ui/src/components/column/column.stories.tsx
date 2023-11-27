@@ -15,22 +15,22 @@ export const HorizontalAligment: Story = {
   render: () => (
     <Column className="space-y-8">
       <Column horizontalAlign="center">
-        <div className="bg-success">Item 1</div>
+        <div className="bg-success-bg">Item 1</div>
         <div className="bg-danger100">Item 2</div>
         <div className="bg-info">Item 3</div>
       </Column>
       <Column horizontalAlign="left">
-        <div className="bg-success">Item 1</div>
+        <div className="bg-success-bg">Item 1</div>
         <div className="bg-danger100">Item 2</div>
         <div className="bg-info">Item 3</div>
       </Column>
       <Column horizontalAlign="right">
-        <div className="bg-success">Item 1</div>
+        <div className="bg-success-bg">Item 1</div>
         <div className="bg-danger100">Item 2</div>
         <div className="bg-info">Item 3</div>
       </Column>
       <Column horizontalAlign="stretch">
-        <div className="bg-success">Item 1</div>
+        <div className="bg-success-bg">Item 1</div>
         <div className="bg-danger100">Item 2</div>
         <div className="bg-info">Item 3</div>
       </Column>

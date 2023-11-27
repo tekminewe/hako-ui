@@ -21,8 +21,8 @@ export const SimpleWith3Items: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -33,8 +33,8 @@ export const SimpleWith3Items: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -45,8 +45,8 @@ export const SimpleWith3Items: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -67,8 +67,8 @@ export const SimpleWith6Items: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -79,8 +79,8 @@ export const SimpleWith6Items: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -91,8 +91,8 @@ export const SimpleWith6Items: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -103,8 +103,8 @@ export const SimpleWith6Items: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -115,8 +115,8 @@ export const SimpleWith6Items: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -127,8 +127,8 @@ export const SimpleWith6Items: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -149,8 +149,8 @@ export const SimpleWithLearnMore: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -165,8 +165,8 @@ export const SimpleWithLearnMore: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),
@@ -181,8 +181,8 @@ export const SimpleWithLearnMore: Story = {
       {
         icon: (
           <div className="flex justify-start">
-            <span className="bg-primary rounded-lg flex self-start p-2">
-              <FiBluetooth size={24} className="text-background" />
+            <span className="bg-primary text-on-primary rounded-lg flex self-start p-2">
+              <FiBluetooth size={24} />
             </span>
           </div>
         ),

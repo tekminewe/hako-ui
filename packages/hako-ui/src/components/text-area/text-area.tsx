@@ -61,7 +61,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <div
           className={classNames('h-[17px] mt-0', {
             'text-danger100': status === 'error',
-            'text-success': status === 'success',
+            'text-success-text': status === 'success',
           })}
         >
           {hint}

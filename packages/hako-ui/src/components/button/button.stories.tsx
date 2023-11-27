@@ -16,10 +16,7 @@ export const SolidButton: Story = {
   render: () => (
     <div className="flex flex-col space-y-4 items-start">
       <Button variant="primary">Primary</Button>
-      <Button variant="success">Success</Button>
       <Button variant="danger">Danger</Button>
-      <Button variant="info">Info</Button>
-      <Button variant="warning">Warning</Button>
       <Button variant="default">Default</Button>
       <Button variant="primary" loading>
         Primary
@@ -32,10 +29,7 @@ export const OutlineButton: Story = {
   render: () => (
     <div className="flex flex-col space-y-4 items-start">
       <Button variant="outline-primary">Primary</Button>
-      <Button variant="outline-success">Success</Button>
       <Button variant="outline-danger">Danger</Button>
-      <Button variant="outline-info">Info</Button>
-      <Button variant="outline-warning">Warning</Button>
       <Button variant="outline-default">Default</Button>
       <Button variant="outline-primary" loading>
         Primary
@@ -48,10 +42,7 @@ export const TextButton: Story = {
   render: () => (
     <div className="flex flex-col space-y-4 items-start">
       <Button variant="text-primary">Primary</Button>
-      <Button variant="text-success">Success</Button>
       <Button variant="text-danger">Danger</Button>
-      <Button variant="text-info">Info</Button>
-      <Button variant="text-warning">Warning</Button>
       <Button variant="text-default">Default</Button>
       <Button variant="text-default" loading>
         Primary

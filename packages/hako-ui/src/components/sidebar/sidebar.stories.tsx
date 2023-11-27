@@ -132,3 +132,40 @@ export const WithoutIcon: Story = {
     ],
   },
 };
+
+export const WithHeader: Story = {
+  args: {
+    ...Complete.args,
+    header: {
+      title: 'Adam Inc.',
+      subtitle: 'Tek Min',
+    },
+  },
+};
+
+export const WithHeaderAndDropdown: Story = {
+  args: {
+    ...WithHeader.args,
+    header: {
+      ...WithHeader.args?.header,
+      title: WithHeader.args?.header?.title ?? '',
+      subtitle: WithHeader.args?.header?.title ?? '',
+      dropdown: {
+        sections: [
+          {
+            items: [
+              {
+                id: 'Profile',
+                label: 'Profile',
+              },
+              {
+                id: 'Logout',
+                label: 'Logout',
+              },
+            ],
+          },
+        ],
+      },
+    },
+  },
+};

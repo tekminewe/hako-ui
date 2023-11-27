@@ -6,9 +6,10 @@ import { Button } from './button';
 export interface MarkButtonProps {
   format: EditorFormat;
   children: React.ReactNode;
+  disabled?: boolean;
 }
 
-export const MarkButton = ({ format, children }: MarkButtonProps) => {
+export const MarkButton = ({ format, children, disabled = false }: MarkButtonProps) => {
   const editor = useSlate();
 
   const toggleMark = () => {
@@ -29,7 +30,7 @@ export const MarkButton = ({ format, children }: MarkButtonProps) => {
   };
 
   return (
-    <Button onClick={toggleMark} isActive={isMarkActive()}>
+    <Button disabled={disabled} onClick={toggleMark} isActive={isMarkActive()}>
       {children}
     </Button>
   );

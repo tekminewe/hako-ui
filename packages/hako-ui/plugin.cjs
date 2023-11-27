@@ -30,6 +30,19 @@ const colors = [
   'neutral5',
 
   'rounded',
+
+  // New colors
+  'success-bg',
+  'success-text',
+  'success-border',
+
+  'info-bg',
+  'info-text',
+  'info-border',
+
+  'warning-bg',
+  'warning-text',
+  'warning-border',
 ];
 
 /**
@@ -54,12 +67,12 @@ module.exports = (options) => {
           [`--${cssVarPrefix}primary`]: '#7c3aed',
           [`--${cssVarPrefix}on-primary`]: '#fafafa',
 
-          [`--${cssVarPrefix}success`]: '#4caf50',
+          [`--${cssVarPrefix}success`]: '#16a34a',
           [`--${cssVarPrefix}on-success`]: '#fafafa',
           [`--${cssVarPrefix}danger100`]: '#f44336',
           [`--${cssVarPrefix}on-danger100`]: '#fafafa',
           [`--${cssVarPrefix}danger5`]: '#fef2f2',
-          [`--${cssVarPrefix}warning`]: '#ff9800',
+          [`--${cssVarPrefix}warning`]: '#d97706',
           [`--${cssVarPrefix}on-warning`]: '#fafafa',
           [`--${cssVarPrefix}info`]: '#2196f3',
           [`--${cssVarPrefix}on-info`]: '#fafafa',
@@ -77,12 +90,26 @@ module.exports = (options) => {
           [`--${cssVarPrefix}neutral5`]: '#fdfdfd',
 
           [`--${cssVarPrefix}rounded`]: '0.375rem',
+
+          // New colors
+          [`--${cssVarPrefix}success-bg`]: '#dcfce7',
+          [`--${cssVarPrefix}success-text`]: '#16a34a',
+          [`--${cssVarPrefix}success-border`]: '#16a34a',
+
+          [`--${cssVarPrefix}info-bg`]: '#dbeafe',
+          [`--${cssVarPrefix}info-text`]: '#2563eb',
+          [`--${cssVarPrefix}info-border`]: '#2563eb',
+
+          [`--${cssVarPrefix}warning-bg`]: '#fef3c7',
+          [`--${cssVarPrefix}warning-text`]: '#d97706',
+          [`--${cssVarPrefix}warning-border`]: '#d97706',
         },
         body: {
           backgroundColor: theme('colors.neutral5'),
           color: theme('colors.neutral90'),
           fontSize: theme('fontSize.sm'),
           lineHeight: theme('lineHeight.5'),
+          borderColor: `var(--${cssVarPrefix}neutral30)`,
         },
       });
       addComponents({

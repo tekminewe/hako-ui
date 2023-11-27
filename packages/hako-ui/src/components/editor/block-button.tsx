@@ -7,7 +7,15 @@ import { Button } from './button';
 const TEXT_ALIGN_TYPES = ['left', 'center', 'right', 'justify'];
 const LIST_TYPES = ['numbered-list', 'bulleted-list'];
 
-export const BlockButton = ({ children, format }: { children: ReactNode; format: EditorFormat }) => {
+export const BlockButton = ({
+  children,
+  format,
+  disabled = false,
+}: {
+  children: ReactNode;
+  format: EditorFormat;
+  disabled?: boolean;
+}) => {
   const editor = useSlate();
 
   const isBlockActive = (blockType = 'type') => {
@@ -63,7 +71,11 @@ export const BlockButton = ({ children, format }: { children: ReactNode; format:
   };
 
   return (
-    <Button onClick={toggleBlock} isActive={isBlockActive(TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type')}>
+    <Button
+      disabled={disabled}
+      onClick={toggleBlock}
+      isActive={isBlockActive(TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type')}
+    >
       {children}
     </Button>
   );

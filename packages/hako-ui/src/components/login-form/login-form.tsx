@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Alert } from '../alert';
 
 export type LoginFormSubmitResult = {
   status: 'success' | 'error';
@@ -85,6 +86,14 @@ export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, '
   registerLink?: string;
 
   /**
+   * Whether to hide the register link.
+   * @type boolean
+   * @default false
+   * @example true
+   */
+  hideRegister?: boolean;
+
+  /**
    * The handler to be called when the register link is clicked.
    * @type MouseEventHandler<HTMLSpanElement>
    * @example () => console.log('Register link clicked')
@@ -112,6 +121,7 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
       registerHint = "Don't have an account yet?",
       registerText = 'Sign up now',
       registerLink = '/register',
+      hideRegister = false,
       onRegisterClick,
       ...props
     },
@@ -153,14 +163,7 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
             <p className="text-center text-xl font-semibold">{title ?? 'Welcome'}</p>
             <p className="text-sm">{description ?? 'Log in to continue'}</p>
           </div>
-          {status && (
-            <div
-              className="bg-danger5 bg-red-50 border border-danger100 text-danger100 px-4 py-3 hk-rounded mb-4 text-sm"
-              role="alert"
-            >
-              <span>{status}</span>
-            </div>
-          )}
+          {status && <Alert>{status}</Alert>}
           <form ref={ref} {...props}>
             <TextInput
               {...inputConfig?.email}
@@ -196,12 +199,14 @@ export const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
             </Button>
           </form>
         </Card>
-        <p className="text-sm">
-          {registerHint}
-          <a className="ml-2 text-primary cursor-pointer font-semibold" href={registerLink} onClick={onRegisterClick}>
-            {registerText}
-          </a>
-        </p>
+        {!hideRegister && (
+          <p className="text-sm">
+            {registerHint}
+            <a className="ml-2 text-primary cursor-pointer font-semibold" href={registerLink} onClick={onRegisterClick}>
+              {registerText}
+            </a>
+          </p>
+        )}
       </div>
     );
   },
