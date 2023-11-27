@@ -81,6 +81,7 @@ export const FeatureItem1 = forwardRef<HTMLDivElement, FeatureItem1Props>(
           'border-0 shadow-none': !border,
         })}
         {...props}
+        onClick={onClick}
         ref={ref}
       >
         {icon}
