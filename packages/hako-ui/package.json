@@ -30,10 +30,6 @@
     "url": "https://tekminewe.com"
   },
   "type": "module",
-  "files": [
-    "dist",
-    "plugin.js"
-  ],
   "main": "./index.cjs",
   "module": "./index.js",
   "exports": {
