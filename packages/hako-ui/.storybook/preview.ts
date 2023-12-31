@@ -3,6 +3,7 @@ import './global.css';
 
 const preview: Preview = {
   parameters: {
+    layout: 'fullscreen',
     viewport: {
       viewports: {
         mobile: {
@@ -16,6 +17,13 @@ const preview: Preview = {
           name: 'Tablet',
           styles: {
             width: '768px',
+            height: '1024px',
+          },
+        },
+        desktop: {
+          name: 'Desktop',
+          styles: {
+            width: '1536px',
             height: '1024px',
           },
         },

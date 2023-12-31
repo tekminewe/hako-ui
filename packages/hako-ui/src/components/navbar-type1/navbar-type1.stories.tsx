@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { allModes } from '../../../.storybook/modes';
 
 import { NavbarType1 } from './navbar-type1';
 import { ReactComponent as Logo } from 'assets/logo.svg';
@@ -19,6 +20,15 @@ export const Complete: Story = {
     links: ['Home', 'About', 'Services', 'Portfolio', 'Contact'],
     cta: 'Sign up',
     profilePhotoUrl: '/images/user.png',
+  },
+  parameters: {
+    chromatics: {
+      modes: {
+        mobile: allModes['mobile'],
+        tablet: allModes['tablet'],
+        desktop: allModes['desktop'],
+      },
+    },
   },
 };
 

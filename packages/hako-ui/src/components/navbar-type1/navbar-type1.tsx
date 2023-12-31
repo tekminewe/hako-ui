@@ -112,7 +112,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
       <>
         <Navbar
           ref={ref}
-          containerClassName={classNames(containerClassName, {
+          containerClassName={classNames(containerClassName, 'relative z-0', {
             'justify-between': hasLeftContent && hasBrand,
             'justify-end': !hasBrand,
           })}
@@ -143,7 +143,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
           )}
         </Navbar>
         {!!links?.length && (
-          <Drawer anchor="right" className="lg:hidden p-4" open={show} onClose={handleClose}>
+          <Drawer anchor="right" className="lg:hidden bg-white" open={show} onClose={handleClose}>
             <div className="flex justify-end">
               <div className="p-4 cursor-pointer" onClick={handleClose}>
                 <TfiClose />
