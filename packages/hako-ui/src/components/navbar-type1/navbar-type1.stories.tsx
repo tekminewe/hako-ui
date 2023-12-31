@@ -68,3 +68,10 @@ export const CtaOnly: Story = {
     cta: 'Sign up',
   },
 };
+
+export const LinkOnlyToggleLeft: Story = {
+  args: {
+    ...LinkOnly.args,
+    drawerPosition: 'left',
+  },
+};

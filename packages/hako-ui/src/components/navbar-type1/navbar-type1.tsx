@@ -76,6 +76,14 @@ export interface NavbarType1Props extends NavbarProps {
    * @example () => console.log("Profile photo clicked")
    */
   onProfilePhotoClick?: MouseEventHandler<HTMLImageElement>;
+
+  /**
+   * The position of the drawer
+   * @type 'left' | 'right'
+   * @example 'left'
+   * @default 'right'
+   */
+  drawerPosition?: 'left' | 'right';
 }
 
 export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
@@ -91,6 +99,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
       onCtaClick,
       profilePhotoUrl,
       onProfilePhotoClick,
+      drawerPosition = 'right',
       ...props
     },
     ref,
@@ -106,20 +115,23 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
     };
 
     const hasBrand = !!title || !!logo;
-    const hasLeftContent = cta || !!links?.length || !!profilePhotoUrl;
+    const hasContent = cta || !!links?.length || !!profilePhotoUrl;
 
     return (
       <>
         <Navbar
           ref={ref}
           containerClassName={classNames(containerClassName, 'relative z-0', {
-            'justify-between': hasLeftContent && hasBrand,
-            'justify-end': !hasBrand,
+            'justify-between': hasContent && hasBrand,
+            'justify-end': !hasBrand && drawerPosition === 'right',
           })}
           {...props}
         >
+          {!!links?.length && drawerPosition === 'left' && (
+            <NavbarToggle containerClassName="lg:hidden" onClick={handleToggle} />
+          )}
           {hasBrand && <NavbarBrand logo={logo} title={title} />}
-          {hasLeftContent && (
+          {hasContent && (
             <div className="flex self-end items-center space-x-4">
               {!!links?.length && (
                 <NavbarLinks
@@ -138,12 +150,14 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
                 />
               )}
               {cta && <Button onClick={onCtaClick}>{cta}</Button>}
-              {!!links?.length && <NavbarToggle containerClassName="lg:hidden" onClick={handleToggle} />}
+              {!!links?.length && drawerPosition === 'right' && (
+                <NavbarToggle containerClassName="lg:hidden" onClick={handleToggle} />
+              )}
             </div>
           )}
         </Navbar>
         {!!links?.length && (
-          <Drawer anchor="right" className="lg:hidden bg-white" open={show} onClose={handleClose}>
+          <Drawer anchor={drawerPosition} className="lg:hidden bg-white" open={show} onClose={handleClose}>
             <div className="flex justify-end">
               <div className="p-4 cursor-pointer" onClick={handleClose}>
                 <TfiClose />
