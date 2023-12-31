@@ -84,6 +84,15 @@ export interface NavbarType1Props extends NavbarProps {
    * @default 'right'
    */
   drawerPosition?: 'left' | 'right';
+
+  /**
+   * The class name of the drawer
+   * @type string
+   * @example 'bg-white'
+   * @default undefined
+   *
+   */
+  drawerClassName?: string;
 }
 
 export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
@@ -100,6 +109,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
       profilePhotoUrl,
       onProfilePhotoClick,
       drawerPosition = 'right',
+      drawerClassName,
       ...props
     },
     ref,
@@ -157,7 +167,12 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
           )}
         </Navbar>
         {!!links?.length && (
-          <Drawer anchor={drawerPosition} className="lg:hidden bg-white" open={show} onClose={handleClose}>
+          <Drawer
+            anchor={drawerPosition}
+            className={classNames('lg:hidden', drawerClassName)}
+            open={show}
+            onClose={handleClose}
+          >
             <div className="flex justify-end">
               <div className="p-4 cursor-pointer" onClick={handleClose}>
                 <TfiClose />

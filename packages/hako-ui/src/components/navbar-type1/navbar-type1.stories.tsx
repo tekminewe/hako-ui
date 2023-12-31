@@ -20,6 +20,7 @@ export const Complete: Story = {
     links: ['Home', 'About', 'Services', 'Portfolio', 'Contact'],
     cta: 'Sign up',
     profilePhotoUrl: '/images/user.png',
+    drawerClassName: 'bg-white',
   },
   parameters: {
     chromatics: {
@@ -73,5 +74,6 @@ export const LinkOnlyToggleLeft: Story = {
   args: {
     ...LinkOnly.args,
     drawerPosition: 'left',
+    drawerClassName: 'bg-primary text-white',
   },
 };
