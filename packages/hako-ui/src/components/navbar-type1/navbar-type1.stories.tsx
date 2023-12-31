@@ -73,7 +73,9 @@ export const CtaOnly: Story = {
 export const LinkOnlyToggleLeft: Story = {
   args: {
     ...LinkOnly.args,
-    drawerPosition: 'left',
-    drawerClassName: 'bg-primary text-white',
+    drawerProps: {
+      position: 'left',
+      className: 'bg-primary text-white',
+    },
   },
 };

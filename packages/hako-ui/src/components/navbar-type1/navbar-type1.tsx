@@ -6,7 +6,7 @@ import { Navbar, NavbarProps } from '../navbar/navbar';
 import { NavbarBrand } from '../navbar/navbar-brand';
 import { NavbarLinks, NavbarLinksProps } from '../navbar/navbar-links';
 import { NavbarToggle } from '../navbar/navbar-toggle';
-import { Drawer } from '../drawer';
+import { Drawer, DrawerProps } from '../drawer';
 import classNames from 'classnames';
 import { Button } from '../button';
 
@@ -78,21 +78,20 @@ export interface NavbarType1Props extends NavbarProps {
   onProfilePhotoClick?: MouseEventHandler<HTMLImageElement>;
 
   /**
-   * The position of the drawer
-   * @type 'left' | 'right'
-   * @example 'left'
-   * @default 'right'
-   */
-  drawerPosition?: 'left' | 'right';
-
-  /**
-   * The class name of the drawer
-   * @type string
-   * @example 'bg-white'
+   * The props of the drawer
+   * @type DrawerProps & { position?: 'left' | 'right'}
+   * @example { anchor: 'left' }
    * @default undefined
-   *
    */
-  drawerClassName?: string;
+  drawerProps?: Pick<DrawerProps, 'className' | 'onClose'> & {
+    /**
+     * The position of the drawer
+     * @type 'left' | 'right'
+     * @example 'left'
+     * @default 'right'
+     */
+    position?: 'left' | 'right';
+  };
 }
 
 export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
@@ -108,12 +107,13 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
       onCtaClick,
       profilePhotoUrl,
       onProfilePhotoClick,
-      drawerPosition = 'right',
-      drawerClassName,
+      drawerProps,
       ...props
     },
     ref,
   ) => {
+    const drawerPosition = drawerProps?.position ?? 'right';
+    const { className: drawerClassName, ...otherDrawerProps } = drawerProps ?? {};
     const [show, setShow] = useState(false);
 
     const handleToggle = () => {
@@ -172,6 +172,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
             className={classNames('lg:hidden', drawerClassName)}
             open={show}
             onClose={handleClose}
+            {...otherDrawerProps}
           >
             <div className="flex justify-end">
               <div className="p-4 cursor-pointer" onClick={handleClose}>
