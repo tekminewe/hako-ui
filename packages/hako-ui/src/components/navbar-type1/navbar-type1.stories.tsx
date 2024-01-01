@@ -20,7 +20,9 @@ export const Complete: Story = {
     links: ['Home', 'About', 'Services', 'Portfolio', 'Contact'],
     cta: 'Sign up',
     profilePhotoUrl: '/images/user.png',
-    drawerClassName: 'bg-white',
+    drawerProps: {
+      className: 'bg-white',
+    },
   },
   parameters: {
     chromatics: {
@@ -76,6 +78,33 @@ export const LinkOnlyToggleLeft: Story = {
     drawerProps: {
       position: 'left',
       className: 'bg-primary text-white',
+    },
+  },
+};
+
+export const MobileDropdown: Story = {
+  args: {
+    drawerProps: {
+      position: 'left',
+      className: 'bg-primary text-white',
+    },
+    links: ['Home', 'About', 'Services', 'Portfolio', 'Contact'],
+    mobileDropdownProps: {
+      selectedItemId: 'my-tickets',
+      items: [
+        {
+          id: 'my-tickets',
+          label: 'My tickets',
+        },
+        {
+          id: 'unassigned-tickets',
+          label: 'Unassigned tickets',
+        },
+        {
+          id: 'assigned-tickets',
+          label: 'Assigned tickets',
+        },
+      ],
     },
   },
 };

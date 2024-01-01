@@ -9,6 +9,7 @@ import { NavbarToggle } from '../navbar/navbar-toggle';
 import { Drawer, DrawerProps } from '../drawer';
 import classNames from 'classnames';
 import { Button } from '../button';
+import { NavbarDropdown, NavbarDropdownProps } from '../navbar/navbar-dropdown';
 
 export interface NavbarType1Props extends NavbarProps {
   /**
@@ -92,6 +93,12 @@ export interface NavbarType1Props extends NavbarProps {
      */
     position?: 'left' | 'right';
   };
+
+  /**
+   * The props of the dropdown that is shown on mobile screen in the center of the navbar
+   * @type NavbarDropdownProps
+   */
+  mobileDropdownProps?: NavbarDropdownProps;
 }
 
 export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
@@ -108,6 +115,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
       profilePhotoUrl,
       onProfilePhotoClick,
       drawerProps,
+      mobileDropdownProps,
       ...props
     },
     ref,
@@ -141,6 +149,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
             <NavbarToggle containerClassName="lg:hidden" onClick={handleToggle} />
           )}
           {hasBrand && <NavbarBrand logo={logo} title={title} />}
+          {!!mobileDropdownProps?.items?.length && <NavbarDropdown {...mobileDropdownProps} />}
           {hasContent && (
             <div className="flex self-end items-center space-x-4">
               {!!links?.length && (
