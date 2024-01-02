@@ -1,6 +1,6 @@
 'use client';
 
-import { MouseEventHandler, forwardRef, useState } from 'react';
+import { MouseEventHandler, forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
 import { TfiClose } from 'react-icons/tfi';
 import { Navbar, NavbarProps } from '../navbar/navbar';
 import { NavbarBrand } from '../navbar/navbar-brand';
@@ -123,6 +123,13 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
     const drawerPosition = drawerProps?.position ?? 'right';
     const { className: drawerClassName, ...otherDrawerProps } = drawerProps ?? {};
     const [show, setShow] = useState(false);
+    const [privateRef, setPrivateRef] = useState<HTMLElement | null>(null);
+    const callbackRef = useCallback((node: HTMLElement) => {
+      if (node) {
+        setPrivateRef(node);
+      }
+    }, []);
+    useImperativeHandle<HTMLElement | null, HTMLElement | null>(ref, () => privateRef, [privateRef]);
 
     const handleToggle = () => {
       setShow((show) => !show);
@@ -138,7 +145,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
     return (
       <>
         <Navbar
-          ref={ref}
+          ref={callbackRef}
           containerClassName={classNames(containerClassName, 'relative z-0', {
             'justify-between': hasContent && hasBrand,
             'justify-end': !hasBrand && drawerPosition === 'right',
@@ -149,7 +156,7 @@ export const NavbarType1 = forwardRef<HTMLElement, NavbarType1Props>(
             <NavbarToggle containerClassName="lg:hidden" onClick={handleToggle} />
           )}
           {hasBrand && <NavbarBrand logo={logo} title={title} />}
-          {!!mobileDropdownProps?.items?.length && <NavbarDropdown {...mobileDropdownProps} />}
+          {!!mobileDropdownProps?.items?.length && <NavbarDropdown {...mobileDropdownProps} anchorTo={privateRef} />}
           {hasContent && (
             <div className="flex self-end items-center space-x-4">
               {!!links?.length && (
